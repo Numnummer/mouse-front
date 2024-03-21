@@ -1,7 +1,6 @@
-﻿import styles from './StartPage.module.css'
+﻿import styles from "./StartPage.module.css";
 import Button from "./Components/Button/Button.jsx";
 import {registrationTitle, signInTitle, title} from "../../Constants/Strings.js";
-
 
 export default function StartPage() {
     return (
@@ -13,6 +12,6 @@ export default function StartPage() {
                     <Button text={signInTitle}></Button>
                 </div>
             </div>
-        </div>
-    )
+    </div>
+  );
 }

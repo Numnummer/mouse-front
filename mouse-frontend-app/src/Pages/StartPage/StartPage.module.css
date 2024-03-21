@@ -6,10 +6,39 @@
 
 }
 
-.title{
-
+.title1{
+    font-size:50px; 
+    color: #2280E2; 
+    text-shadow: '1px 0px 5px grey';
 }
 
 .button-panel{
 
 }
+<<<<<<< HEAD
+=======
+
+.startPage{
+    text-align: center;
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+body{
+    font-family: system-ui;
+    font-weight: 500;
+}
+
+.buttonPanel {
+    width: 500px;
+}
+  
+.buttonPanel button{
+    margin-top: 10px;
+    text-shadow: '1px 0px 5px grey';
+}
+  
+>>>>>>> 50c4173163c2b8a57bffc536e64e18cd6a82434d
