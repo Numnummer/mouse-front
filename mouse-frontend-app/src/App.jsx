@@ -1,4 +1,4 @@
-import {enterPath, mainPath, registrationPath, startPagePath} from "./Constants/Constants.js";
+import {enterPath, mainPath, registrationPath, startPagePath} from "./Constants/Paths.js";
 import StartPage from "./Pages/StartPage/StartPage.jsx";
 import SignIn from "./Pages/SignIn/SignIn.jsx";
 import { Route, Routes } from "react-router-dom";
