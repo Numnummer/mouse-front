@@ -1,6 +1,6 @@
 ﻿import styles from './StartPage.module.css'
 import Button from "./Components/Button/Button.jsx";
-import {button1Text, button2Text, title} from "./Constants/Strings.js";
+import {registrationTitle, signInTitle, title} from "../../Constants/Strings.js";
 
 
 export default function StartPage() {
@@ -9,8 +9,8 @@ export default function StartPage() {
             <div className={styles.mainPanel}>
                 <label className={styles.title}>{title}</label>
                 <div className={styles.buttonPanel}>
-                    <Button text={button1Text}></Button>
-                    <Button text={button2Text}></Button>
+                    <Button text={registrationTitle}></Button>
+                    <Button text={signInTitle}></Button>
                 </div>
             </div>
         </div>
