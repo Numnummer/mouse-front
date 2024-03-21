@@ -9,7 +9,8 @@
 .title1{
     font-size:50px; 
     color: #2280E2; 
-    text-shadow: '1px 0px 5px grey';
+    width: min-content;
+    margin-left: 100px;
 }
 
 .button-panel{
@@ -23,6 +24,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 400px;
+    box-shadow: 0px 0px 10px 0px rgba(174, 173, 173, 0.5); 
+    border-radius: 20px;
 }
 
 body{
