@@ -20,7 +20,6 @@ export default function Register(){
     };
 
     function onRegistrationSubmit(event){
-        console.log("hi")
         event.preventDefault()
         processRegistration(registrationData)
     }

@@ -4,6 +4,10 @@ export default function isValidRegistrationData(data){
             && isValidEmail(data.email) && isValidPassword(data.password)
 }
 
+export function isValidSignInData(data){
+    return isValidEmail(data.email) && isValidPassword(data.password)
+}
+
 function isValidEmail(email){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
