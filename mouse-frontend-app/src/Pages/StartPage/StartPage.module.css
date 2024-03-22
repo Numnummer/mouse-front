@@ -6,13 +6,6 @@
 
 }
 
-.title1{
-    font-size:50px; 
-    color: #2280E2; 
-    width: min-content;
-    margin-left: 100px;
-}
-
 .button-panel{
 
 }
@@ -30,7 +23,7 @@
 }
 
 body{
-    font-family: system-ui;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: 500;
 }
 
