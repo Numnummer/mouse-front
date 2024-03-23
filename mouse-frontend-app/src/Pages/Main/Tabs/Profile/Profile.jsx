@@ -10,7 +10,9 @@ export default function Profile({ isProfileExists }) {
         <div className="personal-data">
           <div className="personal-data-title">Персональные данные</div>
           <div className="user-photo"></div>
-          <button>Изменить</button>
+          <div className="change-button">
+            <Button text='Изменить'></Button>
+          </div>
           <div className="user-name">Имя: </div>
           {editMode ? <input></input> : <div>Имя пользователя</div>}
           <div className="user-dob">Дата рождения: </div>
