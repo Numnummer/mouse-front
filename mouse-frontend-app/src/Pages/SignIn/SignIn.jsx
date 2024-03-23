@@ -8,16 +8,19 @@ import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
 import VkIcon from "../../Icons.jsx/VkIcon.jsx";
 import GoogleIcon from "../../Icons.jsx/GoogleIcon.jsx";
 import YandexIcon from "../../Icons.jsx/YandexIcon.jsx";
-import style from './SignIn.module.css'
+import style from "./SignIn.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const [signInData, setSignInData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   function onFormSubmit(event) {
     event.preventDefault();
     processSignIn(signInData);
+    navigate("Main");
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
@@ -45,24 +48,24 @@ export default function SignIn() {
           </div>
         </form>
         <div className={style.icons}>
-            <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
-                <VkIcon/>
-            </button>
-            <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
-            <GoogleIcon/>
-            </button>
-            <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
-                <YandexIcon/>
-            </button>
+          <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
+            <VkIcon />
+          </button>
+          <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
+            <GoogleIcon />
+          </button>
+          <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
+            <YandexIcon />
+          </button>
         </div>
         <div className={styles.registerButton}>
-            <input
-              type={"submit"}
-              className={styles.register}
-              value={"Войти"}
-              onClick={onFormSubmit}
-            />
-          </div>
+          <input
+            type={"submit"}
+            className={styles.register}
+            value={"Войти"}
+            onClick={onFormSubmit}
+          />
+        </div>
       </div>
     </div>
   );

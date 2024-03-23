@@ -21,6 +21,7 @@ export default function Main() {
     }
 
     useEffect(() => {
+      console.log("i");
       getCurrentUserInfo();
     }, []);
   }
