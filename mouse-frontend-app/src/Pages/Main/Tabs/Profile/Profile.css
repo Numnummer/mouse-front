@@ -1,0 +1,95 @@
+html,
+body {
+  margin: 0;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+  font-size: 20px;
+}
+
+.user-page-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.menu {
+  background-color: #F5F5F5;
+  padding: 20px;
+}
+
+.menu div {
+  margin-bottom: 10px;
+  color: #303030;
+  cursor: pointer;
+}
+
+.user-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.user-info-header {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #add8e6;
+  border-radius: 50%;
+}
+
+.username {
+  margin-left: 10px;
+}
+
+.edit-button {
+  cursor: pointer;
+}
+
+.personal-data-title {
+  color: #2F80ED;
+  margin-bottom: 20px;
+}
+
+.user-photo {
+  width: 250px;
+  height: 350px;
+  background-color: #ccc;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.user-info-header-left,
+.user-info-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.physical-data,
+.contacts {
+  color: #2F80ED;
+  margin-bottom: 10px;
+}
+
+.physical-data-item,
+.contacts-item {
+  margin-left: 20px;
+}
+
+.fill-profile-button button{
+  background-color: #D2E1FF;
+  color: #2F80ED;
+  font-weight: 600;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.fill-profile-button button:hover {
+  background-color: #C8DBFF;
+}
