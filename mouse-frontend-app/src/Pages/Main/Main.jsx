@@ -1,40 +1,54 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Profile from "./Tabs/Profile/Profile";
 import Schedule from "./Tabs/Schedule/Schedule";
-import MyExcercises from './Tabs/MyExcercises/MyExcercises'
-import Messages from './Tabs/Messages/Messages'
+import MyExcercises from "./Tabs/MyExcercises/MyExcercises";
+import Messages from "./Tabs/Messages/Messages";
+import useTab from "./CustomHooks/UseTab";
+import { authToken } from "../../Constants/LocalStorageItemKeys";
+import getCurrentUserInfo from "../../Api/User/GetCurrentUserInfo";
+import { enableAuth } from "../../Constants/Auth";
 
-export default function Main(){
-    let token=localStorage.getItem('jwtToken')        
+export default function Main() {
+  if (enableAuth) {
+    let token = localStorage.getItem(authToken);
     if (!token) {
-        return <>
-            <h1>Войдите в систему</h1>
-            <button>Войти</button>
-        </>;
+      return (
+        <>
+          <h1>Войдите в систему</h1>
+          <button>Войти</button>
+        </>
+      );
     }
 
-    const [currentTab,setCurrentTab]=useState(localStorage.getItem('currentTab'))
-    useEffect(()=>{
-        localStorage.setItem('currentTab',currentTab)
-    },[currentTab])
-    let currentTabComponent=<Profile></Profile>
-    switch (currentTab) {
-        case 'Schedule':
-            currentTabComponent=<Schedule></Schedule>
-            break;
-        case 'MyExcercises':
-            currentTabComponent=<MyExcercises></MyExcercises>
-            break;  
-        case 'Messages':
-            currentTabComponent=<Messages></Messages>
-            break;    
-        default:
-            break;
-    }
+    useEffect(() => {
+      getCurrentUserInfo();
+    }, []);
+  }
+  const [currentTab, setCurrentTab] = useTab();
 
-    return (
-        <div>
+  let currentTabComponent = <Profile></Profile>;
+  switch (currentTab) {
+    case "Schedule":
+      currentTabComponent = <Schedule></Schedule>;
+      break;
+    case "MyExcercises":
+      currentTabComponent = <MyExcercises></MyExcercises>;
+      break;
+    case "Messages":
+      currentTabComponent = <Messages></Messages>;
+      break;
+    default:
+      break;
+  }
 
-        </div>
-    );
+  return (
+    <div>
+      <div>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+      {currentTabComponent}
+    </div>
+  );
 }
