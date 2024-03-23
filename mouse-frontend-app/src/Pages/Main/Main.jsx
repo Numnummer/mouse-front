@@ -43,10 +43,14 @@ export default function Main() {
 
   return (
     <div>
-      <div>
-        <button></button>
-        <button></button>
-        <button></button>
+      <div className="menu">
+        <div className="user-info-header-left">
+          <div className="user-icon"></div>
+          <div className="username">Имя пользователя</div>
+        </div>
+        <div>Расписание</div>
+        <div>Сообщения</div>
+        <div>Мои упражнения</div>
       </div>
       {currentTabComponent}
     </div>
