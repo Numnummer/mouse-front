@@ -26,7 +26,7 @@ export default function Main() {
   }
   const [currentTab, setCurrentTab] = useTab();
 
-  let currentTabComponent = <Profile></Profile>;
+  let currentTabComponent = <Profile isProfileExists={false}></Profile>;
   switch (currentTab) {
     case "Schedule":
       currentTabComponent = <Schedule></Schedule>;

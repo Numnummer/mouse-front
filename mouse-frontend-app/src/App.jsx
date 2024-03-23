@@ -19,8 +19,6 @@ function App() {
         <Route path={mainPath} element={Main()}></Route>
         <Route path={startPagePath} element={StartPage()}></Route>
         <Route path={enterPath} element={SignIn()}></Route>
-        {/* потом убрать*/}
-        <Route path="/profile" element={Profile()}></Route>
       </Routes>
     </>
   );
