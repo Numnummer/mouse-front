@@ -3,18 +3,15 @@ import { authToken } from "../../Constants/LocalStorageItemKeys";
 
 export default function getCurrentUserInfo() {
   let token = localStorage.getItem(authToken);
-  const payload = JSON.parse(atob(token.split(".")[1]));
-  console.log(token);
-  console.log(payload);
 
-  userClient
+  return userClient
     .get("currentUserInfo", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then((response) => {
-      console.log(response);
+      return response.data;
     })
     .catch((error) => {
       console.log(error);

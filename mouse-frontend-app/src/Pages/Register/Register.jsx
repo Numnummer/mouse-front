@@ -2,6 +2,7 @@ import styles from "./Register.module.css";
 import { useState } from "react";
 import processRegistration from "./Services/RegistrationService.js";
 import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [registrationData, setRegistrationData] = useState({
@@ -20,9 +21,12 @@ export default function Register() {
     }));
   };
 
+  const navigate = useNavigate();
   function onRegistrationSubmit(event) {
     event.preventDefault();
-    processRegistration(registrationData);
+    processRegistration(registrationData).then(() => {
+      navigate("Main");
+    });
   }
 
   return (
