@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../../StartPage/Components/Button/Button";
 import "./Profile.css";
+import getCurrentUserInfo, {
+  getCurrentUserInfo1,
+} from "../../../../Api/User/GetCurrentUserInfo";
+import getUserProfile from "../../../../Api/UserProfile/GetUserProfile";
+import { useCookies } from "react-cookie";
 
 export default function Profile({ isProfileExists }) {
   const [editMode, setEditMode] = useState(false);
+  const [cookies, setCookie] = useCookies();
+  useEffect(() => {
+    getCurrentUserInfo();
+  }, []);
   return (
     <div className="user-page-container">
       <div className="user-info">
@@ -11,7 +20,7 @@ export default function Profile({ isProfileExists }) {
           <div className="personal-data-title">Персональные данные</div>
           <div className="user-photo"></div>
           <div className="change-button">
-            <Button text='Изменить'></Button>
+            <Button text="Изменить"></Button>
           </div>
           <div className="user-name">Имя: </div>
           {editMode ? <input></input> : <div>Имя пользователя</div>}

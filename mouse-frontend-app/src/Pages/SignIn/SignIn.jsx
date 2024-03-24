@@ -19,8 +19,9 @@ export default function SignIn() {
   const navigate = useNavigate();
   function onFormSubmit(event) {
     event.preventDefault();
-    processSignIn(signInData);
-    navigate("Main");
+    processSignIn(signInData).then(() => {
+      navigate("Main");
+    });
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();

@@ -1,15 +1,15 @@
 import { userClient } from "../../Constants/AxiosClients.js";
-import { authToken } from "../../Constants/LocalStorageItemKeys.js";
+import { authToken, userIdItem } from "../../Constants/LocalStorageItemKeys.js";
 import getCurrentUserInfo from "../User/GetCurrentUserInfo.js";
 
 export function signIn(signInData) {
-  userClient
+  return userClient
     .post("signIn", signInData)
     .then((result) => {
       let token = result.data.jwtToken;
-      console.log(token);
+      console.log(result);
       localStorage.setItem(authToken, token);
-      //getCurrentUserInfo();
+      localStorage.setItem(userIdItem, result.data.userId);
     })
     .catch((error) => {
       console.error(error);

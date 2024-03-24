@@ -1,19 +1,19 @@
 import axios from "axios";
 
-export const backendOrigin='https://localhost:7267'
+export const backendOrigin = "http://localhost:5049";
 
-export const userClient=axios.create({
-    baseURL:`${backendOrigin}/api/User/`    
-})
+export const userClient = axios.create({
+  baseURL: `${backendOrigin}/api/User/`,
+});
 
-export const userProfileClient=axios.create({    
-    baseURL:`${backendOrigin}/api/UserProfile/`   
-})
+export const userProfileClient = axios.create({
+  baseURL: `${backendOrigin}/api/UserProfile/`,
+});
 
-export const excerciseClient=axios.create({    
-    baseURL:`${backendOrigin}/api/Exercise/`   
-})
+export const excerciseClient = axios.create({
+  baseURL: `${backendOrigin}/api/Exercise/`,
+});
 
-export const trainingClient=axios.create({    
-    baseURL:`${backendOrigin}/api/Training/`   
-})
+export const trainingClient = axios.create({
+  baseURL: `${backendOrigin}/api/Training/`,
+});

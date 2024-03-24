@@ -7,7 +7,7 @@ import useTab from "./CustomHooks/UseTab";
 import { authToken } from "../../Constants/LocalStorageItemKeys";
 import getCurrentUserInfo from "../../Api/User/GetCurrentUserInfo";
 import { enableAuth } from "../../Constants/Auth";
-import './Main.css'
+import "./Main.css";
 
 export default function Main() {
   if (enableAuth) {
@@ -20,11 +20,6 @@ export default function Main() {
         </>
       );
     }
-
-    useEffect(() => {
-      console.log("i");
-      getCurrentUserInfo();
-    }, []);
   }
   const [currentTab, setCurrentTab] = useTab();
 
