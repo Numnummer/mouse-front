@@ -12,3 +12,11 @@ margin-bottom: 10px;
 color: #303030;
 cursor: pointer;
 }
+
+.item-icon{
+    width: 20px;
+}
+
+.menu-item{
+    align-items: start;
+}

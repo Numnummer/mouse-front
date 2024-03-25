@@ -8,6 +8,9 @@ import { authToken } from "../../Constants/LocalStorageItemKeys";
 import getCurrentUserInfo from "../../Api/User/GetCurrentUserInfo";
 import { enableAuth } from "../../Constants/Auth";
 import "./Main.css";
+import MessagesIcon from "./Tabs/Profile/Icons/MessagesIcon";
+import ScheduleIcon from "./Tabs/Profile/Icons/ScheduleIcon";
+import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
 
 export default function Main() {
   if (enableAuth) {
@@ -45,9 +48,18 @@ export default function Main() {
           <div className="user-icon"></div>
           <div className="username">Имя пользователя</div>
         </div>
-        <div>Расписание</div>
-        <div>Сообщения</div>
-        <div>Мои упражнения</div>
+        <div>
+          <div>
+            <ScheduleIcon className="ds"/>
+            Расписание</div>
+          <div>
+            <MessagesIcon />
+            Сообщения
+          </div>
+          <div>
+            <MyExcercisesIcon/>
+            Мои упражнения</div>
+          </div>
       </div>
       {currentTabComponent}
     </div>
