@@ -28,6 +28,11 @@ export default function Profile() {
     setEditMode(!editMode);
   }
 
+  function createProfile() {
+    setEditMode(!editMode);
+    console.log(userData);
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({
@@ -46,12 +51,7 @@ export default function Profile() {
             <Button text="Изменить"></Button>
           </div>
           <div className="user-name">Имя: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.firstName}
-            name={"firstName"}
-            onChange={handleInputChange}
-          ></UnitOfData>
+          <label>{userData && userData.firstName}</label>
 
           <div className="user-dob">Дата рождения: </div>
           <UnitOfData
@@ -88,12 +88,7 @@ export default function Profile() {
           ></UnitOfData>
 
           <div className="contacts-item">Email: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.email}
-            name={"email"}
-            onChange={handleInputChange}
-          ></UnitOfData>
+          <label>{userData && userData.email}</label>
         </div>
         <div className="fill-profile-button">
           <Button
@@ -106,7 +101,7 @@ export default function Profile() {
                 ? "Сохранить"
                 : "Обновить профиль"
             }
-            handler={onEditProfileClicked}
+            handler={isProfileExists ? onEditProfileClicked : createProfile}
           ></Button>
         </div>
       </div>
