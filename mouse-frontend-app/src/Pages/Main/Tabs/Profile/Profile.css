@@ -72,6 +72,12 @@ body {
   margin-left: 20px;
 }
 
+.fill-profile-button{
+  padding: 10px;
+  margin-top: 720px;
+  margin-left: 330px;
+}
+
 .fill-profile-button button{
   background-color: #D2E1FF;
   color: #2F80ED;
@@ -81,6 +87,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   font-size: 17px;
+  display: flex;
 }
 
 .fill-profile-button button:hover {
@@ -118,4 +125,21 @@ body{
 
 .personal-data-title{
   margin: 40px;
+}
+
+.info1{
+  width: 500px;
+  padding-top: 85px;
+  height: 100px;
+}
+
+.info2{
+  height: 150px;
+}
+
+.info3{
+}
+
+.info{
+  width: 500px;
 }
