@@ -43,13 +43,14 @@ export default function Profile() {
 
   return (
     <div className="user-page-container">
-      <div className="user-info">
-        <div className="personal-data">
-          <div className="personal-data-title">Персональные данные</div>
-          <div className="user-photo"></div>
+      <div className="personal-data-title">
+        <label className="persData">Персональные данные</label>
+        <div className="user-photo">
           <div className="change-button">
             <Button text="Изменить"></Button>
           </div>
+        </div>
+        <div className="info1">
           <div className="user-name">Имя: </div>
           <label>{userData && userData.firstName}</label>
 
@@ -60,7 +61,8 @@ export default function Profile() {
             name={"dateOfBirth"}
             onChange={handleInputChange}
           ></UnitOfData>
-
+        </div>
+        <div className="info2">
           <div className="physical-data">Физические данные</div>
           <div className="physical-data-item">Рост: </div>
           <UnitOfData
@@ -77,7 +79,8 @@ export default function Profile() {
             name={"weight"}
             onChange={handleInputChange}
           ></UnitOfData>
-
+        </div>
+        <div className="info3">
           <div className="contacts">Контакты</div>
           <div className="contacts-item">Телефон: </div>
           <UnitOfData
@@ -86,7 +89,6 @@ export default function Profile() {
             name={"phoneNumber"}
             onChange={handleInputChange}
           ></UnitOfData>
-
           <div className="contacts-item">Email: </div>
           <label>{userData && userData.email}</label>
         </div>
