@@ -41,3 +41,9 @@ body{
     border-radius: 20px;
     border: none;
 }
+
+.buttonPanel button:hover {
+    background-color: #227fe2e8;
+    border: solid;
+    border-color: #2280E2;
+  }
