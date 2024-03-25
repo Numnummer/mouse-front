@@ -1,10 +1,10 @@
 import { userClient } from "../../Constants/AxiosClients";
 import { authToken } from "../../Constants/LocalStorageItemKeys";
 
-export default function checkUserProfile(userId) {
+export default function checkUserProfile() {
   let token = localStorage.getItem(authToken);
   return userClient
-    .get(`${userId}/checkUserProfile`, {
+    .get(`checkUserProfile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -8,21 +8,27 @@ import getUserProfile from "../../../../Api/UserProfile/GetUserProfile";
 import { useCookies } from "react-cookie";
 import checkUserProfile from "../../../../Api/UserProfile/CheckUserProfile";
 import UnitOfData from "./Components/UnitOfData";
+import { authToken } from "../../../../Constants/LocalStorageItemKeys";
 
 export default function Profile() {
   const [editMode, setEditMode] = useState(false);
   const [userData, setUserData] = useState({});
   const [isProfileExists, setIsProfileExists] = useState(false);
+
   useEffect(() => {
     getCurrentUserInfo().then((response) => {
       setUserData(response);
       if (response) {
-        checkUserProfile(response.userId).then((result) => {
+        checkUserProfile().then((result) => {
           setIsProfileExists(result);
         });
       }
     });
   }, []);
+
+  function parseJwt(token) {
+    return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
+  }
 
   function onEditProfileClicked() {
     setEditMode(!editMode);
