@@ -49,52 +49,60 @@ export default function Profile() {
 
   return (
     <div className="user-page-container">
-      <div className="user-info">
-        <div className="personal-data">
-          <div className="personal-data-title">Персональные данные</div>
-          <div className="user-photo"></div>
+      <div className="personal-data-title">
+        <label className="persData">Персональные данные</label>
+        <div className="user-photo">
           <div className="change-button">
             <Button text="Изменить"></Button>
           </div>
+        </div>
+      </div>
+      <div className="info">
+        <div className="info1">
           <div className="user-name">Имя: </div>
           <label>{userData && userData.firstName}</label>
+          <div className="user-dob">Дата рождения: 
+            <UnitOfData
+              editMode={editMode}
+              data={userData && userData.dateOfBirth}
+              name={"dateOfBirth"}
+              onChange={handleInputChange}
+            ></UnitOfData>
+          </div>
+        </div>
+          <div className="info2">
+            <div className="physical-data">Физические данные</div>
+            <div className="physical-data-item">Рост: 
+              <UnitOfData
+                editMode={editMode}
+                data={userData && userData.height}
+                name={"height"}
+                onChange={handleInputChange}
+              ></UnitOfData>
+            </div>
 
-          <div className="user-dob">Дата рождения: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.dateOfBirth}
-            name={"dateOfBirth"}
-            onChange={handleInputChange}
-          ></UnitOfData>
-
-          <div className="physical-data">Физические данные</div>
-          <div className="physical-data-item">Рост: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.height}
-            name={"height"}
-            onChange={handleInputChange}
-          ></UnitOfData>
-
-          <div className="physical-data-item">Вес: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.weight}
-            name={"weight"}
-            onChange={handleInputChange}
-          ></UnitOfData>
-
-          <div className="contacts">Контакты</div>
-          <div className="contacts-item">Телефон: </div>
-          <UnitOfData
-            editMode={editMode}
-            data={userData && userData.phoneNumber}
-            name={"phoneNumber"}
-            onChange={handleInputChange}
-          ></UnitOfData>
-
-          <div className="contacts-item">Email: </div>
-          <label>{userData && userData.email}</label>
+            <div className="physical-data-item">Вес: 
+              <UnitOfData
+                editMode={editMode}
+                data={userData && userData.weight}
+                name={"weight"}
+                onChange={handleInputChange}
+              ></UnitOfData>
+            </div>
+          </div>
+          <div className="info3">
+            <div className="contacts">Контакты</div>
+            <div className="contacts-item">Телефон:
+              <UnitOfData
+                editMode={editMode}
+                data={userData && userData.phoneNumber}
+                name={"phoneNumber"}
+                onChange={handleInputChange}
+              ></UnitOfData>
+              </div>
+            <div className="contacts-item">Email: </div>
+            <label>{userData && userData.email}</label>
+          </div>
         </div>
         <div className="fill-profile-button">
           <Button
@@ -110,7 +118,6 @@ export default function Profile() {
             handler={isProfileExists ? onEditProfileClicked : createProfile}
           ></Button>
         </div>
-      </div>
     </div>
   );
 }

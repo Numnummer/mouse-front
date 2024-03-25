@@ -7,7 +7,7 @@ body {
 
 .user-page-container {
   display: flex;
-  height: 100%;
+  height: 95vh;
   width: 100%;
 }
 
@@ -16,6 +16,9 @@ body {
   padding: 20px;
   border-radius: 10px;
   margin-left: 20px;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .user-info-header {
@@ -49,6 +52,7 @@ body {
   background-color: #d1d0d04e;
   border-radius: 30px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .user-info-header-left,
@@ -68,6 +72,12 @@ body {
   margin-left: 20px;
 }
 
+.fill-profile-button{
+  padding: 10px;
+  margin-top: 720px;
+  margin-left: 330px;
+}
+
 .fill-profile-button button{
   background-color: #D2E1FF;
   color: #2F80ED;
@@ -77,6 +87,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   font-size: 17px;
+  display: flex;
 }
 
 .fill-profile-button button:hover {
@@ -91,6 +102,8 @@ body {
     border-radius: 25px;
     cursor: pointer;
     font-size: 17px;
+    margin-top: 280px;
+    margin-left: 25px;
 }
 
 .change-button button:hover {
@@ -108,4 +121,25 @@ body {
 
 body{
     background-color: #F5F5F5;
+}
+
+.personal-data-title{
+  margin: 40px;
+}
+
+.info1{
+  width: 500px;
+  padding-top: 85px;
+  height: 100px;
+}
+
+.info2{
+  height: 150px;
+}
+
+.info3{
+}
+
+.info{
+  width: 500px;
 }
