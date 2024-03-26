@@ -1,8 +1,7 @@
 import {
   enterPath,
   mainPath,
-  registrationPath,
-  startPagePath,
+  registrationPath
 } from "./Constants/Paths.js";
 import StartPage from "./Pages/StartPage/StartPage.jsx";
 import SignIn from "./Pages/SignIn/SignIn.jsx";
@@ -17,8 +16,8 @@ function App() {
       <Routes>
         <Route path={registrationPath} element={Register()}></Route>
         <Route path={mainPath} element={Main()}></Route>
-        <Route path={startPagePath} element={StartPage()}></Route>
         <Route path={enterPath} element={SignIn()}></Route>
+        <Route path={'/'} element={StartPage()}></Route>
       </Routes>
     </>
   );

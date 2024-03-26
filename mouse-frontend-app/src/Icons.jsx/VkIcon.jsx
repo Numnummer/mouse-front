@@ -1,8 +1,8 @@
 // eslint-disable-next-line react/display-name
 export default () => (
   <svg
-    width="60"
-    height="60"
+    width="50"
+    height="50"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
