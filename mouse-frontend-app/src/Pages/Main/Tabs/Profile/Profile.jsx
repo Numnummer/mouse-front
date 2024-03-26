@@ -89,7 +89,6 @@ export default function Profile() {
               onChange={handleInputChange}
             ></UnitOfData>
           </div>
-
           <div className="user-dob">
             Пол:
             <UnitOfData

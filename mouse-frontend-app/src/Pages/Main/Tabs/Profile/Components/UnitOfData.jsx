@@ -1,10 +1,19 @@
+import "./UnitOfData.css";
+
 export default function UnitOfData({ editMode, data, type, name, onChange }) {
   return (
     <>
       {editMode ? (
-        <input type={type} name={name} value={data} onChange={onChange}></input>
+        <div>
+          <input
+            type={type}
+            name={name}
+            value={data}
+            onChange={onChange}
+          ></input>
+        </div>
       ) : (
-        <div>{data}</div>
+        <div className="editModeData">{data}</div>
       )}
     </>
   );

@@ -69,7 +69,7 @@ body {
 
 .physical-data-item,
 .contacts-item {
-  margin-left: 20px;
+  height: 50px;
 }
 
 .fill-profile-button{
@@ -129,8 +129,9 @@ body{
 
 .info1{
   width: 500px;
-  padding-top: 85px;
+  margin-top: 85px;
   height: 100px;
+  margin-bottom: 30px;
 }
 
 .info2{
@@ -142,4 +143,10 @@ body{
 
 .info{
   width: 500px;
+}
+
+
+
+.user-dob{
+  height: 50px;
 }
