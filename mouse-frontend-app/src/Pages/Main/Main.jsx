@@ -11,15 +11,20 @@ import "./Main.css";
 import MessagesIcon from "./Tabs/Profile/Icons/MessagesIcon";
 import ScheduleIcon from "./Tabs/Profile/Icons/ScheduleIcon";
 import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
+  const navigate = useNavigate();
+  function goToEnter() {
+    navigate("Enter");
+  }
   if (enableAuth) {
     let token = localStorage.getItem(authToken);
     if (!token) {
       return (
         <>
           <h1>Войдите в систему</h1>
-          <button>Войти</button>
+          <button onClick={goToEnter}>Войти</button>
         </>
       );
     }
@@ -50,16 +55,18 @@ export default function Main() {
         </div>
         <div>
           <div>
-            <ScheduleIcon className="ds"/>
-            Расписание</div>
+            <ScheduleIcon className="ds" />
+            Расписание
+          </div>
           <div>
             <MessagesIcon />
             Сообщения
           </div>
           <div>
-            <MyExcercisesIcon/>
-            Мои упражнения</div>
+            <MyExcercisesIcon />
+            Мои упражнения
           </div>
+        </div>
       </div>
       {currentTabComponent}
     </div>

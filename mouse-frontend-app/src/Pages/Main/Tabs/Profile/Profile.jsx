@@ -25,6 +25,7 @@ export default function Profile() {
 
   useEffect(() => {
     getCurrentUserInfo().then((response) => {
+      response.dateOfBirth = parseToNormalDate(response.dateOfBirth);
       setUserData(response);
       if (response) {
         checkUserProfile().then((result) => {
@@ -48,6 +49,12 @@ export default function Profile() {
         setIsProfileExists(true);
       });
     }
+  }
+
+  function parseToNormalDate(dateString) {
+    const dateObj = new Date(dateString);
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return dateObj.toLocaleDateString("en-GB", options);
   }
 
   const handleInputChange = (e) => {
