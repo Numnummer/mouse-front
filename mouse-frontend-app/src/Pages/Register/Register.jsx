@@ -80,7 +80,7 @@ export default function Register() {
                       ? <VisabilityOnIcon />
                       : <VisabilityOffIcon />
                 }
-                <span>{showPassword ? 'Скрыть пароль' : 'Показать пароль'}</span>
+                <span></span>
               </button>
             </div>
 

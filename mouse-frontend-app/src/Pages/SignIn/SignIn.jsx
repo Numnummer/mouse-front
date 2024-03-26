@@ -10,8 +10,11 @@ import GoogleIcon from "../../Icons.jsx/GoogleIcon.jsx";
 import YandexIcon from "../../Icons.jsx/YandexIcon.jsx";
 import style from "./SignIn.module.css";
 import { useNavigate } from "react-router-dom";
+import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
+import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 
 export default function SignIn() {
+  const [showPassword, setShowPassword] = useState(false);
   const [signInData, setSignInData] = useState({
     email: "",
     password: "",
@@ -35,36 +38,49 @@ export default function SignIn() {
         <form>
           <div className={CommonStyles.inputs}>
             <input
-              placeholder={"Email"}
-              onChange={(event) => {
-                setSignInData({ ...signInData, email: event.target.value });
-              }}
+                placeholder={"Email"}
+                onChange={(event) => {
+                  setSignInData({...signInData, email: event.target.value});
+                }}
             />
             <input
-              placeholder={"Пароль"}
-              onChange={(event) => {
-                setSignInData({ ...signInData, password: event.target.value });
-              }}
+                type={showPassword ? "text" : "password"}
+                placeholder={"Пароль"}
+                onChange={(event) => {
+                  setSignInData({...signInData, password: event.target.value});
+                }}
             />
           </div>
         </form>
+        <div>
+          <button
+              onClick={() => setShowPassword(!showPassword)}
+          >
+            {
+              showPassword
+                  ? <VisabilityOnIcon/>
+                  : <VisabilityOffIcon/>
+            }
+            <span></span>
+          </button>
+        </div>
         <div className={style.icons}>
           <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
-            <VkIcon />
+            <VkIcon/>
           </button>
           <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
-            <GoogleIcon />
+            <GoogleIcon/>
           </button>
           <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
-            <YandexIcon />
+            <YandexIcon/>
           </button>
         </div>
         <div className={styles.registerButton}>
           <input
-            type={"submit"}
-            className={styles.register}
-            value={"Войти"}
-            onClick={onFormSubmit}
+              type={"submit"}
+              className={styles.register}
+              value={"Войти"}
+              onClick={onFormSubmit}
           />
         </div>
       </div>

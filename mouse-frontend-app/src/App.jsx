@@ -1,8 +1,7 @@
 import {
   enterPath,
   mainPath,
-  registrationPath,
-  startPagePath,
+  registrationPath
 } from "./Constants/Paths.js";
 import StartPage from "./Pages/StartPage/StartPage.jsx";
 import SignIn from "./Pages/SignIn/SignIn.jsx";
