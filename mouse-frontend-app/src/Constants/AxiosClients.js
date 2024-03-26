@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const backendOrigin = "http://localhost:5049";
+export const backendOrigin = "https://localhost:7267";
 
 export const userClient = axios.create({
   baseURL: `${backendOrigin}/api/User/`,

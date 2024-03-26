@@ -1,8 +1,8 @@
-export default function UnitOfData({ editMode, data, name, onChange }) {
+export default function UnitOfData({ editMode, data, type, name, onChange }) {
   return (
     <>
       {editMode ? (
-        <input name={name} value={data} onChange={onChange}></input>
+        <input type={type} name={name} value={data} onChange={onChange}></input>
       ) : (
         <div>{data}</div>
       )}
