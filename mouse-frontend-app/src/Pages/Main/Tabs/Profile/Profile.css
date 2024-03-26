@@ -129,9 +129,9 @@ body{
 
 .info1{
   width: 500px;
-  margin-top: 85px;
+  margin-top: 60px;
   height: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 85px;
 }
 
 .info2{
@@ -144,8 +144,6 @@ body{
 .info{
   width: 500px;
 }
-
-
 
 .user-dob{
   height: 50px;

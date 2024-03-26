@@ -68,7 +68,6 @@ export default function Profile() {
   return (
     <div className="user-page-container">
       <div className="personal-data-title">
-        <label className="persData">Персональные данные</label>
         <div className="user-photo">
           <div className="change-button">
             <Button text="Изменить"></Button>
@@ -77,7 +76,8 @@ export default function Profile() {
       </div>
       <div className="info">
         <div className="info1">
-          <div className="user-name">Имя: </div>
+        <label className="physical-data">Персональные данные</label>
+          <div className="user-dob">Имя: </div>
           <label>{userData.firstName}</label>
           <div className="user-dob">
             Дата рождения:
