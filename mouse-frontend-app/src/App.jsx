@@ -17,8 +17,8 @@ function App() {
       <Routes>
         <Route path={registrationPath} element={Register()}></Route>
         <Route path={mainPath} element={Main()}></Route>
-        <Route path={startPagePath} element={StartPage()}></Route>
         <Route path={enterPath} element={SignIn()}></Route>
+        <Route path={'/'} element={StartPage()}></Route>
       </Routes>
     </>
   );
