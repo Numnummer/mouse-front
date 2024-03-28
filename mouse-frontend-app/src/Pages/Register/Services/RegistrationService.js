@@ -2,7 +2,12 @@ import isValidRegistrationData from "../../../CommonServices/ValidationService.j
 import { register } from "../../../Api/Auth/Register.js";
 
 export default function processRegistration(registrationData) {
-  if (isValidRegistrationData(registrationData)) {
-    return register(registrationData);
-  }
+  return new Promise((resolve, reject) => {
+    if (isValidRegistrationData(registrationData)) {
+      return register(registrationData).catch((error) => {
+        reject(error);
+      });
+    }
+    throw new Error("Не валидные данные");
+  });
 }

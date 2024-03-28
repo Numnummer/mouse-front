@@ -76,7 +76,7 @@ export default function Profile() {
       </div>
       <div className="info">
         <div className="info1">
-        <label className="physical-data">Персональные данные</label>
+          <label className="physical-data">Персональные данные</label>
           <div className="user-dob">Имя: </div>
           <label>{userData.firstName}</label>
           <div className="user-dob">

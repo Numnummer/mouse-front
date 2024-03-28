@@ -5,6 +5,7 @@ import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
 import { useNavigate } from "react-router-dom";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
+import "./Registration228.css";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +13,7 @@ export default function Register() {
     userName: "",
     firstName: "",
     lastName: "",
-    role: "user",
+    role: "User",
     email: "",
     password: "",
   });
@@ -27,9 +28,16 @@ export default function Register() {
   const navigate = useNavigate();
   function onRegistrationSubmit(event) {
     event.preventDefault();
-    processRegistration(registrationData).then(() => {
-      navigate("Main");
-    });
+    processRegistration(registrationData)
+      .then((result) => {
+        result && navigate("Main");
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+        document.getElementById("registration228").style.display = "block";
+        document.getElementById("registration228").innerHTML = error;
+      });
   }
 
   return (
@@ -72,30 +80,24 @@ export default function Register() {
               onChange={handleInputChange}
             />
             <div>
-              <button
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {
-                  showPassword
-                      ? <VisabilityOnIcon />
-                      : <VisabilityOffIcon />
-                }
+              <button onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
                 <span></span>
               </button>
             </div>
-
           </div>
           <div className={styles.coachTitle}>
             <input
-                className={styles.checkboxCoach}
-                type="checkbox"
+              className={styles.checkboxCoach}
+              type="checkbox"
               onChange={(e) => {
-                let role = "user";
-                if (e.target.checked) role = "coach";
+                let role = "User";
+                if (e.target.checked) role = "Coach";
                 setRegistrationData({ ...registrationData, Role: role });
               }}
             />
             <label>Я тренер</label>
+            <label id="registration228"></label>
           </div>
           <div className={styles.registerButton}>
             <input

@@ -22,9 +22,13 @@ export default function SignIn() {
   const navigate = useNavigate();
   function onFormSubmit(event) {
     event.preventDefault();
-    processSignIn(signInData).then(() => {
-      navigate("Main");
-    });
+    processSignIn(signInData)
+      .then(() => {
+        navigate("Main");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
@@ -38,49 +42,43 @@ export default function SignIn() {
         <form>
           <div className={CommonStyles.inputs}>
             <input
-                placeholder={"Email"}
-                onChange={(event) => {
-                  setSignInData({...signInData, email: event.target.value});
-                }}
+              placeholder={"Email"}
+              onChange={(event) => {
+                setSignInData({ ...signInData, email: event.target.value });
+              }}
             />
             <input
-                type={showPassword ? "text" : "password"}
-                placeholder={"Пароль"}
-                onChange={(event) => {
-                  setSignInData({...signInData, password: event.target.value});
-                }}
+              type={showPassword ? "text" : "password"}
+              placeholder={"Пароль"}
+              onChange={(event) => {
+                setSignInData({ ...signInData, password: event.target.value });
+              }}
             />
           </div>
         </form>
         <div>
-          <button
-              onClick={() => setShowPassword(!showPassword)}
-          >
-            {
-              showPassword
-                  ? <VisabilityOnIcon/>
-                  : <VisabilityOffIcon/>
-            }
+          <button onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
             <span></span>
           </button>
         </div>
         <div className={style.icons}>
           <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
-            <VkIcon/>
+            <VkIcon />
           </button>
           <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
-            <GoogleIcon/>
+            <GoogleIcon />
           </button>
           <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
-            <YandexIcon/>
+            <YandexIcon />
           </button>
         </div>
         <div className={styles.registerButton}>
           <input
-              type={"submit"}
-              className={styles.register}
-              value={"Войти"}
-              onClick={onFormSubmit}
+            type={"submit"}
+            className={styles.register}
+            value={"Войти"}
+            onClick={onFormSubmit}
           />
         </div>
       </div>

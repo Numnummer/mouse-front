@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Main() {
   const navigate = useNavigate();
+  const [currentTab, setCurrentTab] = useTab();
   function goToEnter() {
     navigate("Enter");
   }
@@ -29,7 +30,6 @@ export default function Main() {
       );
     }
   }
-  const [currentTab, setCurrentTab] = useTab();
 
   let currentTabComponent = <Profile isProfileExists={false}></Profile>;
   switch (currentTab) {
