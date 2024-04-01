@@ -74,7 +74,7 @@ export default function Main() {
           className="user-info-header-left"
         >
           <div className="user-icon"></div>
-          <div className="username">Юзер Юзер</div>
+          <div className="username">{localStorage.getItem(userNameItem)}</div>
         </div>
         <div className="tabs">
           <div
