@@ -17,10 +17,6 @@ export default function Calendar() {
 
   return (
     <>
-      <label>
-        {/*Здесь будет месяц/год*/}
-        {format(today, "d MMMM yyyy", { locale: ru })}
-      </label>
       <CalendarDays days={days}></CalendarDays>
     </>
   );

@@ -1,4 +1,6 @@
+import Button from "../../../StartPage/Components/Button/Button";
 import Calendar from "./Components/Calendar/Calendar";
+import "./Schedule.css"
 
 export default function Schedule() {
   return (
@@ -6,7 +8,9 @@ export default function Schedule() {
       <div>
         <Calendar></Calendar>
       </div>
-      <button>Добавить тренировку</button>
+      <div className="fill-profile-button">
+        <Button text={'Добавить тренировку'}></Button>
+      </div>
     </>
   );
 }

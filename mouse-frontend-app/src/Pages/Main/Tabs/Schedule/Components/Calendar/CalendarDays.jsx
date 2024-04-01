@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import './CalendarDays.css'
 
 export default function ({ days }) {
   const weeks = [];
@@ -10,7 +11,7 @@ export default function ({ days }) {
     <div>
       {weeks.map((week, weekIndex) => (
         /*Здесь стили для строчек недель*/
-        <div key={weekIndex}>
+        <div className="dayButtons" key={weekIndex}>
           {week.map((day, dayIndex) => (
             /*Здесь стили для дней*/
             <div key={dayIndex}>
