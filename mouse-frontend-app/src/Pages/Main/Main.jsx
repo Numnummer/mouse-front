@@ -4,7 +4,11 @@ import Schedule from "./Tabs/Schedule/Schedule";
 import MyExcercises from "./Tabs/MyExcercises/MyExcercises";
 import Messages from "./Tabs/Messages/Messages";
 import useTab from "./CustomHooks/UseTab";
-import { authToken } from "../../Constants/LocalStorageItemKeys";
+import {
+  authToken,
+  currentProfileItem,
+  userNameItem,
+} from "../../Constants/LocalStorageItemKeys";
 import getCurrentUserInfo from "../../Api/User/GetCurrentUserInfo";
 import { enableAuth } from "../../Constants/Auth";
 import "./Main.css";
@@ -30,17 +34,31 @@ export default function Main() {
       );
     }
   }
+  useEffect(() => {
+    if (localStorage.getItem(currentProfileItem)) {
+      setCurrentTab(localStorage.getItem(currentProfileItem));
+    } else {
+      setCurrentTab("Profile");
+    }
+  }, []);
 
-  let currentTabComponent = <Profile isProfileExists={false}></Profile>;
+  let currentTabComponent;
   switch (currentTab) {
+    case "Profile":
+      currentTabComponent = <Profile isProfileExists={false}></Profile>;
+      localStorage.setItem(currentProfileItem, "Profile");
+      break;
     case "Schedule":
       currentTabComponent = <Schedule></Schedule>;
+      localStorage.setItem(currentProfileItem, "Schedule");
       break;
     case "MyExcercises":
       currentTabComponent = <MyExcercises></MyExcercises>;
+      localStorage.setItem(currentProfileItem, "MyExcercises");
       break;
     case "Messages":
       currentTabComponent = <Messages></Messages>;
+      localStorage.setItem(currentProfileItem, "Messages");
       break;
     default:
       break;
@@ -49,20 +67,37 @@ export default function Main() {
   return (
     <div className="menuflex">
       <div className="menu">
-        <div className="user-info-header-left">
+        <div
+          onClick={() => {
+            setCurrentTab("Profile");
+          }}
+          className="user-info-header-left"
+        >
           <div className="user-icon"></div>
-          <div className="username">Имя пользователя</div>
+          <div className="username">{localStorage.getItem(userNameItem)}</div>
         </div>
         <div>
-          <div>
+          <div
+            onClick={() => {
+              setCurrentTab("Schedule");
+            }}
+          >
             <ScheduleIcon className="ds" />
             Расписание
           </div>
-          <div>
+          <div
+            onClick={() => {
+              setCurrentTab("Messages");
+            }}
+          >
             <MessagesIcon />
             Сообщения
           </div>
-          <div>
+          <div
+            onClick={() => {
+              setCurrentTab("MyExcercises");
+            }}
+          >
             <MyExcercisesIcon />
             Мои упражнения
           </div>

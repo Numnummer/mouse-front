@@ -6,7 +6,10 @@ import getUserProfile from "../../../../Api/UserProfile/GetUserProfile";
 import { useCookies } from "react-cookie";
 import checkUserProfile from "../../../../Api/UserProfile/CheckUserProfile";
 import UnitOfData from "./Components/UnitOfData";
-import { authToken } from "../../../../Constants/LocalStorageItemKeys";
+import {
+  authToken,
+  userNameItem,
+} from "../../../../Constants/LocalStorageItemKeys";
 import createProfile from "../../../../Api/UserProfile/CreateProfile";
 import updateProfile from "../../../../Api/UserProfile/UpdateProfile";
 
@@ -27,6 +30,7 @@ export default function Profile() {
     getCurrentUserInfo().then((response) => {
       response.dateOfBirth = parseToNormalDate(response.dateOfBirth);
       setUserData(response);
+      localStorage.setItem(userNameItem, response.firstName);
       if (response) {
         checkUserProfile().then((result) => {
           setIsProfileExists(result);

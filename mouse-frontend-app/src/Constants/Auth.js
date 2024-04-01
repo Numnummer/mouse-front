@@ -1,1 +1,1 @@
-export const enableAuth = true;
+export const enableAuth = false;

@@ -1,5 +1,5 @@
 export const authToken = "jwtToken";
 export const currentTabItem = "currentTab";
 export const userIdItem = "userId";
-
-("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lSWRlbnRpZmllciI6IjllMjEwN2Q5LWU4NzAtZDc2NC0wYTY1LTI0MDY0NTI5NmM0MiIsIlJvbGUiOiJ1c2VyIiwiRW1haWwiOiJhYUBtYWlsLnJ1IiwibmJmIjoxNzExMjcxMjA1LCJleHAiOjE3MTEyNzEzMjUsImlhdCI6MTcxMTI3MTIwNSwiaXNzIjoiSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.Qww8jBv2_Zek7G1DnaPJMOhpr72ahNCA_ARQq5LjSLs");
+export const currentProfileItem = "currentProfile";
+export const userNameItem = "userName";
