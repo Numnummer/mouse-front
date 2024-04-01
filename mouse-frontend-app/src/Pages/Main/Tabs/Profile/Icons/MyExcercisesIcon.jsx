@@ -2,7 +2,7 @@
 export default () => (
   <>
     <svg
-      width="23"
+      width="19"
       height="14"
       viewBox="0 0 28 14"
       fill="gray"

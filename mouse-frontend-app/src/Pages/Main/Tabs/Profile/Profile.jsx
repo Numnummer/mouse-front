@@ -93,8 +93,8 @@ export default function Profile() {
               onChange={handleInputChange}
             ></UnitOfData>
           </div>
-          <div className="user-dob">
-            Пол:
+          <div className="user-dob"> {/* сделать чекбоксом  */}
+            Пол: 
             <UnitOfData
               editMode={editMode}
               type={"number"}

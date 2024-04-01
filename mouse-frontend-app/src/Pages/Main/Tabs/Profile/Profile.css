@@ -20,17 +20,6 @@ body {
   margin-bottom: 20px;
 }
 
-.user-icon {
-  width: 50px;
-  height: 50px;
-  background-color: #add8e6;
-  border-radius: 50%;
-}
-
-.username {
-  margin-left: 10px;
-}
-
 .edit-button {
   cursor: pointer;
 }
@@ -47,12 +36,6 @@ body {
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 20px;
-}
-
-.user-info-header-left,
-.user-info-header-right {
-  display: flex;
-  align-items: center;
 }
 
 .physical-data,

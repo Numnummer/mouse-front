@@ -74,32 +74,35 @@ export default function Main() {
           className="user-info-header-left"
         >
           <div className="user-icon"></div>
-          <div className="username">{localStorage.getItem(userNameItem)}</div>
+          <div className="username">Юзер Юзер</div>
         </div>
-        <div>
+        <div className="tabs">
           <div
+            className="tab"
             onClick={() => {
               setCurrentTab("Schedule");
             }}
           >
             <ScheduleIcon className="ds" />
-            Расписание
+            <label>Расписание</label>
           </div>
           <div
+            className="tab"
             onClick={() => {
               setCurrentTab("Messages");
             }}
           >
             <MessagesIcon />
-            Сообщения
+            <label>Сообщения</label>
           </div>
           <div
+            className="tab"
             onClick={() => {
               setCurrentTab("MyExcercises");
             }}
           >
             <MyExcercisesIcon />
-            Мои упражнения
+            <label>Мои упражнения</label>
           </div>
         </div>
       </div>
