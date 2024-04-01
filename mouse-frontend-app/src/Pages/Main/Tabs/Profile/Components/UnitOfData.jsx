@@ -10,6 +10,7 @@ export default function UnitOfData({ editMode, data, type, name, onChange }) {
             name={name}
             value={data}
             onChange={onChange}
+            className="editModeInput"
           ></input>
         </div>
       ) : (

@@ -1,3 +1,15 @@
 .editModeData{
     color: rgb(77, 77, 77);
+    font-size: 22px;
+}
+
+.editModeInput{
+    border-radius: 15px;
+    height: 30px;
+    border-color: rgba(224, 224, 224, 0.527);
+    font-size: 19px;   
+}
+
+.editModeData, .editModeInput{
+    position: absolute;
 }
