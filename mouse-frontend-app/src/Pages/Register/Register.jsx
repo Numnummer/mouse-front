@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import "./Registration228.css";
+import Pictures from "../StartPage/Pictures.jsx";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,74 +42,77 @@ export default function Register() {
   }
 
   return (
-    <div className={styles.page}>
-      <div className={styles.mainPanel}>
-        <form onSubmit={onRegistrationSubmit}>
-          <h1 className={CommonStyles.title1} style={{}}>
-            Трекер Тренировок
-          </h1>
-          <div className={CommonStyles.inputs}>
-            <input
-              name="userName"
-              placeholder={"Никнейм"}
-              value={registrationData.userName}
-              onChange={handleInputChange}
-            />
-            <input
-              name="firstName"
-              placeholder={"Имя"}
-              value={registrationData.firstName}
-              onChange={handleInputChange}
-            />
-            <input
-              name="lastName"
-              placeholder={"Фамилия"}
-              value={registrationData.lastName}
-              onChange={handleInputChange}
-            />
-            <input
-              name="email"
-              placeholder={"Email"}
-              value={registrationData.email}
-              onChange={handleInputChange}
-            />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder={"Пароль"}
-              value={registrationData.password}
-              onChange={handleInputChange}
-            />
-            <div>
-              <button onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
-                <span></span>
-              </button>
+    <>
+      <Pictures />
+      <div className={styles.page}>
+        <div className={styles.mainPanel}>
+          <form onSubmit={onRegistrationSubmit}>
+            <h1 className={CommonStyles.title1} style={{}}>
+              Трекер Тренировок
+            </h1>
+            <div className={CommonStyles.inputs}>
+              <input
+                name="userName"
+                placeholder={"Никнейм"}
+                value={registrationData.userName}
+                onChange={handleInputChange}
+              />
+              <input
+                name="firstName"
+                placeholder={"Имя"}
+                value={registrationData.firstName}
+                onChange={handleInputChange}
+              />
+              <input
+                name="lastName"
+                placeholder={"Фамилия"}
+                value={registrationData.lastName}
+                onChange={handleInputChange}
+              />
+              <input
+                name="email"
+                placeholder={"Email"}
+                value={registrationData.email}
+                onChange={handleInputChange}
+              />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder={"Пароль"}
+                value={registrationData.password}
+                onChange={handleInputChange}
+              />
+              <div>
+                <button onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
+                  <span></span>
+                </button>
+              </div>
             </div>
-          </div>
-          <div className={styles.coachTitle}>
-            <input
-              className={styles.checkboxCoach}
-              type="checkbox"
-              onChange={(e) => {
-                let role = "User";
-                if (e.target.checked) role = "Coach";
-                setRegistrationData({ ...registrationData, Role: role });
-              }}
-            />
-            <label>Я тренер</label>
-            <label id="registration228"></label>
-          </div>
-          <div className={styles.registerButton}>
-            <input
-              className={styles.register}
-              type="submit"
-              value={"Зарегистрироваться"}
-              onClick={onRegistrationSubmit}
-            />
-          </div>
-        </form>
+            <div className={styles.coachTitle}>
+              <input
+                className={styles.checkboxCoach}
+                type="checkbox"
+                onChange={(e) => {
+                  let role = "User";
+                  if (e.target.checked) role = "Coach";
+                  setRegistrationData({ ...registrationData, Role: role });
+                }}
+              />
+              <label>Я тренер</label>
+              <label id="registration228"></label>
+            </div>
+            <div className={styles.registerButton}>
+              <input
+                className={styles.register}
+                type="submit"
+                value={"Зарегистрироваться"}
+                onClick={onRegistrationSubmit}
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -10,7 +10,7 @@ export default function StartPage() {
   const navigate = useNavigate();
   return (
     <>
-      {/* <Pictures /> пока в процессе */}
+      <Pictures />
       <div className={styles.startPage}>
         <div className={styles.mainPanel}>
           <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>

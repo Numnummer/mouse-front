@@ -1,9 +1,0 @@
-.startPictures img{
-    height: 350px;
-}
-
-.startPictures{
-    display: grid;
-    grid-template-columns: repeat(2, 1000px);
-    grid-auto-rows: 350px;
-}

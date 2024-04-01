@@ -1,0 +1,28 @@
+.startPictures img{
+    height: 50%;
+    position: fixed;
+}
+
+.startPictures{
+    position: relative;
+}
+
+.startPicture1{
+    top: 0%;
+    left: 2%;
+}
+
+.startPicture2{
+    top: 50%;
+    left: 2%;
+}
+
+.startPicture3{
+    top: 50%;
+    left: 67%;
+}
+
+.startPicture4{
+    top: 0%;
+    left: 67%;
+}

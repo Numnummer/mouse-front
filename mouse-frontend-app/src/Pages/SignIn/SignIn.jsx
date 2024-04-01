@@ -12,6 +12,7 @@ import style from "./SignIn.module.css";
 import { useNavigate } from "react-router-dom";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
+import Pictures from "../StartPage/Pictures.jsx";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +37,8 @@ export default function SignIn() {
   }
 
   return (
+    <>
+      <Pictures />
     <div className={styles.page}>
       <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>
       <div className={style.mainPanel}>
@@ -83,5 +86,6 @@ export default function SignIn() {
         </div>
       </div>
     </div>
+    </>
   );
 }
