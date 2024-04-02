@@ -1,0 +1,29 @@
+.title-label{
+    color: #2F80ED;
+    padding: 25px;
+    display: flex;
+    height: 50px;
+}
+
+.exercises{
+    position: absolute;
+    top: 10%;
+    left: 1%;
+    right: 1%;
+    height: 75vh;
+    display: grid;
+    /* Три колонки */
+    grid-template-columns: auto;
+    /* Два ряда */
+    grid-template-rows: auto auto;
+    /* Автоматическое размещение в ряд */
+    grid-auto-flow: row;
+    /* Отступы между ячейками */
+    gap: 20px;
+}
+
+.exercise{
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #d1d1d16e;
+}

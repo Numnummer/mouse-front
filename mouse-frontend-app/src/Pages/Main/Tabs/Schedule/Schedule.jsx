@@ -13,6 +13,7 @@ export default function Schedule() {
 
   return (
     <div className="user-page-container">
+      <label className="title-label">Расписание</label>
       <div className="user-calendar">
         <Calendar />
       </div>
