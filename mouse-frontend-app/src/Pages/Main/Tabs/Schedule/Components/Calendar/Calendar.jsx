@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
+import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
 
 export default function Calendar() {
   const weekOptions = { locale: ru, weekStartsOn: 1 };
@@ -27,6 +28,7 @@ export default function Calendar() {
     start: startOfWeek(today, weekOptions),
     end: endOfWeek(today, weekOptions),
   });
+  const [allTrainings, setAllTrainings] = useState({});
 
   useEffect(() => {
     setDays(
@@ -36,6 +38,16 @@ export default function Calendar() {
       })
     );
   }, [today]);
+
+  useEffect(() => {
+    getAllTrainings()
+      .then((result) => {
+        setAllTrainings(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
