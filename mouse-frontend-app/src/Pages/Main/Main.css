@@ -24,8 +24,8 @@
     align-items: start;
 }
 .tabs{
-    position: relative;
-    top: 15px;
+    position: fixed;
+    top: 110px;
 }
 .tab{
     padding: 12px;
