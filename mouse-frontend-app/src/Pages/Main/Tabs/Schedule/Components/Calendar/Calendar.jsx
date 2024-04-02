@@ -17,24 +17,22 @@ import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
 
 export default function Calendar() {
+  const weekOptions = { locale: ru, weekStartsOn: 1 };
   const [today, setToday] = useState(startOfToday());
   const [days, setDays] = useState({
     start: startOfMonth(today),
     end: endOfWeek(endOfMonth(today)),
   });
   const daysOfWeek = eachDayOfInterval({
-    start: startOfWeek(today, { locale: ru, weekStartsOn: 1 }),
-    end: endOfWeek(today, { locale: ru, weekStartsOn: 1 }),
+    start: startOfWeek(today, weekOptions),
+    end: endOfWeek(today, weekOptions),
   });
 
   useEffect(() => {
     setDays(
       eachDayOfInterval({
-        start: startOfWeek(startOfMonth(today), {
-          locale: ru,
-          weekStartsOn: 1,
-        }),
-        end: endOfWeek(endOfMonth(today), { locale: ru, weekStartsOn: 1 }),
+        start: startOfWeek(startOfMonth(today), weekOptions),
+        end: endOfWeek(endOfMonth(today), weekOptions),
       })
     );
   }, [today]);
