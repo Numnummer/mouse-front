@@ -3,7 +3,7 @@ import Calendar from "./Components/Calendar/Calendar";
 import "./Schedule.css";
 import { useState } from "react";
 import { Button, Modal } from "antd";
-import { DatePicker } from 'antd';
+import { DatePicker } from "antd";
 
 export default function Schedule() {
   const [open, setOpen] = useState(false);
@@ -33,9 +33,12 @@ export default function Schedule() {
         )}
       >
         <div className="">
-          <input className="inputs" placeholder={"Наименование тренировки"}></input>
+          <input
+            className="inputs"
+            placeholder={"Наименование тренировки"}
+          ></input>
           <DatePicker className="date-picker" onChange={onChange} needConfirm />
-        </div>        
+        </div>
       </Modal>
     </div>
   );
