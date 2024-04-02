@@ -29,3 +29,37 @@
 .day:hover{
     background-color: rgba(202, 202, 202, 0.199);
 }
+
+.add-training{
+    background-color: #D2E1FF;
+    color: #2F80ED;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    position: absolute;
+    top: 90%;
+    right: 5%;
+    height: 45px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.inputs{
+    width: 380px;
+    border: solid;
+    border-color: white;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.623);
+    margin-top: 20px;
+    font-size: 20px;
+    outline:none;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.date-picker{
+    width: 200px;
+    margin-left: 50px;
+}
