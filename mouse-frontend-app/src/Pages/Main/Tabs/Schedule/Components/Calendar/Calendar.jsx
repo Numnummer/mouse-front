@@ -58,6 +58,7 @@ export default function Calendar() {
         days={days}
         daysOfWeek={daysOfWeek}
         locale={ru}
+        today={today}
       ></CalendarDays>
     </>
   );

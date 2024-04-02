@@ -1,7 +1,7 @@
-import { format } from "date-fns";
+import { format, isSameMonth, startOfToday } from "date-fns";
 import "./CalendarDays.css";
 
-export default function ({ days, daysOfWeek, locale }) {
+export default function ({ days, daysOfWeek, locale, today }) {
   const weeks = [];
   while (days.length > 0) {
     weeks.push(days.splice(0, 7));
@@ -22,9 +22,14 @@ export default function ({ days, daysOfWeek, locale }) {
         /*Здесь стили для строчек недель*/
         <div className="dayButtons" key={weekIndex}>
           {week.map((day, dayIndex) => (
-            /*Здесь стили для дней*/
+            /*Здесь стили для дней
+            isSameMonth(startOfToday(),day)*/
             <div key={dayIndex}>
-              <button className="day">{format(day, "d")}</button>
+              <button
+                className={isSameMonth(today, day) ? "day" : "disabled-day"}
+              >
+                {format(day, "d")}
+              </button>
             </div>
           ))}
         </div>
