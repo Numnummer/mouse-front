@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import "./MyExcercises.css";
+import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
+import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
@@ -22,15 +24,46 @@ export default function MyExcercises() {
   };
   const onModalOk = () => {
     setOpen(false);
+    postNewExcercise(excerciseData);
   };
+
+  const [allExcercises, setAllExcercises] = useState({
+    totalCount: 0,
+    items: [
+      {
+        name: "",
+        description: "",
+        approaches: 0,
+        repetitions: 0,
+        implementationProgress: "",
+        explanationVideo: "",
+      },
+    ],
+  });
+
+  useEffect(() => {
+    getAllExcercises()
+      .then((data) => {
+        setAllExcercises(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="user-page-container">
       <label className="title-label">Мои упражнения</label>
       <div className="exercises">
-        <div className="exercise"></div>
-        <div className="exercise"></div>
-        <div className="exercise"></div>
+        {allExcercises.items.map((excercise, index) => {
+          <div key={index} className="exercise">
+            {
+              //excercise.name
+              //excercise.description
+              //excercise.explanationVideo
+            }
+          </div>;
+        })}
       </div>
       <Button className="add-training" onClick={() => setOpen(true)}>
         Добавить упражнение
