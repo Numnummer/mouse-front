@@ -1,9 +1,28 @@
 import { useState } from "react";
 import { Button, Modal } from "antd";
-import './MyExcercises.css'
+import "./MyExcercises.css";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
+
+  const [excerciseData, setExcerciseData] = useState({
+    name: "",
+    description: "",
+    approaches: "",
+    repetitions: "",
+    implementationProgress: "",
+    explanationVideo: "",
+  });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setExcerciseData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const onModalOk = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="user-page-container">
@@ -18,24 +37,56 @@ export default function MyExcercises() {
       </Button>
       <Modal
         open={open}
-        onOk={() => setOpen(false)}
+        onOk={onModalOk}
         onCancel={() => setOpen(false)}
         width={600}
         footer={(_, { CancelBtn }) => (
           <>
-            <Button type="primary">Добавить упражнение</Button>
+            <Button type="primary" onClick={onModalOk}>
+              Добавить упражнение
+            </Button>
             <CancelBtn />
           </>
         )}
       >
         <div className="">
-          <input className="inputs" placeholder={"Наименование тренировки"}></input>
-          <input className="inputs" placeholder={"Описание"}></input>
-          <input className="inputs" placeholder={"Ход выполнения"}></input>
-          <input className="inputs" placeholder={"Ссылка на видео"}></input>
-          <input className="inputs" placeholder={"Количество повторений"}></input>
-          <input className="inputs" placeholder={"Количество подходов"}></input>
-        </div>        
+          <input
+            onChange={handleInputChange}
+            name={"name"}
+            className="inputs"
+            placeholder={"Наименование тренировки"}
+          ></input>
+          <input
+            name={"description"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Описание"}
+          ></input>
+          <input
+            name={"implementationProgress"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Ход выполнения"}
+          ></input>
+          <input
+            name={"explanationVideo"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Ссылка на видео"}
+          ></input>
+          <input
+            name={"repetitions"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Количество повторений"}
+          ></input>
+          <input
+            name={"approaches"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Количество подходов"}
+          ></input>
+        </div>
       </Modal>
     </div>
   );
