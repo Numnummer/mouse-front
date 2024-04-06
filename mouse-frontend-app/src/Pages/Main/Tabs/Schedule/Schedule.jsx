@@ -4,18 +4,24 @@ import "./Schedule.css";
 import { useState } from "react";
 import { Button, Modal } from "antd";
 import { DatePicker } from "antd";
+import { startOfToday } from "date-fns";
 
 export default function Schedule() {
   const [open, setOpen] = useState(false);
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+  const [today, setToday] = useState(startOfToday());
+  const onAddTraining = () => {
+    setOpen(false);
+    setToday(startOfToday());
+  };
 
   return (
     <div className="user-page-container">
       <label className="title-label">Расписание</label>
       <div className="user-calendar">
-        <Calendar />
+        <Calendar today={today} setToday={setToday} />
       </div>
       <Button className="add-training" onClick={() => setOpen(true)}>
         Добавить тренировку
@@ -23,12 +29,20 @@ export default function Schedule() {
       <Modal
         title="Добавить тренировку"
         open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
+        onOk={() => {
+          setToday(startOfToday());
+          setOpen(false);
+        }}
+        onCancel={() => {
+          setToday(startOfToday());
+          setOpen(false);
+        }}
         width={600}
         footer={(_, { CancelBtn }) => (
           <>
-            <Button type="primary">Добавить тренировку</Button>
+            <Button type="primary" onClick={onAddTraining}>
+              Добавить тренировку
+            </Button>
             <CancelBtn />
           </>
         )}

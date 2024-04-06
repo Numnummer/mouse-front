@@ -17,9 +17,9 @@ import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
 import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
 
-export default function Calendar() {
+export default function Calendar({ today, setToday }) {
   const weekOptions = { locale: ru, weekStartsOn: 1 };
-  const [today, setToday] = useState(startOfToday());
+
   const [days, setDays] = useState({
     start: startOfMonth(today),
     end: endOfWeek(endOfMonth(today)),
@@ -43,6 +43,7 @@ export default function Calendar() {
     getAllTrainings()
       .then((result) => {
         setAllTrainings(result);
+        setToday(startOfToday());
       })
       .catch((error) => {
         console.log(error);
