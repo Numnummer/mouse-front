@@ -1,8 +1,14 @@
-import { format, isSameMonth, startOfToday } from "date-fns";
+import { format, isSameDay, isSameMonth, startOfToday } from "date-fns";
 import "./CalendarDays.css";
 
-export default function ({ days, daysOfWeek, locale, today }) {
+export default function ({ days, daysOfWeek, locale, today, allTrainings }) {
   const weeks = [];
+  const isTrainingDay = (day) => {
+    return allTrainings.items.some((training) => {
+      const trainingDate = new Date(training.trainingDate);
+      return isSameDay(day, trainingDate);
+    });
+  };
   while (days.length > 0) {
     weeks.push(days.splice(0, 7));
   }
@@ -22,11 +28,16 @@ export default function ({ days, daysOfWeek, locale, today }) {
         /*Здесь стили для строчек недель*/
         <div className="dayButtons" key={weekIndex}>
           {week.map((day, dayIndex) => (
-            /*Здесь стили для дней
-            isSameMonth(startOfToday(),day)*/
+            /*Здесь стили для дней */
             <div key={dayIndex}>
               <button
-                className={isSameMonth(today, day) ? "day" : "disabled-day"}
+                className={
+                  isSameMonth(today, day)
+                    ? isTrainingDay(day)
+                      ? "training-day"
+                      : "day"
+                    : "disabled-day"
+                }
               >
                 {format(day, "d")}
               </button>

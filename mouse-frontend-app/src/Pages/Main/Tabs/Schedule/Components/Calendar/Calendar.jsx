@@ -60,6 +60,7 @@ export default function Calendar({ today, setToday }) {
         daysOfWeek={daysOfWeek}
         locale={ru}
         today={today}
+        allTrainings={allTrainings}
       ></CalendarDays>
     </>
   );
