@@ -16,18 +16,22 @@
     flex-direction: row;
 }
 
-.day{
+.day, .disabled-day{
     width: 70px;
     height: 70px;
     border: solid;
     border-color: #fff;
     border-radius: 50px;
     background-color: #fff;
-    cursor: pointer;
+}
+
+.disabled-day{
+    color: #7c7c7c;
 }
 
 .day:hover{
-    background-color: rgba(202, 202, 202, 0.199);
+    background-color: rgba(159, 159, 159, 0.075);
+    cursor: pointer;
 }
 
 .add-training{
@@ -63,3 +67,4 @@
     width: 200px;
     margin-left: 50px;
 }
+
