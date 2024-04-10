@@ -3,7 +3,7 @@ import { Button, Modal } from "antd";
 import "./MyExcercises.css";
 import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
 import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
-import image from "../../../../../public/video-image.png"
+import image from "../../../../../public/video-image.png";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
@@ -56,19 +56,21 @@ export default function MyExcercises() {
     <div className="user-page-container">
       <label className="title-label">Мои упражнения</label>
       <div className="exercises">
-        {allExcercises.items.map((excercise, index) => {
+        {allExcercises.items.map((excercise, index) => (
           <div key={index} className="exercise">
-           <div className="exercise-inner">
+            <div className="exercise-inner">
               <label className="exercise-name">{excercise.name}</label>
               <div className="exercise-description">
                 <label>{excercise.description}</label>
               </div>
               <div className="exe-video">
                 <a className="exercise-video" href={excercise.explanationVideo}>
-                  <img className="exercise-img" src={image}/></a></div>
+                  <img className="exercise-img" src={image} />
+                </a>
+              </div>
             </div>
           </div>
-        })}
+        ))}
       </div>
       <Button className="add-training" onClick={() => setOpen(true)}>
         Добавить упражнение
