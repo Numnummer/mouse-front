@@ -1,76 +1,74 @@
-.title-label{
-    color: #2F80ED;
-    padding: 25px;
-    display: flex;
-    height: 50px;
+.title-label {
+  color: #2f80ed;
+  padding: 25px;
+  display: flex;
+  height: 50px;
 }
 
-.exercises{
-    position: absolute;
-    top: 12%;
-    left: 2%;
-    right: 2%;
-    height: 80vh;
-    /* display: grid; */
-    /* Три колонки */
-    grid-template-columns: auto;
-    /* Два ряда */
-    grid-template-rows: auto auto;
-    /* Автоматическое размещение в ряд */
-    grid-auto-flow: row;
-    /* Отступы между ячейками */
-    gap: 10px;
-    overflow-y: auto;
-    scroll-snap-type: y proximity;
-    scrollbar-width: thin; 
-    scrollbar-color: #e5e5e5 #ffffff;
-    color: #6e6e6e;
+.exercises {
+  position: absolute;
+  top: 12%;
+  left: 2%;
+  right: 2%;
+  height: 80vh;
+  /* display: grid; */
+  /* Три колонки */
+  grid-template-columns: auto;
+  /* Два ряда */
+  grid-template-rows: auto auto;
+  /* Автоматическое размещение в ряд */
+  grid-auto-flow: row;
+  /* Отступы между ячейками */
+  gap: 10px;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  scrollbar-width: thin;
+  scrollbar-color: #e5e5e5 #ffffff;
+  color: #6e6e6e;
 }
 
-
-.exercise{
-    border-radius: 15px;
-    border-style: solid;
-    border-color: #d1d1d16e;
-    height: 180px;
-    margin: 10px;
-
+.exercise {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #d1d1d16e;
+  height: 180px;
+  margin: 10px;
 }
 
-.exercise-inner{
-    margin: 20px;
-    font-size: 30px;
-    position: relative;
+.exercise-inner {
+  margin: 20px;
+  font-size: 30px;
+  position: relative;
 }
 
-.exercise-description{
-    font-size: 23px;
-    width: 550px;
-    margin-top: 10px;
-    margin-right: 50px;
+.exercise-description {
+  font-size: 23px;
+  width: 550px;
+  margin-top: 10px;
+  margin-right: 50px;
 }
 
-.exercise-name{
-    font-weight: 600;
+.exercise-name {
+  font-weight: 600;
 }
 
-.exercise-video{
-    position: relative;
-    top: -130px;
-    height: 150px;
-    margin: 10px;
-} 
-
-.exercise-img{
-    width: 250px;
+.exercise-video {
+  position: relative;
+  top: -70px;
+  height: 150px;
+  margin: 10px;
 }
 
-.exe-video{
-    text-align: end;
+.exercise-img {
+  width: 250px;
+}
+
+.exe-video {
+  text-align: end;
 }
 
 @media screen and (max-width: 1220px) {
-    .exercise-img {
-        display: none;
-    }
+  .exercise-img {
+    display: none;
+  }
 }
