@@ -7,6 +7,7 @@ import image from "../../../../../public/video-image.png";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
+  const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
 
   const [excerciseData, setExcerciseData] = useState({
     name: "",
@@ -26,6 +27,7 @@ export default function MyExcercises() {
   const onModalOk = () => {
     setOpen(false);
     postNewExcercise(excerciseData);
+    setExcercisePushSwithcher(!excercisePushSwitcher);
   };
 
   const [allExcercises, setAllExcercises] = useState({
@@ -50,7 +52,7 @@ export default function MyExcercises() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [excercisePushSwitcher]);
 
   return (
     <div className="user-page-container">
