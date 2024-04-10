@@ -116,11 +116,15 @@ body{
 }
 
 .info2{
-  position: relative;
+  position: fixed;
+  top: 400px;
+  left: 385px;
 }
 
 .info3{
-  position: relative;
+  position: fixed;
+  top: 400px;
+  left: 685px;
 }
 
 .info{
@@ -130,4 +134,7 @@ body{
 
 .user-dob{
   height: 70px;
+  font-size: 20px;
+  color: #8a8a8a;
+  font-weight: 600;
 }

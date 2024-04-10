@@ -73,7 +73,7 @@ export default function Profile() {
   return (
     <div className="user-page-container">
       <div className="personal-data-title">
-        <div>
+        <div className="user-photo">
           <img className="user-photo" src={image} width='250px'></img>
         </div>
         <div className="change-button">
@@ -108,7 +108,7 @@ export default function Profile() {
         </div>
         <div className="info2">
           <div className="physical-data">Физические данные</div>
-          <div className="physical-data-item">
+          <div className="user-dob">
             Рост:
             <UnitOfData
               editMode={editMode}
@@ -119,7 +119,7 @@ export default function Profile() {
             ></UnitOfData>
           </div>
 
-          <div className="physical-data-item">
+          <div className="user-dob">
             Вес:
             <UnitOfData
               editMode={editMode}
@@ -132,7 +132,7 @@ export default function Profile() {
         </div>
         <div className="info3">
           <div className="contacts">Контакты</div>
-          <div className="contacts-item">
+          <div className="user-dob">
             Телефон:
             <UnitOfData
               editMode={editMode}
@@ -142,7 +142,7 @@ export default function Profile() {
               onChange={handleInputChange}
             ></UnitOfData>
           </div>
-          <div className="contacts-item">Email: </div>
+          <div className="user-dob">Email: </div>
           <label>{userData.email}</label>
         </div>
       </div>
