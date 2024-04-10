@@ -26,3 +26,9 @@
     top: 0%;
     left: 67%;
 }
+
+@media screen and (max-width: 1020px) {
+    .startPictures{
+        display: none;
+    }
+}
