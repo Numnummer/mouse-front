@@ -78,7 +78,7 @@ export default function SignIn() {
         </div>
         <div className={styles.registerButton}>
           <input
-            type={"submit"}
+            type={"button"}
             className={styles.register}
             value={"Войти"}
             onClick={onFormSubmit}
