@@ -30,12 +30,7 @@ body {
 }
 
 .user-photo {
-  width: 250px;
-  height: 350px;
-  background-color: #d1d0d04e;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  border-radius: 40px;
 }
 
 .physical-data,
@@ -80,12 +75,14 @@ body {
     border-radius: 25px;
     cursor: pointer;
     font-size: 17px;
-    margin-top: 280px;
     margin-left: 25px;
+    z-index: 3;
+    position: relative;
+    top: -80px;
 }
 
 .change-button button:hover {
-    background-color: #f3f3f3;
+    background-color: #dededc;
   }
 
 .user-page-container{

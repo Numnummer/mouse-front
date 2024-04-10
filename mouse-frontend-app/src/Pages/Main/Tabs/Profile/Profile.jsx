@@ -12,6 +12,7 @@ import {
 } from "../../../../Constants/LocalStorageItemKeys";
 import createProfile from "../../../../Api/UserProfile/CreateProfile";
 import updateProfile from "../../../../Api/UserProfile/UpdateProfile";
+import image from "./profile-image.png"
 
 export default function Profile() {
   const [editMode, setEditMode] = useState(false);
@@ -72,10 +73,11 @@ export default function Profile() {
   return (
     <div className="user-page-container">
       <div className="personal-data-title">
-        <div className="user-photo">
-          <div className="change-button">
-            <Button text="Изменить"></Button>
-          </div>
+        <div>
+          <img className="user-photo" src={image} width='250px'></img>
+        </div>
+        <div className="change-button">
+          <Button text="Изменить"></Button>
         </div>
       </div>
       <div className="info">

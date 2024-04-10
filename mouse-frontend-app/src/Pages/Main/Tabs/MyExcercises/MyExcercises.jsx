@@ -64,7 +64,7 @@ export default function MyExcercises() {
                 <label>{excercise.description}</label>
               </div>
               <div className="exe-video">
-                <a className="exercise-video" href="{excercise.explanationVideo}">
+                <a className="exercise-video" href={excercise.explanationVideo}>
                   <img className="exercise-img" src={image}/></a></div>
             </div>
           </div>
