@@ -8,6 +8,7 @@ import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import "./Registration228.css";
 import Pictures from "../StartPage/Pictures.jsx";
 
+
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registrationData, setRegistrationData] = useState({
