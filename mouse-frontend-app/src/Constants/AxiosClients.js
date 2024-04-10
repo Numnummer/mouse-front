@@ -11,9 +11,9 @@ export const userProfileClient = axios.create({
 });
 
 export const excerciseClient = axios.create({
-  baseURL: `${backendOrigin}/api/Exercises/`,
+  baseURL: `${backendOrigin}/api/Exercise/`,
 });
 
 export const trainingClient = axios.create({
-  baseURL: `${backendOrigin}/api/Trainings/`,
+  baseURL: `${backendOrigin}/api/Training/`,
 });
