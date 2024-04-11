@@ -60,7 +60,7 @@ export default function SignIn() {
           </div>
         </form>
         <div>
-          <button onClick={() => setShowPassword(!showPassword)}>
+          <button style={{top: '-45px', left: '400px'}} className={styles.showPassword} onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
             <span></span>
           </button>
