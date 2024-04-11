@@ -76,9 +76,9 @@ export default function Profile() {
         <div className="user-photo">
           <img className="user-photo" src={image} width='250px'></img>
         </div>
-        <div className="change-button">
+        {/* <div className="change-button">
           <Button text="Изменить"></Button>
-        </div>
+        </div> */}
       </div>
       <div className="info">
         <div className="info1">
