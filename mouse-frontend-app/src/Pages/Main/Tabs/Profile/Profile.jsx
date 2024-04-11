@@ -83,8 +83,15 @@ export default function Profile() {
       <div className="info">
         <div className="info1">
           <label className="physical-data">Персональные данные</label>
-          <div className="user-dob">Имя: </div>
-          <label>{userData.firstName}</label>
+          <div className="user-dob">Имя:
+          <UnitOfData
+              editMode={editMode}
+              type={"text"}
+              data={`${userData.firstName} ${userData.lastName}`}
+              name={"firstName"}
+              onChange={handleInputChange}>
+          </UnitOfData>
+          </div>
           <div className="user-dob">
             Дата рождения:
             <UnitOfData
@@ -142,8 +149,14 @@ export default function Profile() {
               onChange={handleInputChange}
             ></UnitOfData>
           </div>
-          <div className="user-dob">Email: </div>
-          <label>{userData.email}</label>
+          <div className="user-dob">Email:
+            <UnitOfData
+                editMode={editMode}
+                type={"text"}
+                data={userData.email}
+                name={"email"}
+                onChange={handleInputChange}>
+            </UnitOfData></div>
         </div>
       </div>
       <div className="fill-profile-button">
