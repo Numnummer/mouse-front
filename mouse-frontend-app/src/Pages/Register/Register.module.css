@@ -60,3 +60,13 @@
     box-shadow: none;
   }
 }
+
+.showPassword{
+  border-style: none;
+  background-color: transparent;
+  display: flex;
+  position: relative;
+  top: -25px;
+  left: 350px;
+  fill:rgb(154, 154, 154);
+}

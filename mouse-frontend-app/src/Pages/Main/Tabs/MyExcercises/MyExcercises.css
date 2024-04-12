@@ -61,6 +61,8 @@
 
 .exercise-img {
   width: 250px;
+  top: 70px;
+  position: relative;
 }
 
 .exe-video {

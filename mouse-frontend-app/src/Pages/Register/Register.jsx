@@ -83,7 +83,7 @@ export default function Register() {
                 onChange={handleInputChange}
               />
               <div>
-                <button onClick={() => setShowPassword(!showPassword)}>
+                <button className={styles.showPassword} onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
                   <span></span>
                 </button>
