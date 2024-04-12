@@ -4,7 +4,7 @@ import "./CalendarDays.css";
 export default function ({ days, daysOfWeek, locale, today, allTrainings }) {
   const weeks = [];
   const isTrainingDay = (day) => {
-    return allTrainings.items.some((training) => {
+    return allTrainings.items?.some((training) => {
       const trainingDate = new Date(training.trainingDate);
       return isSameDay(day, trainingDate);
     });
