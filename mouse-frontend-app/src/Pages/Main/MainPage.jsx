@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Profile from "./Tabs/Profile/Profile";
 import Schedule from "./Tabs/Schedule/Schedule";
 import MyExcercises from "./Tabs/MyExcercises/MyExcercises";
@@ -16,8 +16,9 @@ import MessagesIcon from "./Tabs/Profile/Icons/MessagesIcon";
 import ScheduleIcon from "./Tabs/Profile/Icons/ScheduleIcon";
 import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
 import { useNavigate } from "react-router-dom";
+import checkUserProfile from "../../Api/UserProfile/CheckUserProfile";
 
-export default function Main() {
+export default function MainPage() {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useTab();
   function goToEnter() {
@@ -34,18 +35,53 @@ export default function Main() {
       );
     }
   }
+  const [userData, setUserData] = useState({
+    firstName: "",
+    dateOfBirth: "",
+    height: "",
+    weight: "",
+    phoneNumber: "",
+    email: "",
+    gender: "",
+  });
+  const [isProfileExists, setIsProfileExists] = useState(false);
+  const parseToNormalDate = (dateString) => {
+    const dateObj = new Date(dateString);
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return dateObj.toLocaleDateString("en-GB", options);
+  };
+  const loadProfile = () => {
+    getCurrentUserInfo().then((response) => {
+      response.dateOfBirth = parseToNormalDate(response.dateOfBirth);
+      setUserData(response);
+      localStorage.setItem(userNameItem, response.firstName);
+      if (response) {
+        checkUserProfile().then((result) => {
+          setIsProfileExists(result);
+        });
+      }
+    });
+  };
   useEffect(() => {
     if (localStorage.getItem(currentProfileItem)) {
       setCurrentTab(localStorage.getItem(currentProfileItem));
     } else {
       setCurrentTab("Profile");
     }
+    loadProfile();
   }, []);
 
   let currentTabComponent;
   switch (currentTab) {
     case "Profile":
-      currentTabComponent = <Profile isProfileExists={false}></Profile>;
+      currentTabComponent = (
+        <Profile
+          userData={userData}
+          setUserData={setUserData}
+          isProfileExists={isProfileExists}
+          setIsProfileExists={setIsProfileExists}
+        ></Profile>
+      );
       localStorage.setItem(currentProfileItem, "Profile");
       break;
     case "Schedule":

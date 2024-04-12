@@ -12,33 +12,15 @@ import {
 } from "../../../../Constants/LocalStorageItemKeys";
 import createProfile from "../../../../Api/UserProfile/CreateProfile";
 import updateProfile from "../../../../Api/UserProfile/UpdateProfile";
-import image from "./profile-image.png"
+import image from "./profile-image.png";
 
-export default function Profile() {
+export default function Profile({
+  userData,
+  setUserData,
+  isProfileExists,
+  setIsProfileExists,
+}) {
   const [editMode, setEditMode] = useState(false);
-  const [userData, setUserData] = useState({
-    firstName: "",
-    dateOfBirth: "",
-    height: "",
-    weight: "",
-    phoneNumber: "",
-    email: "",
-    gender: "",
-  });
-  const [isProfileExists, setIsProfileExists] = useState(false);
-
-  useEffect(() => {
-    getCurrentUserInfo().then((response) => {
-      response.dateOfBirth = parseToNormalDate(response.dateOfBirth);
-      setUserData(response);
-      localStorage.setItem(userNameItem, response.firstName);
-      if (response) {
-        checkUserProfile().then((result) => {
-          setIsProfileExists(result);
-        });
-      }
-    });
-  }, []);
 
   function onEditProfileClicked(event) {
     setEditMode(!editMode);
@@ -56,12 +38,6 @@ export default function Profile() {
     }
   }
 
-  function parseToNormalDate(dateString) {
-    const dateObj = new Date(dateString);
-    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    return dateObj.toLocaleDateString("en-GB", options);
-  }
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({
@@ -74,7 +50,7 @@ export default function Profile() {
     <div className="user-page-container">
       <div className="personal-data-title">
         <div className="user-photo">
-          <img className="user-photo" src={image} width='250px'></img>
+          <img className="user-photo" src={image} width="250px"></img>
         </div>
         <div className="change-button">
           <Button text="Изменить"></Button>
@@ -95,8 +71,10 @@ export default function Profile() {
               onChange={handleInputChange}
             ></UnitOfData>
           </div>
-          <div className="user-dob"> {/* сделать чекбоксом  */}
-            Пол: 
+          <div className="user-dob">
+            {" "}
+            {/* сделать чекбоксом  */}
+            Пол:
             <UnitOfData
               editMode={editMode}
               type={"number"}

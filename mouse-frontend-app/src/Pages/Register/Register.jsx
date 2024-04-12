@@ -1,5 +1,5 @@
 import styles from "./Register.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import processRegistration from "./Services/RegistrationService.js";
 import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,6 @@ import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import "./Registration228.css";
 import Pictures from "../StartPage/Pictures.jsx";
-
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
