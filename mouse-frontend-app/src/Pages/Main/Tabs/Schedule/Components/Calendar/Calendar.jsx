@@ -17,13 +17,15 @@ import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
 import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
 
-export default function Calendar({ today, setToday }) {
+export default function Calendar({ today, setToday, handleTrainingDayClick }) {
   const weekOptions = { locale: ru, weekStartsOn: 1 };
 
-  const [days, setDays] = useState({
-    start: startOfMonth(today),
-    end: endOfWeek(endOfMonth(today)),
-  });
+  const [days, setDays] = useState(
+    eachDayOfInterval({
+      start: startOfWeek(startOfMonth(today), weekOptions),
+      end: endOfWeek(endOfMonth(today), weekOptions),
+    })
+  );
   const daysOfWeek = eachDayOfInterval({
     start: startOfWeek(today, weekOptions),
     end: endOfWeek(today, weekOptions),
@@ -61,6 +63,7 @@ export default function Calendar({ today, setToday }) {
         locale={ru}
         today={today}
         allTrainings={allTrainings}
+        handleTrainingDayClick={handleTrainingDayClick}
       ></CalendarDays>
     </>
   );

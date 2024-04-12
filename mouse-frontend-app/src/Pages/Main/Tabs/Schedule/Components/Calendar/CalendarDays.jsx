@@ -1,10 +1,23 @@
 import { format, isSameDay, isSameMonth, startOfToday } from "date-fns";
 import "./CalendarDays.css";
 
-export default function ({ days, daysOfWeek, locale, today, allTrainings }) {
+export default function ({
+  days,
+  daysOfWeek,
+  locale,
+  today,
+  allTrainings,
+  handleTrainingDayClick,
+}) {
   const weeks = [];
   const isTrainingDay = (day) => {
     return allTrainings.items?.some((training) => {
+      const trainingDate = new Date(training.trainingDate);
+      return isSameDay(day, trainingDate);
+    });
+  };
+  const getTrainingByDay = (day) => {
+    return allTrainings.items.find((training) => {
       const trainingDate = new Date(training.trainingDate);
       return isSameDay(day, trainingDate);
     });
@@ -37,6 +50,11 @@ export default function ({ days, daysOfWeek, locale, today, allTrainings }) {
                       ? "training-day"
                       : "day"
                     : "disabled-day"
+                }
+                onClick={
+                  isTrainingDay(day)
+                    ? () => handleTrainingDayClick(day, getTrainingByDay(day))
+                    : null
                 }
               >
                 {format(day, "d")}

@@ -10,11 +10,9 @@ export function postTraining(trainingData) {
       },
     })
     .then((response) => {
-      console.log(error);
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       throw new Error(error);
     });
 }
