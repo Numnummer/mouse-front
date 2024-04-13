@@ -4,6 +4,7 @@ import "./MyExcercises.css";
 import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
 import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
 import image from "../../../../../public/video-image.png";
+import { deleteExcercise } from "../../../../Api/Excercise/DeleteExcercise";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
@@ -71,6 +72,13 @@ export default function MyExcercises() {
                 </a>
               </div>
             </div>
+            <button
+              onClick={() => {
+                deleteExcercise(excercise.id);
+              }}
+            >
+              -
+            </button>
           </div>
         ))}
       </div>

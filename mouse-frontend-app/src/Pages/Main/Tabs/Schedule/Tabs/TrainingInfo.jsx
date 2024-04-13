@@ -1,5 +1,7 @@
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
+import Button from "../../../../StartPage/Components/Button/Button";
+import { postNewExcercise } from "../../../../../Api/Excercise/PostNewExcercise";
 
 export default function ({
   training,
@@ -7,8 +9,21 @@ export default function ({
   setCurrentTab,
   setCurrentExcercise,
 }) {
-  console.log(training);
-  console.log(date);
+  const [open, setOpen] = useState(false);
+  const [excerciseData, setExcerciseData] = useState({
+    name: "",
+    description: "",
+    approaches: "",
+    repetitions: "",
+    implementationProgress: "",
+    explanationVideo: "",
+  });
+  const handleInputChange = () => {};
+  const onModalOk = () => {
+    setOpen(false);
+    postNewExcercise(excerciseData);
+    setExcercisePushSwithcher(!excercisePushSwitcher);
+  };
   return (
     <div>
       <button onClick={() => setCurrentTab("Main")}>Назад</button>
@@ -38,6 +53,60 @@ export default function ({
           })}
         </div>
       </div>
+
+      <Modal
+        open={open}
+        onOk={onModalOk}
+        onCancel={() => setOpen(false)}
+        width={600}
+        footer={(_, { CancelBtn }) => (
+          <>
+            <Button type="primary" onClick={onModalOk}>
+              Добавить упражнение
+            </Button>
+            <CancelBtn />
+          </>
+        )}
+      >
+        <div className="">
+          <input
+            onChange={handleInputChange}
+            name={"name"}
+            className="inputs"
+            placeholder={"Наименование тренировки"}
+          ></input>
+          <input
+            name={"description"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Описание"}
+          ></input>
+          <input
+            name={"implementationProgress"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Ход выполнения"}
+          ></input>
+          <input
+            name={"explanationVideo"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Ссылка на видео"}
+          ></input>
+          <input
+            name={"repetitions"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Количество повторений"}
+          ></input>
+          <input
+            name={"approaches"}
+            onChange={handleInputChange}
+            className="inputs"
+            placeholder={"Количество подходов"}
+          ></input>
+        </div>
+      </Modal>
       <button>Добавить упражнение</button>
     </div>
   );
