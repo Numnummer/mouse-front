@@ -7,6 +7,8 @@ import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import "./Registration228.css";
 import Pictures from "../StartPage/Pictures.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,17 +34,15 @@ export default function Register() {
     processRegistration(registrationData)
       .then((result) => {
         result && navigate("Main");
-        console.log(result);
       })
       .catch((error) => {
-        console.log(error);
-        document.getElementById("registration228").style.display = "block";
-        document.getElementById("registration228").innerHTML = error;
+        toast.error(error, { autoClose: 2000 });
       });
   }
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
       <Pictures />
       <div className={styles.page}>
         <div className={styles.mainPanel}>
@@ -83,7 +83,10 @@ export default function Register() {
                 onChange={handleInputChange}
               />
               <div>
-                <button className={styles.showPassword} onClick={() => setShowPassword(!showPassword)}>
+                <button
+                  className={styles.showPassword}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
                   {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
                   <span></span>
                 </button>

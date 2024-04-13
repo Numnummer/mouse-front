@@ -2,12 +2,10 @@ import { userClient } from "../../Constants/AxiosClients.js";
 import { signIn } from "./SignIn.js";
 
 export function register(registerData) {
-  console.log("hi");
   return userClient
     .post("register", registerData)
     .then((response) => {
       if (response.data.result.succeeded) {
-        console.log(registerData);
         let signInData = {
           email: registerData.email,
           password: registerData.password,
