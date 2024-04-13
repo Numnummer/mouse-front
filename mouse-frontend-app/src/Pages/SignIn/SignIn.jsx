@@ -40,7 +40,11 @@ export default function SignIn() {
 
   return (
     <>
-      <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={2}
+      ></ToastContainer>
       <Pictures />
       <div className={styles.page}>
         <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>

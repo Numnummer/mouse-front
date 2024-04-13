@@ -42,7 +42,11 @@ export default function Register() {
 
   return (
     <>
-      <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={2}
+      ></ToastContainer>
       <Pictures />
       <div className={styles.page}>
         <div className={styles.mainPanel}>
