@@ -3,7 +3,7 @@ import { authToken } from "../../Constants/LocalStorageItemKeys";
 
 export function deleteExcercise(excerciseId) {
   const token = localStorage.getItem(authToken);
-  excerciseClient
+  return excerciseClient
     .delete(`${excerciseId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -11,8 +11,10 @@ export function deleteExcercise(excerciseId) {
     })
     .then((response) => {
       console.log(response);
+      return response;
     })
     .catch((error) => {
       console.log(error);
+      throw new Error(error);
     });
 }

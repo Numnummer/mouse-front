@@ -27,8 +27,9 @@ export default function MyExcercises() {
   };
   const onModalOk = () => {
     setOpen(false);
-    postNewExcercise(excerciseData);
-    setExcercisePushSwithcher(!excercisePushSwitcher);
+    postNewExcercise(excerciseData).then((resp) => {
+      setExcercisePushSwithcher(!excercisePushSwitcher);
+    });
   };
 
   const [allExcercises, setAllExcercises] = useState({
@@ -49,6 +50,7 @@ export default function MyExcercises() {
     getAllExcercises()
       .then((data) => {
         setAllExcercises(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +76,9 @@ export default function MyExcercises() {
             </div>
             <button
               onClick={() => {
-                deleteExcercise(excercise.id);
+                deleteExcercise(excercise.id).then((resp) => {
+                  setExcercisePushSwithcher(!excercisePushSwitcher);
+                });
               }}
             >
               -
