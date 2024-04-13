@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import Pictures from "../StartPage/Pictures.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +30,7 @@ export default function SignIn() {
         navigate("Main");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error, { autoClose: 2000 });
       });
   }
   function onOtherServiceSubmit(event, service) {
@@ -38,54 +40,62 @@ export default function SignIn() {
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
       <Pictures />
-    <div className={styles.page}>
-      <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>
-      <div className={style.mainPanel}>
-        <form>
-          <div className={CommonStyles.inputs}>
+      <div className={styles.page}>
+        <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>
+        <div className={style.mainPanel}>
+          <form>
+            <div className={CommonStyles.inputs}>
+              <input
+                placeholder={"Email"}
+                onChange={(event) => {
+                  setSignInData({ ...signInData, email: event.target.value });
+                }}
+              />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder={"Пароль"}
+                onChange={(event) => {
+                  setSignInData({
+                    ...signInData,
+                    password: event.target.value,
+                  });
+                }}
+              />
+            </div>
+          </form>
+          <div>
+            <button
+              style={{ top: "-45px", left: "400px" }}
+              className={styles.showPassword}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
+              <span></span>
+            </button>
+          </div>
+          <div className={style.icons}>
+            <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
+              <VkIcon />
+            </button>
+            <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
+              <GoogleIcon />
+            </button>
+            <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
+              <YandexIcon />
+            </button>
+          </div>
+          <div className={styles.registerButton}>
             <input
-              placeholder={"Email"}
-              onChange={(event) => {
-                setSignInData({ ...signInData, email: event.target.value });
-              }}
-            />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder={"Пароль"}
-              onChange={(event) => {
-                setSignInData({ ...signInData, password: event.target.value });
-              }}
+              type={"button"}
+              className={styles.register}
+              value={"Войти"}
+              onClick={onFormSubmit}
             />
           </div>
-        </form>
-        <div>
-          <button style={{top: '-45px', left: '400px'}} className={styles.showPassword} onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <VisabilityOnIcon /> : <VisabilityOffIcon />}
-            <span></span>
-          </button>
-        </div>
-        <div className={style.icons}>
-          <button onClick={(event) => onOtherServiceSubmit(event, "Vk")}>
-            <VkIcon />
-          </button>
-          <button onClick={(event) => onOtherServiceSubmit(event, "Google")}>
-            <GoogleIcon />
-          </button>
-          <button onClick={(event) => onOtherServiceSubmit(event, "Yandex")}>
-            <YandexIcon />
-          </button>
-        </div>
-        <div className={styles.registerButton}>
-          <input
-            type={"button"}
-            className={styles.register}
-            value={"Войти"}
-            onClick={onFormSubmit}
-          />
         </div>
       </div>
-    </div>
     </>
   );
 }
