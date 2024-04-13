@@ -22,7 +22,7 @@ export default function MainPage() {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useTab();
   function goToEnter() {
-    navigate("Enter");
+    navigate("/Enter");
   }
   if (enableAuth) {
     let token = localStorage.getItem(authToken);
@@ -48,7 +48,9 @@ export default function MainPage() {
   const parseToNormalDate = (dateString) => {
     const dateObj = new Date(dateString);
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    return dateObj.toLocaleDateString("en-GB", options);
+    const localeDate = dateObj.toLocaleDateString("en-GB", options);
+    const parts = localeDate.split("/");
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
   };
   const loadProfile = () => {
     getCurrentUserInfo().then((response) => {
