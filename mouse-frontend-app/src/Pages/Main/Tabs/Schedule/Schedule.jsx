@@ -9,6 +9,7 @@ export default function Schedule() {
   const [currentTab, setCurrentTab] = useState();
   const [currentTraining, setCurrentTraining] = useState();
   const [currentTrainingDate, setCurrentTrainingDate] = useState();
+  const [currentExcercise, setCurrentExcercise] = useState();
   let componentToShow = (
     <Main
       setCurrentTab={setCurrentTab}
@@ -32,11 +33,17 @@ export default function Schedule() {
           training={currentTraining}
           date={currentTrainingDate}
           setCurrentTab={setCurrentTab}
+          setCurrentExcercise={setCurrentExcercise}
         ></TrainingInfo>
       );
       break;
     case "ExcerciseInfo":
-      componentToShow = <ExcerciseInfo></ExcerciseInfo>;
+      componentToShow = (
+        <ExcerciseInfo
+          excercise={currentExcercise}
+          setCurrentTab={setCurrentTab}
+        ></ExcerciseInfo>
+      );
       break;
     default:
       break;

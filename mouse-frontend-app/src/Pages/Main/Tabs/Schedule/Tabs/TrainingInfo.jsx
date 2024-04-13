@@ -1,11 +1,17 @@
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
 
-export default function ({ training, date, setCurrentTab }) {
+export default function ({
+  training,
+  date,
+  setCurrentTab,
+  setCurrentExcercise,
+}) {
   console.log(training);
   console.log(date);
   return (
     <div>
+      <button onClick={() => setCurrentTab("Main")}>Назад</button>
       <label>{format(date, "d MMMM yyyy", { locale: ru })}</label>
       <label>{training.name}</label>
       <div>
@@ -17,7 +23,13 @@ export default function ({ training, date, setCurrentTab }) {
         <div>
           {training.exercises.map((excercise, index) => {
             return (
-              <div key={index}>
+              <div
+                key={index}
+                onClick={() => {
+                  setCurrentTab("ExcerciseInfo");
+                  setCurrentExcercise(excercise);
+                }}
+              >
                 <label>{excercise.name}</label>
                 <label>{excercise.repetitions}</label>
                 <label>{excercise.approaches}</label>
