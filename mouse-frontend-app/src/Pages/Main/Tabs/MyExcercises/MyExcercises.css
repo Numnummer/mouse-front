@@ -61,7 +61,6 @@
 
 .exercise-img {
   width: 250px;
-  top: 70px;
   position: relative;
 }
 
@@ -70,7 +69,14 @@
 }
 
 @media screen and (max-width: 1220px) {
-  .exercise-img {
+  .exercise-video {
     display: none;
   }
+}
+
+.delete-button{
+  border-style: none;
+  position: relative;
+  top: -210px;
+  left: 15px;
 }
