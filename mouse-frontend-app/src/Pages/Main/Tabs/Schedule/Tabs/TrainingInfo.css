@@ -1,4 +1,4 @@
-.user-page-container{
+.user-page-container-training{
     flex-direction: column;
     display: flex;
 }
@@ -7,7 +7,7 @@
     flex-direction: column;
     display: flex;
     position: relative;
-    margin: 30px;
+    margin: 40px;
 }
 
 .training-date{
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: row;
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 00;
     gap: 250px;
     background-color: #F5F5F5;
     width: 1500px;
@@ -54,4 +54,5 @@
     background-color: #dde8fd;
     position: relative;
     left: 40%;
+    top: 65%;
 }
