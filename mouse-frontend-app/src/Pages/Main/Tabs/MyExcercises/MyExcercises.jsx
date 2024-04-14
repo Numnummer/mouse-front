@@ -72,17 +72,18 @@ export default function MyExcercises() {
                 <a className="exercise-video" href={excercise.explanationVideo}>
                   <img className="exercise-img" src={image} />
                 </a>
-              </div>
-            </div>
-            <button
+                <Button
+            className="delete-button"
               onClick={() => {
                 deleteExcercise(excercise.id).then((resp) => {
                   setExcercisePushSwithcher(!excercisePushSwitcher);
                 });
               }}
             >
-              -
-            </button>
+              x
+            </Button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
