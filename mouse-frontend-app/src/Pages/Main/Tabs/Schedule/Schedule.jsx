@@ -30,6 +30,7 @@ export default function Schedule() {
     case "TrainingInfo":
       componentToShow = (
         <TrainingInfo
+          setCurrentTraining={setCurrentTraining}
           training={currentTraining}
           date={currentTrainingDate}
           setCurrentTab={setCurrentTab}
