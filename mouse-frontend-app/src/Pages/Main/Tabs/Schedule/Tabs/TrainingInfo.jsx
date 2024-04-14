@@ -6,8 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import { getTrainingById } from "../../../../../Api/Trainings/GetTrainingById";
+import "./TrainingInfo.css"
 
-export default function ({
+export default function TrainingInfo({
   training,
   date,
   setCurrentTab,
@@ -54,17 +55,19 @@ export default function ({
   }, [excercisePushSwitcher]);
 
   return (
-    <div>
+    <div className="user-page-container">
       <ToastContainer
         position="top-center"
         autoClose={2000}
         limit={2}
       ></ToastContainer>
-      <button onClick={() => setCurrentTab("Main")}>Назад</button>
-      <label>{format(date, "d MMMM yyyy", { locale: ru })}</label>
-      <label>{training.name}</label>
+      {/* <Button onClick={() => setCurrentTab("Main")}>Назад</Button> */}
+      <div className="training-info">
+        <label className="training-date">{format(date, "d MMMM yyyy", { locale: ru })}</label>
+        <label className="training-name">{training.name}</label>
+      </div>
       <div>
-        <div>
+        <div className="training-types">
           <label>Наименование упражнения</label>
           <label>Количество повторений</label>
           <label>Количество подходов</label>
@@ -135,7 +138,7 @@ export default function ({
           ></input>
         </div>
       </Modal>
-      <button onClick={() => setOpen(true)}>Добавить упражнение</button>
+      <Button className="add-training-button" onClick={() => setOpen(true)}>Добавить упражнение</Button>
     </div>
   );
 }

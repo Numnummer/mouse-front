@@ -1,0 +1,57 @@
+.user-page-container{
+    flex-direction: column;
+    display: flex;
+}
+
+.training-info{
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    margin: 30px;
+}
+
+.training-date{
+    color: #85898F;
+    margin-bottom: 10px;
+}
+
+.training-name{
+    color: #6793CE;
+}
+
+.training-date, .training-name{
+    font-size: 36px;
+}
+
+.training-info-main{
+    display: flex;
+}
+
+.training-types{
+    display: flex;
+    flex-direction: row;
+    font-size: 22px;
+    font-weight: 600;
+    gap: 250px;
+    background-color: #F5F5F5;
+    width: 1500px;
+    height: 50px;
+    position: relative;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    left: 30px;
+}
+
+.training-types label{
+    margin-left: 40px;
+}
+
+.add-training-button{
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #dde8fd;
+    position: relative;
+    left: 40%;
+}

@@ -16,7 +16,7 @@
     flex-direction: row;
 }
 
-.day, .disabled-day{
+.day, .disabled-day, .training-day{
     width: 70px;
     height: 70px;
     border: solid;
@@ -27,6 +27,13 @@
 
 .disabled-day{
     color: #7c7c7c;
+}
+
+.training-day{
+    background-color: #9ec5ff;
+    border-color: #ffffff;
+    border-width: 15px;
+    cursor: pointer;
 }
 
 .day:hover{
