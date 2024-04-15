@@ -1,6 +1,8 @@
 .user-page-container-training{
-    flex-direction: column;
-    display: flex;
+    /* flex-direction: column;
+    display: flex; */
+    /* overflow: hidden; */
+    width: 100%;
 }
 
 .training-info{
@@ -29,22 +31,17 @@
 
 .training-types{
     display: flex;
-    flex-direction: row;
     font-size: 22px;
-    font-weight: 00;
-    gap: 250px;
-    background-color: #F5F5F5;
-    width: 1500px;
-    height: 50px;
+    font-weight: 600;
     position: relative;
-    align-items: center;
-    align-self: center;
-    align-content: center;
     left: 30px;
+    color: #85898F; 
+    justify-content: center;
+    width: 90%;
 }
 
 .training-types label{
-    margin-left: 40px;
+    margin: 30px;
 }
 
 .add-training-button{
@@ -52,7 +49,17 @@
     height: 50px;
     border-radius: 25px;
     background-color: #dde8fd;
-    position: relative;
+    position: fixed;
     left: 40%;
-    top: 65%;
+    bottom: 100px;
+    
+}
+
+.hr-training{
+    border: none; 
+    background-color: rgb(221, 221, 221); 
+    height: 1px; 
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
 }

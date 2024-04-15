@@ -73,6 +73,7 @@ export default function TrainingInfo({
             <label>Количество повторений</label>
             <label>Количество подходов</label>
           </div>
+          <hr className="hr-training"/>
           <div>
             {excercises.map((excercise, index) => {
               return (
