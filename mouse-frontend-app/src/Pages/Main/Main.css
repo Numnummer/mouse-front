@@ -1,6 +1,7 @@
 .menuflex{
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 .menu {
     background-color: #F5F5F5;

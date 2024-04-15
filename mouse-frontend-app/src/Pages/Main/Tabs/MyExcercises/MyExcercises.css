@@ -52,6 +52,10 @@
   font-weight: 600;
 }
 
+div::first-letter {
+  text-transform: uppercase;
+}
+
 .exercise-video {
   position: relative;
   top: -70px;

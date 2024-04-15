@@ -32,6 +32,10 @@
     color: #6793CE;
 }
 
+.training-name::first-letter, .training-info-excercise-name::first-letter{
+    text-transform: uppercase;
+}
+
 .training-date, .training-name{
     font-size: 36px;
 }
@@ -52,7 +56,8 @@
 }
 
 .training-types label{
-    margin: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .add-training-button{
@@ -63,7 +68,6 @@
     position: absolute;
     left: 38%;
     bottom: 30px;
-    
 }
 
 .hr-training{
@@ -95,3 +99,34 @@
     background: linear-gradient(rgba(137, 178, 255, 0.301), rgba(255, 192, 203, 0));
 }
 
+.custom-select {
+    /* Общие стили для выпадающего списка */
+    /* Например: */
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .custom-option {
+    /* Стили для каждого пункта выпадающего списка */
+    /* Например: */
+    background-color: #fff;
+    color: #333;
+    padding: 8px 10px;
+  }
+  
+  .custom-option:hover {
+    /* Стили для наведения на пункт списка */
+    /* Например: */
+    background-color: #f0f0f0;
+  }
+  
+  .custom-option:selected {
+    /* Стили для выбранного пункта списка */
+    /* Например: */
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+  

@@ -108,7 +108,7 @@ export default function TrainingInfo({
                       setCurrentExcercise(excercise);
                     }}
                   >
-                    <label>{excercise.name}</label>
+                    <label className="training-info-excercise-name">{excercise.name}</label>
                     <label>{excercise.repetitions}</label>
                     <label>{excercise.approaches}</label>
                   </div>
