@@ -1,7 +1,7 @@
 import { excerciseClient, trainingClient } from "../../Constants/AxiosClients";
 import { authToken } from "../../Constants/LocalStorageItemKeys";
 
-export function postNewExcercise(trainingId, excerciseData) {
+export function postNewExcercise1(trainingId, excerciseData) {
   const token = localStorage.getItem(authToken);
   return excerciseClient
     .post("", excerciseData, {
@@ -27,6 +27,22 @@ export function postNewExcercise(trainingId, excerciseData) {
           console.log(error);
           throw new Error(error);
         });
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+}
+
+export function postNewExcercise(excerciseData) {
+  const token = localStorage.getItem(authToken);
+  return excerciseClient
+    .post("", excerciseData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response;
     })
     .catch((error) => {
       throw new Error(error);

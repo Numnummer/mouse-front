@@ -75,6 +75,7 @@ export default function TrainingInfo({
           </div>
           <hr className="hr-training"/>
           <div>
+            {console.log(excercises)}
             {excercises.map((excercise, index) => {
               return (
                 <div
@@ -109,34 +110,10 @@ export default function TrainingInfo({
         >
           <div className="">
             <input
-              name={"description"}
+              name={"name"}
               onChange={handleInputChange}
               className="inputs"
-              placeholder={"Описание"}
-            ></input>
-            <input
-              name={"implementationProgress"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Ход выполнения"}
-            ></input>
-            <input
-              name={"explanationVideo"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Ссылка на видео"}
-            ></input>
-            <input
-              name={"repetitions"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Количество повторений"}
-            ></input>
-            <input
-              name={"approaches"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Количество подходов"}
+              placeholder={"Наименование упражнения"}
             ></input>
           </div>
         </Modal>

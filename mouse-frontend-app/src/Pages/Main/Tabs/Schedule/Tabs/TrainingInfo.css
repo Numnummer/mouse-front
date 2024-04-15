@@ -49,9 +49,9 @@
     height: 50px;
     border-radius: 25px;
     background-color: #dde8fd;
-    position: fixed;
-    left: 40%;
-    bottom: 100px;
+    position: absolute;
+    left: 38%;
+    bottom: 30px;
     
 }
 
