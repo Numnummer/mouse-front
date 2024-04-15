@@ -6,7 +6,7 @@ import { DatePicker } from "antd";
 import { startOfToday } from "date-fns";
 import { postTraining } from "../../../../../Api/Trainings/PostTraining";
 
-export default function ({
+export default function Main({
   setCurrentTab,
   setCurrentTraining,
   setCurrentTrainingDate,
@@ -17,7 +17,10 @@ export default function ({
     trainingDate: "",
     exerciseIds: [],
   });
+  const [switcher, setSwitcher] = useState(false);
+
   const onAddTraining = () => {
+    setSwitcher(!switcher)
     setOpen(false);
     setToday(startOfToday());
     postTraining(trainingData)
@@ -51,6 +54,7 @@ export default function ({
           today={today}
           setToday={setToday}
           handleTrainingDayClick={handleTrainingDayClick}
+          switcher={switcher}
         />
       </div>
       <Button className="add-training" onClick={() => setOpen(true)}>

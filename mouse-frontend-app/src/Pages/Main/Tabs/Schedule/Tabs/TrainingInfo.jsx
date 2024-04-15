@@ -66,9 +66,9 @@ export default function TrainingInfo({
       });
     getAllExcercises().then((result) => {
       setItems(result.items);
-      const names = result.items.map((item, index) => item.name)
+      const names = result.items.map((item, index) => item.name);
       setExcerciseNames(names);
-      setSelectName(names[0] || null)
+      setSelectName(names[0] || null);
       console.log(result.items.map((item, index) => item.name));
     });
   }, [excercisePushSwitcher]);
@@ -88,30 +88,35 @@ export default function TrainingInfo({
           </label>
           <label className="training-name">{training.name}</label>
         </div>
-        <div>
+        <div className="training-types-container">
           <div className="training-types">
             <label>Наименование упражнения</label>
             <label>Количество повторений</label>
             <label>Количество подходов</label>
           </div>
-          <hr className="hr-training" />
+          {/* <hr className="hr-training" /> */}
           <div>
             {excercises.map((excercise, index) => {
               return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setCurrentTab("ExcerciseInfo");
-                    setCurrentExcercise(excercise);
-                  }}
-                >
-                  <label>{excercise.name}</label>
-                  <label>{excercise.repetitions}</label>
-                  <label>{excercise.approaches}</label>
+                <div className="excercises-line" key={index}>
+                  <hr className="hr-training" />
+                  <div
+                    className="excercise-container"
+                    key={index}
+                    onClick={() => {
+                      setCurrentTab("ExcerciseInfo");
+                      setCurrentExcercise(excercise);
+                    }}
+                  >
+                    <label>{excercise.name}</label>
+                    <label>{excercise.repetitions}</label>
+                    <label>{excercise.approaches}</label>
+                  </div>
                 </div>
               );
             })}
           </div>
+          <br />
         </div>
         <Modal
           open={open}
@@ -130,13 +135,16 @@ export default function TrainingInfo({
           {" "}
           <>
             <select
+              className="custom-select"
               onChange={(event) => {
                 setSelectName(event.target.value);
-                console.log(event.target.value)
+                console.log(event.target.value);
               }}
             >
               {excerciseNames.map((exercise, index) => (
-                <option value={exercise} key={index}>{exercise}</option>
+                <option className="custom-option" value={exercise} key={index}>
+                  {exercise}
+                </option>
               ))}
             </select>
           </>

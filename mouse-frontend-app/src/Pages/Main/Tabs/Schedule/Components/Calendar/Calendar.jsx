@@ -46,6 +46,7 @@ export default function Calendar({ today, setToday, handleTrainingDayClick }) {
       .then((result) => {
         setAllTrainings(result);
         setToday(startOfToday());
+
       })
       .catch((error) => {
         console.log(error);
