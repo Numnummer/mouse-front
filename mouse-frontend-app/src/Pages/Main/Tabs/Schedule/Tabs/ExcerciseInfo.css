@@ -31,3 +31,8 @@
     margin-bottom: 40px;
 }
 
+.exercise-video-{
+    position: absolute;
+    left: 50px;
+    margin-top: 50px;
+}

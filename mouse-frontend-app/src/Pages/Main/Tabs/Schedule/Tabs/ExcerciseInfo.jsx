@@ -16,6 +16,7 @@ export default function ExerciseInfo({ excercise, setCurrentTab }) {
           <label>Ход выполнения</label>
           <p>{excercise.implementationProgress}</p>
         </div>
+        Ссылка на видео:
           <a className="exercise-video-" href={excercise.explanationVideo}>
             <img width='422px' className="exercise-img-" src={image} />
           </a>
