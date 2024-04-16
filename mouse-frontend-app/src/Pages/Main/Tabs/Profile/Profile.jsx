@@ -94,9 +94,10 @@ export default function Profile({
                   name={"gender"}
                   value={userData.gender}
                   onChange={handleInputChange}
+                  className="select-container"
                 >
-                  <option>Мужчина</option>
-                  <option>Женщина</option>
+                  <option className="option-text">Мужчина</option>
+                  <option className="option-text">Женщина</option>
                 </select>
               </div>
             ) : (
