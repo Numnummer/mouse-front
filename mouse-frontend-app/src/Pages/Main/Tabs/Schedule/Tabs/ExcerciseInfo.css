@@ -1,0 +1,33 @@
+.exercise-container{
+    margin: 50px;
+}
+
+.excercise-name{
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.excercise-types{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.hod{
+    margin-top: 50px;
+}
+
+.hod label{
+    font-weight: 600;
+}
+
+.hod p{
+    margin-top: 10px;
+}
+
+.excercise-description{
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
