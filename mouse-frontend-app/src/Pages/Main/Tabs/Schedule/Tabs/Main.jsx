@@ -20,7 +20,7 @@ export default function Main({
   const [switcher, setSwitcher] = useState(false);
 
   const onAddTraining = () => {
-    setSwitcher(!switcher)
+    setSwitcher(!switcher);
     setOpen(false);
     setToday(startOfToday());
     postTraining(trainingData)
@@ -46,6 +46,11 @@ export default function Main({
       setToday(startOfToday());
     }, 500);
   }, []);
+  const modalStyles = {
+    mask: {
+      backdropFilter: "blur(10px)",
+    },
+  };
   return (
     <div className="user-page-container">
       <label className="title-label">Расписание</label>
@@ -72,6 +77,7 @@ export default function Main({
           setOpen(false);
         }}
         width={600}
+        styles={modalStyles}
         footer={(_, { CancelBtn }) => (
           <>
             <Button type="primary" onClick={onAddTraining}>

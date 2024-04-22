@@ -46,6 +46,7 @@
   width: 550px;
   margin-top: 10px;
   margin-right: 50px;
+  max-height: 20px;
 }
 
 .exercise-name {
@@ -61,6 +62,7 @@ div::first-letter {
   top: -70px;
   height: 150px;
   margin: 10px;
+  text-align: end;
 }
 
 .exercise-img {
@@ -69,7 +71,9 @@ div::first-letter {
 }
 
 .exe-video {
-  text-align: end;
+  display: flex;
+  position: absolute;
+  left: 75%;
 }
 
 @media screen and (max-width: 1220px) {
@@ -80,7 +84,6 @@ div::first-letter {
 
 .delete-button{
   border-style: none;
-  position: relative;
-  top: -210px;
+  top: -65px;
   left: 15px;
 }
