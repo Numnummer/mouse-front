@@ -1,12 +1,16 @@
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
-import { postNewExcercise } from "../../../../../Api/Excercise/PostNewExcercise";
+import { postNewExcerciseOnTraining } from "../../../../../Api/Excercise/PostNewExcercise";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import { getTrainingById } from "../../../../../Api/Trainings/GetTrainingById";
-import "./TrainingInfo.css"
+import { getAllExcercises } from "../../../../../Api/Excercise/GetAllExcercises";
+import "./TrainingInfo.css";
+import { DownOutlined } from "@ant-design/icons";
+import { Dropdown, Space, Typography } from "antd";
+import { deleteTraining } from "../../../../../Api/Trainings/DeleteTraining";
 
 export default function TrainingInfo({
   training,
@@ -14,6 +18,7 @@ export default function TrainingInfo({
   setCurrentTab,
   setCurrentExcercise,
   setCurrentTraining,
+  navigate,
 }) {
   const [open, setOpen] = useState(false);
   const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
@@ -26,6 +31,12 @@ export default function TrainingInfo({
     explanationVideo: "",
   });
   const [excercises, setExcercises] = useState([]);
+  const [items, setItems] = useState([]);
+
+  const [excerciseNames, setExcerciseNames] = useState([]);
+
+  const [selectName, setSelectName] = useState();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setExcerciseData((prevData) => ({
@@ -34,14 +45,23 @@ export default function TrainingInfo({
     }));
   };
   const onModalOk = () => {
+    const data = items.find((item) => item.name === selectName);
+    setExcerciseData(data);
     setOpen(false);
-    postNewExcercise(training.id, excerciseData)
+    postNewExcerciseOnTraining(training.id, data)
       .then((resp) => {
         setExcercisePushSwithcher(!excercisePushSwitcher);
       })
       .catch((error) => {
         toast.error(error, { autoClose: 2000 });
       });
+    console.log(selectName);
+  };
+
+  const onDeleteTraining = () => {
+    deleteTraining(training.id).then(() => {
+      navigate("/Main");
+    });
   };
 
   useEffect(() => {
@@ -52,6 +72,13 @@ export default function TrainingInfo({
       .catch((error) => {
         toast.error(error, { autoClose: 2000 });
       });
+    getAllExcercises().then((result) => {
+      setItems(result.items);
+      const names = result.items.map((item, index) => item.name);
+      setExcerciseNames(names);
+      setSelectName(names[0] || null);
+      console.log(result.items.map((item, index) => item.name));
+    });
   }, [excercisePushSwitcher]);
 
   return (
@@ -64,35 +91,44 @@ export default function TrainingInfo({
         ></ToastContainer>
         {/* <Button onClick={() => setCurrentTab("Main")}>Назад</Button> */}
         <div className="training-info">
-          <label className="training-date">{format(date, "d MMMM yyyy", { locale: ru })}</label>
+          <label className="training-date">
+            {format(date, "d MMMM yyyy", { locale: ru })}
+          </label>
+          <button onClick={onDeleteTraining}>Удалить тренировку</button>
           <label className="training-name">{training.name}</label>
         </div>
-        <div>
+        <div className="training-types-container">
           <div className="training-types">
             <label>Наименование упражнения</label>
             <label>Количество повторений</label>
             <label>Количество подходов</label>
           </div>
-          <hr className="hr-training"/>
+          {/* <hr className="hr-training" /> */}
           <div>
             {excercises.map((excercise, index) => {
               return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setCurrentTab("ExcerciseInfo");
-                    setCurrentExcercise(excercise);
-                  }}
-                >
-                  <label>{excercise.name}</label>
-                  <label>{excercise.repetitions}</label>
-                  <label>{excercise.approaches}</label>
+                <div className="excercises-line" key={index}>
+                  <hr className="hr-training" />
+                  <div
+                    className="excercise-container"
+                    key={index}
+                    onClick={() => {
+                      navigate("/Main/excerciseInfo");
+                      setCurrentExcercise(excercise);
+                    }}
+                  >
+                    <label className="training-info-excercise-name">
+                      {excercise.name}
+                    </label>
+                    <label>{excercise.repetitions}</label>
+                    <label>{excercise.approaches}</label>
+                  </div>
                 </div>
               );
             })}
           </div>
+          <br />
         </div>
-
         <Modal
           open={open}
           onOk={onModalOk}
@@ -107,40 +143,26 @@ export default function TrainingInfo({
             </>
           )}
         >
-          <div className="">
-            <input
-              name={"description"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Описание"}
-            ></input>
-            <input
-              name={"implementationProgress"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Ход выполнения"}
-            ></input>
-            <input
-              name={"explanationVideo"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Ссылка на видео"}
-            ></input>
-            <input
-              name={"repetitions"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Количество повторений"}
-            ></input>
-            <input
-              name={"approaches"}
-              onChange={handleInputChange}
-              className="inputs"
-              placeholder={"Количество подходов"}
-            ></input>
-          </div>
+          {" "}
+          <>
+            <select
+              className="custom-select"
+              onChange={(event) => {
+                setSelectName(event.target.value);
+                console.log(event.target.value);
+              }}
+            >
+              {excerciseNames.map((exercise, index) => (
+                <option className="custom-option" value={exercise} key={index}>
+                  {exercise}
+                </option>
+              ))}
+            </select>
+          </>
         </Modal>
-        <Button className="add-training-button" onClick={() => setOpen(true)}>Добавить упражнение</Button>
+        <Button className="add-training-button" onClick={() => setOpen(true)}>
+          Добавить упражнение
+        </Button>
       </div>
     </div>
   );

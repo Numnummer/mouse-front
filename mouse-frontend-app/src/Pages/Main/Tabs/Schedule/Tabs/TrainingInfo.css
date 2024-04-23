@@ -1,3 +1,20 @@
+.training-types-container{
+    border: #7e7e7e2a;
+    border-style: solid;
+    position: relative;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 600px;
+
+    box-shadow: 0px 0px 10px 0px rgba(173, 173, 174, 0.5); 
+    border-radius: 20px;
+    overflow-y: auto;
+    scroll-snap-type: y proximity;
+    scrollbar-width: thin;
+    scrollbar-color: #e5e5e5 #ffffff;
+    color: #6e6e6e;
+}
+
 .user-page-container-training{
     /* flex-direction: column;
     display: flex; */
@@ -10,6 +27,7 @@
     display: flex;
     position: relative;
     margin: 40px;
+    
 }
 
 .training-date{
@@ -17,8 +35,16 @@
     margin-bottom: 10px;
 }
 
+.training-info-excercise-name{
+    max-width: 50px;
+}
+
 .training-name{
     color: #6793CE;
+}
+
+.training-name::first-letter, .training-info-excercise-name::first-letter{
+    text-transform: uppercase;
 }
 
 .training-date, .training-name{
@@ -41,7 +67,8 @@
 }
 
 .training-types label{
-    margin: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .add-training-button{
@@ -49,17 +76,68 @@
     height: 50px;
     border-radius: 25px;
     background-color: #dde8fd;
-    position: fixed;
-    left: 40%;
-    bottom: 100px;
-    
+    position: absolute;
+    left: 38%;
+    bottom: 30px;
 }
 
 .hr-training{
     border: none; 
     background-color: rgb(221, 221, 221); 
     height: 1px; 
-    margin-bottom: 30px;
     width: 100%;
-    display: flex;
+    
 }
+
+.excercise-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    position: relative;
+    left: 50px;
+    width: 90%;
+    margin-top: -3px;
+    margin-left: 90px;
+    cursor: pointer;
+}
+
+.excercise-container label{
+    cursor: pointer;
+    margin-right: 300px;
+}
+
+.excercises-line:hover{
+    background: linear-gradient(rgba(137, 178, 255, 0.301), rgba(255, 192, 203, 0));
+}
+
+.custom-select {
+    /* Общие стили для выпадающего списка */
+    /* Например: */
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .custom-option {
+    /* Стили для каждого пункта выпадающего списка */
+    /* Например: */
+    background-color: #fff;
+    color: #333;
+    padding: 8px 10px;
+  }
+  
+  .custom-option:hover {
+    /* Стили для наведения на пункт списка */
+    /* Например: */
+    background-color: #f0f0f0;
+  }
+  
+  .custom-option:selected {
+    /* Стили для выбранного пункта списка */
+    /* Например: */
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+  
