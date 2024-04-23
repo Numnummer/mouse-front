@@ -35,7 +35,7 @@ export default function SignIn() {
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
-    processSignInByOtherService(service);
+    processSignInByOtherService(service)
   }
 
   return (
@@ -52,6 +52,9 @@ export default function SignIn() {
           <form>
             <div className={CommonStyles.inputs}>
               <input
+                type="text"
+                name="email"
+                autoComplete="h87h58g7h8hd"
                 placeholder={"Email"}
                 onChange={(event) => {
                   setSignInData({ ...signInData, email: event.target.value });

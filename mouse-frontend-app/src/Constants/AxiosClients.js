@@ -17,7 +17,3 @@ export const excerciseClient = axios.create({
 export const trainingClient = axios.create({
   baseURL: `${backendOrigin}/api/Trainings/`,
 });
-
-export const vkClient = axios.create({
-  baseURL: "https://oauth.vk.com/",
-});

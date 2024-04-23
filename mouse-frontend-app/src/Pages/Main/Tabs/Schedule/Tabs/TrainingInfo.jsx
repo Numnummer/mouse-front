@@ -114,8 +114,10 @@ export default function TrainingInfo({
           <label className="training-date">
             {date && format(date, "d MMMM yyyy", { locale: ru })}
           </label>
-          <button onClick={onDeleteTraining}>Удалить тренировку</button>
-          <label className="training-name">{training && training.name}</label>
+          <Button className="delete-training-button" onClick={onDeleteTraining}>
+            Удалить тренировку
+          </Button>
+          <label className="training-name">{training.name}</label>
         </div>
         <div className="training-types-container">
           <div className="training-types">
