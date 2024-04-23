@@ -7,9 +7,9 @@ import { startOfToday } from "date-fns";
 import { postTraining } from "../../../../../Api/Trainings/PostTraining";
 
 export default function Main({
-  setCurrentTab,
   setCurrentTraining,
   setCurrentTrainingDate,
+  navigate,
 }) {
   const [open, setOpen] = useState(false);
   const [trainingData, setTrainingData] = useState({
@@ -37,7 +37,7 @@ export default function Main({
   };
   const [today, setToday] = useState(startOfToday());
   const handleTrainingDayClick = (day, training) => {
-    setCurrentTab("TrainingInfo");
+    navigate("/Main/trainingInfo");
     setCurrentTraining(training);
     setCurrentTrainingDate(day);
   };

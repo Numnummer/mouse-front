@@ -18,6 +18,7 @@ export default function TrainingInfo({
   setCurrentTab,
   setCurrentExcercise,
   setCurrentTraining,
+  navigate,
 }) {
   const [open, setOpen] = useState(false);
   const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
@@ -59,7 +60,7 @@ export default function TrainingInfo({
 
   const onDeleteTraining = () => {
     deleteTraining(training.id).then(() => {
-      setCurrentTab("Main");
+      navigate("/Main");
     });
   };
 
@@ -112,7 +113,7 @@ export default function TrainingInfo({
                     className="excercise-container"
                     key={index}
                     onClick={() => {
-                      setCurrentTab("ExcerciseInfo");
+                      navigate("/Main/excerciseInfo");
                       setCurrentExcercise(excercise);
                     }}
                   >

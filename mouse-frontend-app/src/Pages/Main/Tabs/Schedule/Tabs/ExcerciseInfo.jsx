@@ -1,7 +1,7 @@
 import "./ExcerciseInfo.css";
-import image from "../../../../../../public/video-image.png"; 
+import image from "../../../../../../public/video-image.png";
 
-export default function ExerciseInfo({ excercise, setCurrentTab }) {
+export default function ExerciseInfo({ excercise }) {
   return (
     <div className="user-page-container">
       <div className="exercise-container">
@@ -17,9 +17,9 @@ export default function ExerciseInfo({ excercise, setCurrentTab }) {
           <p>{excercise.implementationProgress}</p>
         </div>
         Ссылка на видео:
-          <a className="exercise-video-" href={excercise.explanationVideo}>
-            <img width='422px' className="exercise-img-" src={image} />
-          </a>
+        <a className="exercise-video-" href={excercise.explanationVideo}>
+          <img width="422px" className="exercise-img-" src={image} />
+        </a>
       </div>
     </div>
   );
