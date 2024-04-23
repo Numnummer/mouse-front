@@ -10,6 +10,7 @@ import { getAllExcercises } from "../../../../../Api/Excercise/GetAllExcercises"
 import "./TrainingInfo.css";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Typography } from "antd";
+import { deleteTraining } from "../../../../../Api/Trainings/DeleteTraining";
 
 export default function TrainingInfo({
   training,
@@ -56,6 +57,12 @@ export default function TrainingInfo({
     console.log(selectName);
   };
 
+  const onDeleteTraining = () => {
+    deleteTraining(training.id).then(() => {
+      setCurrentTab("Main");
+    });
+  };
+
   useEffect(() => {
     getTrainingById(training.id)
       .then((result) => {
@@ -86,6 +93,7 @@ export default function TrainingInfo({
           <label className="training-date">
             {format(date, "d MMMM yyyy", { locale: ru })}
           </label>
+          <button onClick={onDeleteTraining}>Удалить тренировку</button>
           <label className="training-name">{training.name}</label>
         </div>
         <div className="training-types-container">
@@ -108,7 +116,9 @@ export default function TrainingInfo({
                       setCurrentExcercise(excercise);
                     }}
                   >
-                    <label className="training-info-excercise-name">{excercise.name}</label>
+                    <label className="training-info-excercise-name">
+                      {excercise.name}
+                    </label>
                     <label>{excercise.repetitions}</label>
                     <label>{excercise.approaches}</label>
                   </div>
