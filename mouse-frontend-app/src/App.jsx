@@ -11,6 +11,7 @@ import Register from "./Pages/Register/Register.jsx";
 import Profile from "./Pages/Main/Tabs/Profile/Profile.jsx";
 import MainPage from "./Pages/Main/MainPage.jsx";
 import MainBridge from "./Pages/Main/Tabs/MainBridge.jsx";
+import { useEffect } from "react";
 
 function App() {
   return (

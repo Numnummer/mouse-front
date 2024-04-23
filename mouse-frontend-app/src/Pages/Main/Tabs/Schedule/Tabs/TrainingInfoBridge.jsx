@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import TrainingInfo from "./TrainingInfo";
 
 export default function ({

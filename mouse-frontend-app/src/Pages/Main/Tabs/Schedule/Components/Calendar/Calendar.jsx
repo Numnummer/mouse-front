@@ -17,7 +17,14 @@ import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
 import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
 
-export default function Calendar({ today, setToday, handleTrainingDayClick }) {
+export default function Calendar({
+  today,
+  setToday,
+  handleTrainingDayClick,
+  allTrainings,
+  fetchTrainings,
+  switcher,
+}) {
   const weekOptions = { locale: ru, weekStartsOn: 1 };
 
   const [days, setDays] = useState(
@@ -30,7 +37,13 @@ export default function Calendar({ today, setToday, handleTrainingDayClick }) {
     start: startOfWeek(today, weekOptions),
     end: endOfWeek(today, weekOptions),
   });
-  const [allTrainings, setAllTrainings] = useState({});
+
+  const [a, setA] = useState(false);
+  useEffect(() => {
+    console.log("asd");
+    fetchTrainings();
+    setA(!a);
+  }, [switcher]);
 
   useEffect(() => {
     setDays(
@@ -40,18 +53,6 @@ export default function Calendar({ today, setToday, handleTrainingDayClick }) {
       })
     );
   }, [today]);
-
-  useEffect(() => {
-    getAllTrainings()
-      .then((result) => {
-        setAllTrainings(result);
-        setToday(startOfToday());
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <>
@@ -65,6 +66,7 @@ export default function Calendar({ today, setToday, handleTrainingDayClick }) {
         today={today}
         allTrainings={allTrainings}
         handleTrainingDayClick={handleTrainingDayClick}
+        fetchTrainings={fetchTrainings}
       ></CalendarDays>
     </>
   );

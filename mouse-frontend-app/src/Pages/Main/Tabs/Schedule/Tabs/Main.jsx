@@ -1,10 +1,11 @@
 import Calendar from "../Components/Calendar/Calendar";
 import "../Schedule.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import { DatePicker } from "antd";
 import { startOfToday } from "date-fns";
 import { postTraining } from "../../../../../Api/Trainings/PostTraining";
+import { getAllTrainings } from "../../../../../Api/Trainings/GetAllTrainings";
 
 export default function Main({
   setCurrentTraining,
@@ -18,6 +19,7 @@ export default function Main({
     exerciseIds: [],
   });
   const [switcher, setSwitcher] = useState(false);
+  const [allTrainings, setAllTrainings] = useState({});
 
   const onAddTraining = () => {
     setSwitcher(!switcher);
@@ -26,11 +28,27 @@ export default function Main({
     postTraining(trainingData)
       .then((result) => {
         console.log(result);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log("asaiushusa");
+  };
+  const fetchTrainings = () => {
+    console.log("pojiawej");
+    getAllTrainings()
+      .then((result) => {
+        setAllTrainings(result);
+        setToday(startOfToday());
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  useEffect(() => {
+    fetchTrainings();
+  }, []);
   const onChange = (date, dateString) => {
     console.log(date, dateString);
     setTrainingData((prev) => ({ ...prev, trainingDate: dateString }));
@@ -60,6 +78,8 @@ export default function Main({
           setToday={setToday}
           handleTrainingDayClick={handleTrainingDayClick}
           switcher={switcher}
+          allTrainings={allTrainings}
+          fetchTrainings={fetchTrainings}
         />
       </div>
       <Button className="add-training" onClick={() => setOpen(true)}>

@@ -11,31 +11,42 @@ import "./TrainingInfo.css";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Typography } from "antd";
 import { deleteTraining } from "../../../../../Api/Trainings/DeleteTraining";
+import {
+  dateParam,
+  setCurrentExcerciseParam,
+  trainingNavigateParam,
+  trainingParam,
+} from "../../../../../Constants/LocalStorageItemKeys";
 
 export default function TrainingInfo({
   training,
   date,
-  setCurrentTab,
   setCurrentExcercise,
   setCurrentTraining,
   navigate,
 }) {
   const [open, setOpen] = useState(false);
   const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
-  const [excerciseData, setExcerciseData] = useState({
-    name: training.name,
-    description: "",
-    approaches: "",
-    repetitions: "",
-    implementationProgress: "",
-    explanationVideo: "",
-  });
   const [excercises, setExcercises] = useState([]);
   const [items, setItems] = useState([]);
 
   const [excerciseNames, setExcerciseNames] = useState([]);
 
   const [selectName, setSelectName] = useState();
+
+  useEffect(() => {
+    console.log(date);
+    if (!date) {
+      console.log(localStorage.getItem(trainingParam));
+      training = JSON.parse(localStorage.getItem(trainingParam));
+      date = JSON.parse(localStorage.getItem(dateParam));
+      console.log(training);
+    } else {
+      localStorage.setItem(trainingParam, JSON.stringify(training));
+      localStorage.setItem(dateParam, JSON.stringify(date));
+    }
+    console.log("setup");
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,18 +55,27 @@ export default function TrainingInfo({
       [name]: value,
     }));
   };
+  console.log(training);
+  const [excerciseData, setExcerciseData] = useState({
+    name: training && training.name,
+    description: "",
+    approaches: "",
+    repetitions: "",
+    implementationProgress: "",
+    explanationVideo: "",
+  });
   const onModalOk = () => {
     const data = items.find((item) => item.name === selectName);
     setExcerciseData(data);
     setOpen(false);
     postNewExcerciseOnTraining(training.id, data)
       .then((resp) => {
+        toast.success("Упражнение добавлено", { autoClose: 2000 });
         setExcercisePushSwithcher(!excercisePushSwitcher);
       })
       .catch((error) => {
         toast.error(error, { autoClose: 2000 });
       });
-    console.log(selectName);
   };
 
   const onDeleteTraining = () => {
@@ -92,10 +112,10 @@ export default function TrainingInfo({
         {/* <Button onClick={() => setCurrentTab("Main")}>Назад</Button> */}
         <div className="training-info">
           <label className="training-date">
-            {format(date, "d MMMM yyyy", { locale: ru })}
+            {date && format(date, "d MMMM yyyy", { locale: ru })}
           </label>
           <button onClick={onDeleteTraining}>Удалить тренировку</button>
-          <label className="training-name">{training.name}</label>
+          <label className="training-name">{training && training.name}</label>
         </div>
         <div className="training-types-container">
           <div className="training-types">

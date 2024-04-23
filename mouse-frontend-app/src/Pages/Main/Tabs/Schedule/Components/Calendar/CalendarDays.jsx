@@ -1,5 +1,7 @@
 import { format, isSameDay, isSameMonth, startOfToday } from "date-fns";
 import "./CalendarDays.css";
+import { useEffect, useState } from "react";
+import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
 
 export default function ({
   days,
@@ -8,6 +10,7 @@ export default function ({
   today,
   allTrainings,
   handleTrainingDayClick,
+  fetchTrainings,
 }) {
   const weeks = [];
   const isTrainingDay = (day) => {
@@ -25,6 +28,12 @@ export default function ({
   while (days.length > 0) {
     weeks.push(days.splice(0, 7));
   }
+  const [a, setA] = useState(false);
+  useEffect(() => {
+    console.log(allTrainings);
+    //fetchTrainings();
+    setA(!a);
+  }, [allTrainings]);
 
   return (
     <div className="calendar">
