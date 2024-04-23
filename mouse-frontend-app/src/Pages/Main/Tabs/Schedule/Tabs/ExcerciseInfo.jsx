@@ -18,7 +18,7 @@ export default function ExerciseInfo({ excercise }) {
         </div>
         Ссылка на видео:
         <a className="exercise-video-" href={excercise.explanationVideo}>
-          <img width="422px" className="exercise-img-" src={image} />
+          <img width="322px" className="exercise-img-" src={image} />
         </a>
       </div>
     </div>

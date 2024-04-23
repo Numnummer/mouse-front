@@ -32,6 +32,7 @@
   font-size: 17px;
   color: rgb(139, 139, 139);
   font-weight: 700;
+  cursor: pointer;
 }
 .registerButton input {
   box-shadow: 0px 0px 10px 0px rgba(75, 75, 75, 0.5);
