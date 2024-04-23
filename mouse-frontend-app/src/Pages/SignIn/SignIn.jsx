@@ -35,7 +35,7 @@ export default function SignIn() {
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
-    processSignInByOtherService(service);
+    processSignInByOtherService(service)
   }
 
   return (
