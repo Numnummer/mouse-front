@@ -64,7 +64,7 @@ div::first-letter {
   margin: 10px;
   text-align: end;
 }
-
+  
 .exercise-img {
   width: 250px;
   position: relative;
@@ -85,5 +85,5 @@ div::first-letter {
 .delete-button{
   border-style: none;
   top: -65px;
-  left: 15px;
+  right: 35px;
 }

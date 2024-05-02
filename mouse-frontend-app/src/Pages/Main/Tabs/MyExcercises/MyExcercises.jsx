@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Modal } from "antd";
+import { Button, Modal, Tooltip } from "antd";
 import "./MyExcercises.css";
 import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
 import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
@@ -72,16 +72,18 @@ export default function MyExcercises() {
                 <a className="exercise-video" href={excercise.explanationVideo}>
                   <img className="exercise-img" src={image} />
                 </a>
-                <Button
-            className="delete-button"
-              onClick={() => {
-                deleteExcercise(excercise.id).then((resp) => {
-                  setExcercisePushSwithcher(!excercisePushSwitcher);
-                });
-              }}
-            >
-              x
-            </Button>
+                <Tooltip title="удалить упражнение">
+                  <Button
+                    className="delete-button"
+                    onClick={() => {
+                      deleteExcercise(excercise.id).then((resp) => {
+                        setExcercisePushSwithcher(!excercisePushSwitcher);
+                      });
+                    }}
+                  >
+                    x
+                  </Button>
+                </Tooltip>
               </div>
             </div>
           </div>

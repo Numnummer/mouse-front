@@ -4,7 +4,7 @@ import { postNewExcerciseOnTraining } from "../../../../../Api/Excercise/PostNew
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-import { Button, Modal } from "antd";
+import { Button, Modal, Tooltip } from "antd";
 import { getTrainingById } from "../../../../../Api/Trainings/GetTrainingById";
 import { getAllExcercises } from "../../../../../Api/Excercise/GetAllExcercises";
 import "./TrainingInfo.css";
@@ -17,6 +17,7 @@ import {
   trainingNavigateParam,
   trainingParam,
 } from "../../../../../Constants/LocalStorageItemKeys";
+import GarbageIcon from "../../Profile/Icons/GarbageIcon";
 
 export default function TrainingInfo({
   trainingP,
@@ -118,9 +119,13 @@ export default function TrainingInfo({
           <label className="training-date">
             {date && format(date, "d MMMM yyyy", { locale: ru })}
           </label>
-          <Button className="delete-training-button" onClick={onDeleteTraining}>
-            Удалить тренировку
-          </Button>
+          <Tooltip title="Удалить тренировку">
+            <Button
+              className="delete-training-button"
+              onClick={onDeleteTraining}
+              icon={<GarbageIcon />}
+            ></Button>
+          </Tooltip>
           <label className="training-name">{training.name}</label>
         </div>
         <div className="training-types-container">
