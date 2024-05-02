@@ -9,17 +9,28 @@ import TrainingInfoBridge from "./Tabs/TrainingInfoBridge.jsx";
 import ExcerciseInfoBridge from "./Tabs/ExcerciseInfoBridge.jsx";
 //import { useHistory } from "react-router-dom";
 
-export default function Schedule() {
+export default function Schedule({ currentTab }) {
   const navigate = useNavigate();
   const [currentTraining, setCurrentTraining] = useState({});
   const [currentTrainingDate, setCurrentTrainingDate] = useState();
   const [currentExcercise, setCurrentExcercise] = useState({});
+  const [navigatorSwitcher, setNavigatorSwitcher] = useState(false);
+
+  useEffect(() => {
+    setNavigatorSwitcher(!navigatorSwitcher);
+  }, [currentTab]);
 
   return (
     <Routes>
       <Route
         path="/"
-        element={Main({ setCurrentTraining, setCurrentTrainingDate, navigate })}
+        element={Main({
+          setCurrentTraining,
+          setCurrentTrainingDate,
+          navigate,
+          navigatorSwitcher,
+          setNavigatorSwitcher,
+        })}
       ></Route>
       <Route
         path="/trainingInfo"
@@ -29,11 +40,17 @@ export default function Schedule() {
           setCurrentExcercise,
           setCurrentTraining,
           navigate,
+          navigatorSwitcher,
+          setNavigatorSwitcher,
         })}
       ></Route>
       <Route
         path="/excerciseInfo"
-        element={ExcerciseInfoBridge({ currentExcercise })}
+        element={ExcerciseInfoBridge({
+          currentExcercise,
+          navigatorSwitcher,
+          setNavigatorSwitcher,
+        })}
       ></Route>
     </Routes>
   );

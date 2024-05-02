@@ -19,11 +19,13 @@ import {
 } from "../../../../../Constants/LocalStorageItemKeys";
 
 export default function TrainingInfo({
-  training,
-  date,
+  trainingP,
+  dateP,
   setCurrentExcercise,
   setCurrentTraining,
   navigate,
+  navigatorSwitcher,
+  setNavigatorSwitcher,
 }) {
   const [open, setOpen] = useState(false);
   const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
@@ -34,19 +36,18 @@ export default function TrainingInfo({
 
   const [selectName, setSelectName] = useState();
 
+  const [date, setDate] = useState(dateP);
+  const [training, setTraining] = useState(trainingP);
+
   useEffect(() => {
-    console.log(date);
     if (!date) {
-      console.log(localStorage.getItem(trainingParam));
-      training = JSON.parse(localStorage.getItem(trainingParam));
-      date = JSON.parse(localStorage.getItem(dateParam));
-      console.log(training);
+      setTraining(JSON.parse(localStorage.getItem(trainingParam)));
+      setDate(JSON.parse(localStorage.getItem(dateParam)));
     } else {
       localStorage.setItem(trainingParam, JSON.stringify(training));
       localStorage.setItem(dateParam, JSON.stringify(date));
     }
-    console.log("setup");
-  }, []);
+  }, [navigatorSwitcher]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +56,6 @@ export default function TrainingInfo({
       [name]: value,
     }));
   };
-  console.log(training);
   const [excerciseData, setExcerciseData] = useState({
     name: training && training.name,
     description: "",
@@ -80,12 +80,17 @@ export default function TrainingInfo({
 
   const onDeleteTraining = () => {
     deleteTraining(training.id).then(() => {
+      setNavigatorSwitcher(!navigatorSwitcher);
       navigate("/Main");
     });
   };
 
   useEffect(() => {
-    getTrainingById(training.id)
+    let trainingId = training.id;
+    if (!training.id) {
+      trainingId = JSON.parse(localStorage.getItem(trainingParam)).id;
+    }
+    getTrainingById(trainingId)
       .then((result) => {
         setExcercises(result.exercises);
       })
@@ -97,9 +102,8 @@ export default function TrainingInfo({
       const names = result.items.map((item, index) => item.name);
       setExcerciseNames(names);
       setSelectName(names[0] || null);
-      console.log(result.items.map((item, index) => item.name));
     });
-  }, [excercisePushSwitcher]);
+  }, [excercisePushSwitcher, navigatorSwitcher]);
 
   return (
     <div className="user-page-container">
@@ -135,6 +139,7 @@ export default function TrainingInfo({
                     className="excercise-container"
                     key={index}
                     onClick={() => {
+                      setNavigatorSwitcher(!navigatorSwitcher);
                       navigate("/Main/excerciseInfo");
                       setCurrentExcercise(excercise);
                     }}
@@ -171,7 +176,6 @@ export default function TrainingInfo({
               className="custom-select"
               onChange={(event) => {
                 setSelectName(event.target.value);
-                console.log(event.target.value);
               }}
             >
               {excerciseNames.map((exercise, index) => (

@@ -7,14 +7,18 @@ export default function ({
   setCurrentExcercise,
   setCurrentTraining,
   navigate,
+  navigatorSwitcher,
+  setNavigatorSwitcher,
 }) {
   return (
     <TrainingInfo
       setCurrentTraining={setCurrentTraining}
-      training={currentTraining}
-      date={currentTrainingDate}
+      trainingP={currentTraining}
+      dateP={currentTrainingDate}
       setCurrentExcercise={setCurrentExcercise}
       navigate={navigate}
+      navigatorSwitcher={navigatorSwitcher}
+      setNavigatorSwitcher={setNavigatorSwitcher}
     ></TrainingInfo>
   );
 }

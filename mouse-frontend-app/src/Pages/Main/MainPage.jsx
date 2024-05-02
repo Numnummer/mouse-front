@@ -35,6 +35,7 @@ export default function MainPage() {
       );
     }
   }
+  const [tabSwitcher, setTabSwitcher] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
     dateOfBirth: "",
@@ -74,6 +75,9 @@ export default function MainPage() {
   }, []);
 
   let currentTabComponent;
+  useEffect(() => {
+    setTabSwitcher(!tabSwitcher);
+  }, [currentTab]);
   switch (currentTab) {
     case "Profile":
       currentTabComponent = (
@@ -87,7 +91,7 @@ export default function MainPage() {
       localStorage.setItem(currentProfileItem, "Profile");
       break;
     case "Schedule":
-      currentTabComponent = <Schedule></Schedule>;
+      currentTabComponent = <Schedule currentTab={currentTab}></Schedule>;
       localStorage.setItem(currentProfileItem, "Schedule");
       break;
     case "MyExcercises":

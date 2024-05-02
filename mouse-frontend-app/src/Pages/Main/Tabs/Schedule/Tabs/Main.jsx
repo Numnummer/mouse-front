@@ -11,6 +11,8 @@ export default function Main({
   setCurrentTraining,
   setCurrentTrainingDate,
   navigate,
+  navigatorSwitcher,
+  setNavigatorSwitcher,
 }) {
   const [open, setOpen] = useState(false);
   const [trainingData, setTrainingData] = useState({
@@ -27,34 +29,29 @@ export default function Main({
     setToday(startOfToday());
     postTraining(trainingData)
       .then((result) => {
-        console.log(result);
         window.location.reload();
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log("asaiushusa");
   };
   const fetchTrainings = () => {
-    console.log("pojiawej");
     getAllTrainings()
       .then((result) => {
         setAllTrainings(result);
         setToday(startOfToday());
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     fetchTrainings();
-  }, []);
+  }, [navigatorSwitcher]);
   const onChange = (date, dateString) => {
-    console.log(date, dateString);
     setTrainingData((prev) => ({ ...prev, trainingDate: dateString }));
   };
   const [today, setToday] = useState(startOfToday());
   const handleTrainingDayClick = (day, training) => {
+    setNavigatorSwitcher((prev) => !prev);
     navigate("/Main/trainingInfo");
     setCurrentTraining(training);
     setCurrentTrainingDate(day);
