@@ -96,7 +96,7 @@ export default function TrainingInfo({
         setExcercises(result.exercises);
       })
       .catch((error) => {
-        toast.error(error, { autoClose: 2000 });
+        toast.error("Не удалось подгрузить упражнения", { autoClose: 2000 });
       });
     getAllExcercises().then((result) => {
       setItems(result.items);

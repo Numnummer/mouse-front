@@ -5,6 +5,7 @@ import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
 import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
 import image from "../../../../../public/video-image.png";
 import { deleteExcercise } from "../../../../Api/Excercise/DeleteExcercise";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
@@ -27,9 +28,13 @@ export default function MyExcercises() {
   };
   const onModalOk = () => {
     setOpen(false);
-    postNewExcercise(excerciseData).then((resp) => {
-      setExcercisePushSwithcher(!excercisePushSwitcher);
-    });
+    postNewExcercise(excerciseData)
+      .then((resp) => {
+        setExcercisePushSwithcher(!excercisePushSwitcher);
+      })
+      .catch((error) => {
+        toast.error("Не удалось добавить упражнение", { autoClose: 2000 });
+      });
   };
 
   const [allExcercises, setAllExcercises] = useState({
@@ -59,6 +64,11 @@ export default function MyExcercises() {
 
   return (
     <div className="user-page-container">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={2}
+      ></ToastContainer>
       <label className="title-label">Мои упражнения</label>
       <div className="exercises">
         {allExcercises.items.map((excercise, index) => (
@@ -132,12 +142,14 @@ export default function MyExcercises() {
             placeholder={"Ссылка на видео"}
           ></input>
           <input
+            type="number"
             name={"repetitions"}
             onChange={handleInputChange}
             className="inputs"
             placeholder={"Количество повторений"}
           ></input>
           <input
+            type="number"
             name={"approaches"}
             onChange={handleInputChange}
             className="inputs"
