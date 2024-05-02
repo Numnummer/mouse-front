@@ -9,12 +9,13 @@ import VkIcon from "../../Icons.jsx/VkIcon.jsx";
 import GoogleIcon from "../../Icons.jsx/GoogleIcon.jsx";
 import YandexIcon from "../../Icons.jsx/YandexIcon.jsx";
 import style from "./SignIn.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import Pictures from "../StartPage/Pictures.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { restorePasswordPath } from "../../Constants/Paths.js";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +36,7 @@ export default function SignIn() {
   }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
-    processSignInByOtherService(service)
+    processSignInByOtherService(service);
   }
 
   return (
@@ -93,6 +94,7 @@ export default function SignIn() {
               <YandexIcon />
             </button>
           </div>
+          <Link to={restorePasswordPath}>Забыли пароль?</Link>
           <div className={styles.registerButton}>
             <input
               type={"button"}

@@ -2,6 +2,7 @@ import {
   enterPath,
   mainPath,
   registrationPath,
+  restorePasswordPath,
   startPagePath,
   vkPath,
 } from "./Constants/Paths.js";
@@ -14,6 +15,7 @@ import MainPage from "./Pages/Main/MainPage.jsx";
 import MainBridge from "./Pages/Main/Tabs/MainBridge.jsx";
 import { useEffect } from "react";
 import VkAuth from "./Pages/Vk/VkAuth.jsx";
+import RestorePassword from "./Pages/RestorePassword/RestorePassword.jsx";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path={enterPath} element={SignIn()}></Route>
         <Route path={startPagePath} element={StartPage()}></Route>
         <Route path={vkPath} element={VkAuth()}></Route>
+        <Route path={restorePasswordPath} element={RestorePassword()}></Route>
       </Routes>
     </>
   );
