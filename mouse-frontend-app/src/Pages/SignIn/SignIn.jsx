@@ -94,7 +94,7 @@ export default function SignIn() {
               <YandexIcon />
             </button>
           </div>
-          <Link to={restorePasswordPath}>Забыли пароль?</Link>
+          {/* <Link to={restorePasswordPath}>Забыли пароль?</Link> */}
           <div className={styles.registerButton}>
             <input
               type={"button"}

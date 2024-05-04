@@ -15,6 +15,7 @@ import "./Main.css";
 import MessagesIcon from "./Tabs/Profile/Icons/MessagesIcon";
 import ScheduleIcon from "./Tabs/Profile/Icons/ScheduleIcon";
 import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
+import LogOutIcon from "./Tabs/Profile/Icons/LogOutIcon";
 import { useNavigate } from "react-router-dom";
 import checkUserProfile from "../../Api/UserProfile/CheckUserProfile";
 
@@ -145,6 +146,15 @@ export default function MainPage() {
           >
             <MyExcercisesIcon />
             <label>Мои упражнения</label>
+          </div>
+          <div
+            className="tab_logout"
+            // onClick={() => { сделать выход на startPage
+            //   setCurrentTab("MyExcercises");
+            // }}
+          >
+            <LogOutIcon />
+            <label className="logout_label">Выход</label>
           </div>
         </div>
       </div>
