@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@microsoft/signalr": "^8.0.0",
     "@userfront/toolkit": "^1.0.8",
     "antd": "^5.16.0",
     "axios": "^1.6.8",

@@ -99,7 +99,7 @@ export default function MainPage() {
       localStorage.setItem(currentProfileItem, "MyExcercises");
       break;
     case "Messages":
-      currentTabComponent = <Messages></Messages>;
+      currentTabComponent = <Messages currentTab={currentTab}></Messages>;
       localStorage.setItem(currentProfileItem, "Messages");
       break;
     default:
