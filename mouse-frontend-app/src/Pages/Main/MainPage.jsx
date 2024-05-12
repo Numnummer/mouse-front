@@ -149,9 +149,10 @@ export default function MainPage() {
           </div>
           <div
             className="tab_logout"
-            // onClick={() => { сделать выход на startPage
-            //   setCurrentTab("MyExcercises");
-            // }}
+            onClick={() => {
+              localStorage.setItem(authToken, "");
+              navigate("/");
+            }}
           >
             <LogOutIcon />
             <label className="logout_label">Выход</label>
