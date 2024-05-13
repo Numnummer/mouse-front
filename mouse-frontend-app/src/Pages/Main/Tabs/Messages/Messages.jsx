@@ -4,45 +4,34 @@ import { hubConnectionUrl } from "../../../../Constants/Messages";
 import MessageContainer from "./MessageContainer/MessageContainer";
 import SendMessageBar from "./SendMessageBar/SendMessageBar";
 import { userNameItem } from "../../../../Constants/LocalStorageItemKeys";
-import Chat, { Bubble, useMessages } from '@chatui/core';
-import '@chatui/core/dist/index.css';
-import './Messages.css'
 
 export default function Messages({ currentTab }) {
-const { messages, appendMsg, setTyping } = useMessages([]);
-
-  function handleSend(type, val) {
-    if (type === 'text' && val.trim()) {
-      appendMsg({
-        type: 'text',
-        content: { text: val },
-        position: 'right',
-      });
-
-      setTyping(true);
-
-      setTimeout(() => {
-        appendMsg({
-          type: 'text',
-          content: { text: 'Bala bala' },
-        });
-      }, 1000);
-    }
-  }
-
-  function renderMessageContent(msg) {
-    const { content } = msg;
-    return <Bubble content={content.text} />;
-  }
-
-
+  const [messages, setMessages] = useState([]);
+  const [connection, setConnection] = useState();
+  const [userRole, setUserRole] = useState();
+  useEffect(() => {
+    /*const chatConnection = new HubConnectionBuilder()
+      .withUrl(hubConnectionUrl)
+      .build();
+    setConnection(chatConnection);*/
+    //Временно инициализирую переменные, потом это
+    //будет приходить с бэка
+    setUserRole("Couch");
+    setMessages([
+      { author: "asd", body: "qwe", date: new Date() },
+      { author: "qw", body: "qwe", date: new Date() },
+      { author: "aswqdsd", body: "qwwqedwe", date: new Date() },
+      { author: "asqwdqd", body: "qwqwqewe", date: new Date() },
+    ]);
+  }, [currentTab]);
   return (
-    <Chat
-      className="chat-messages"
-      navbar={{ title: 'Тренер' }}
-      messages={messages}
-      renderMessageContent={renderMessageContent}
-      onSend={handleSend}
-    />
+    <div className="user-page-container">
+      <MessageContainer messages={messages}></MessageContainer>
+      {userRole == "Couch" && (
+        <SendMessageBar
+          userName={localStorage.getItem(userNameItem)}
+        ></SendMessageBar>
+      )}
+    </div>
   );
 }
