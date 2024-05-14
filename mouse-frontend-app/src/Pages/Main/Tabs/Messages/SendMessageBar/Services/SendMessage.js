@@ -1,1 +1,3 @@
-export default function sendMessage(author, message, connection) {}
+export default async function sendMessage(userId, message, connection) {
+        await connection.invoke("SendMessage", message, userId.toString());
+}

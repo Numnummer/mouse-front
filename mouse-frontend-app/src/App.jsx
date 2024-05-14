@@ -16,6 +16,7 @@ import MainBridge from "./Pages/Main/Tabs/MainBridge.jsx";
 import { useEffect } from "react";
 import VkAuth from "./Pages/Vk/VkAuth.jsx";
 import RestorePassword from "./Pages/RestorePassword/RestorePassword.jsx";
+import Vk from "./Pages/SignIn/vk/Vk.jsx";
 
 function App() {
   return (
