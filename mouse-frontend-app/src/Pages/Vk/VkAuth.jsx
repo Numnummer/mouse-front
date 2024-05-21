@@ -12,7 +12,6 @@ import {
 export default function () {
   useEffect(() => {
     const params = queryString.parse(window.location.search);
-    console.log(params);
     if (params.code) {
       axios
         .get(

@@ -17,3 +17,7 @@ export const excerciseClient = axios.create({
 export const trainingClient = axios.create({
   baseURL: `${backendOrigin}/api/Trainings/`,
 });
+
+export const messagesClient = axios.create({
+  baseURL: `${backendOrigin}/api/Message/`,
+});

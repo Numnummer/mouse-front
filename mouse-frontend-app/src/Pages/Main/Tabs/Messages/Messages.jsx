@@ -3,51 +3,78 @@ import { useEffect, useState } from "react";
 import { hubConnectionUrl } from "../../../../Constants/Messages";
 import MessageContainer from "./MessageContainer/MessageContainer";
 import SendMessageBar from "./SendMessageBar/SendMessageBar";
-import {authToken} from "../../../../Constants/LocalStorageItemKeys";
-import {userClient} from "../../../../Constants/AxiosClients.js";
+import { authToken } from "../../../../Constants/LocalStorageItemKeys";
+import {
+  messagesClient,
+  userClient,
+} from "../../../../Constants/AxiosClients.js";
 
 export default function Messages({ currentTab }) {
   const [messages, setMessages] = useState([]);
   const [connection, setConnection] = useState();
   const [userRole, setUserRole] = useState("");
   const [currentUserId, setCurrentUserId] = useState("");
-  useEffect( () => {
+  useEffect(() => {
     const chatConnection = new HubConnectionBuilder()
-        .withUrl(hubConnectionUrl)
-        .build();
-
-    //chatConnection.start().then(() => setConnection(chatConnection))
+      .withUrl(hubConnectionUrl)
+      .build();
 
     let token = localStorage.getItem(authToken);
-    console.log(token);
-    console.log("123123123");
-    userClient.get("currentRole", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    }).then(response => setUserRole(response.data))
+    userClient
+      .get("currentRole", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setUserRole(response.data));
 
-    console.log("999999999999");
-    userClient.get("currentUserInfo", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    }).then(response => setCurrentUserId(response.data.userId.toString()))
-    console.log(currentUserId);
+    userClient
+      .get("currentUserInfo", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setCurrentUserId(response.data.userId.toString()));
 
-    chatConnection.on("ReceiveMessage", (sendDate, messageText, coachName) => {
-      setMessages([
-        {author: coachName, body: messageText, date: sendDate}
-      ])
-    })
-    chatConnection.start().then(() => setConnection(chatConnection))
+    messagesClient
+      .get("messages", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((resp) => {
+        setMessages(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    chatConnection.on("ReceiveMessage", (sendDate, coachName, messageText) => {
+      console.log({ author: coachName, body: messageText, date: sendDate });
+      setMessages((prev) => [
+        ...prev,
+        { author: coachName, body: messageText, date: sendDate },
+      ]);
+    });
+
+    chatConnection.start().then(() => {
+      setConnection(chatConnection);
+    });
+
+    setMessages([
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
+    ]);
   }, [currentTab]);
+
   return (
     <div className="user-page-container">
       <MessageContainer messages={messages}></MessageContainer>
       {userRole === "Coach" && (
         <SendMessageBar
-          connection={connection} userId={currentUserId}
+          connection={connection}
+          userId={currentUserId}
         ></SendMessageBar>
       )}
     </div>
