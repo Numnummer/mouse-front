@@ -9,7 +9,7 @@ export default function SendMessageBar({ connection, userId }) {
 
   return (
     <div className="send-message-bar">
-      <Space.Compact>
+      <Space.Compact className="input-button-send">
         <Input
           type="text"
           className="send-input"

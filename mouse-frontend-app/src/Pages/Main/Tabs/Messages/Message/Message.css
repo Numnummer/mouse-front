@@ -45,11 +45,6 @@ p {
 	}
 }
 
-.messages-container{
-    margin-top: 30px;
-    overflow: none;
-}
-
 .message-date{
     font-size: 16px;
     height: 0px;
@@ -66,7 +61,7 @@ p {
 }
 
 .user-messages-container{
-    width: 100%;
+
 }
 
 .trainer-icon{
