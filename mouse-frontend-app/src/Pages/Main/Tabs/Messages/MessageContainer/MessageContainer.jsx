@@ -1,9 +1,9 @@
 import Message from "../Message/Message";
 import "./MessageContainer.css";
 
-export default function ({ messages }) {
+export default function MessageContainer({ messages }) {
   return (
-    <div>
+    <div className="messages-container">
       {messages.map((message, index) => (
         <Message message={message} key={index}></Message>
       ))}

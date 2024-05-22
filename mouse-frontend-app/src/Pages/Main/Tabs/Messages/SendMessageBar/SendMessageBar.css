@@ -1,0 +1,11 @@
+.send-message-bar{
+    position: absolute;
+    top: 90%;
+    margin-left: 200px;
+}
+
+.send-input{
+    height: 33px;
+    max-width: 1100px;
+    min-width: 300px;
+}

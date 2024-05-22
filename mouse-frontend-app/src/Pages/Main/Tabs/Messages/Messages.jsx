@@ -64,19 +64,31 @@ export default function Messages({ currentTab }) {
     setMessages([
       { author: "coachName", body: "messageText", date: new Date() },
       { author: "coachName", body: "messageText", date: new Date() },
+      {
+        author: "coachName",
+        body: "messageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageText",
+        date: new Date(),
+      },
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
+      { author: "coachName", body: "messageText", date: new Date() },
       { author: "coachName", body: "messageText", date: new Date() },
     ]);
   }, [currentTab]);
 
   return (
     <div className="user-page-container">
-      <MessageContainer messages={messages}></MessageContainer>
-      {userRole === "Coach" && (
-        <SendMessageBar
-          connection={connection}
-          userId={currentUserId}
-        ></SendMessageBar>
-      )}
+      <div className="user-messages-container">
+        <MessageContainer messages={messages}></MessageContainer>
+        {userRole === "Coach" && (
+          <SendMessageBar
+            connection={connection}
+            userId={currentUserId}
+          ></SendMessageBar>
+        )}
+      </div>
     </div>
   );
 }
