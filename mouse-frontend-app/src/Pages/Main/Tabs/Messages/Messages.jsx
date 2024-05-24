@@ -81,7 +81,10 @@ export default function Messages({ currentTab }) {
   return (
     <div className="user-page-container">
       <div className="user-messages-container">
-        <MessageContainer messages={messages}></MessageContainer>
+        <MessageContainer
+          messages={messages}
+          role={userRole}
+        ></MessageContainer>
         {userRole === "Coach" && (
           <SendMessageBar
             connection={connection}
