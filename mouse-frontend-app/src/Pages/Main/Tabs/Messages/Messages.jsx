@@ -8,6 +8,10 @@ import {
   messagesClient,
   userClient,
 } from "../../../../Constants/AxiosClients.js";
+import getCurrentRole from "../../../../Api/User/GetCurrentRole.js";
+import getCurrentUserInfo from "../../../../Api/User/GetCurrentUserInfo.js";
+import getMessages from "../../../../Api/Messages/GetMessages.js";
+import { ToastContainer } from "react-toastify";
 
 export default function Messages({ currentTab }) {
   const [messages, setMessages] = useState([]);
@@ -19,49 +23,38 @@ export default function Messages({ currentTab }) {
       .withUrl(hubConnectionUrl)
       .build();
 
-    let token = localStorage.getItem(authToken);
-    userClient
-      .get("currentRole", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setUserRole(response.data));
+    getCurrentRole().then((response) => {
+      console.log(response);
+      setUserRole(response);
+    });
 
-    userClient
-      .get("currentUserInfo", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setCurrentUserId(response.data.userId.toString()));
+    getCurrentUserInfo().then((response) =>
+      setCurrentUserId(response.userId.toString())
+    );
 
-    messagesClient
-      .get("messages", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    getMessages()
       .then((resp) => {
-        setMessages(resp.data);
+        setMessages(resp);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Не удалось загрузить сообщения");
       });
 
     chatConnection.on("ReceiveMessage", (sendDate, coachName, messageText) => {
-      console.log({ author: coachName, body: messageText, date: sendDate });
-      setMessages((prev) => [
-        ...prev,
-        { author: coachName, body: messageText, date: sendDate },
-      ]);
+      const prevMessages = messages.items;
+      setMessages({
+        items: [
+          ...prevMessages,
+          { author: coachName, body: messageText, date: sendDate },
+        ],
+      });
     });
 
     chatConnection.start().then(() => {
       setConnection(chatConnection);
     });
 
-    setMessages([
+    /*setMessages([
       { author: "coachName", body: "messageText", date: new Date() },
       { author: "coachName", body: "messageText", date: new Date() },
       {
@@ -75,11 +68,12 @@ export default function Messages({ currentTab }) {
       { author: "coachName", body: "messageText", date: new Date() },
       { author: "coachName", body: "messageText", date: new Date() },
       { author: "coachName", body: "messageText", date: new Date() },
-    ]);
+    ]);*/
   }, [currentTab]);
 
   return (
     <div className="user-page-container">
+      <ToastContainer></ToastContainer>
       <div className="user-messages-container">
         <MessageContainer
           messages={messages}

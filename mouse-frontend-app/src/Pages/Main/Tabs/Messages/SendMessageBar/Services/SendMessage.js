@@ -1,3 +1,7 @@
-export default async function sendMessage(userId, message, connection) {
-  await connection.invoke("sendMessage", userId, message);
+export default async function sendMessage(
+  currentUserId,
+  messageText,
+  connection
+) {
+  await connection.invoke("SendMessage", messageText, currentUserId);
 }
