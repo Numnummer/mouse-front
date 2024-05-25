@@ -21,7 +21,9 @@ export default function Message({ message, role }) {
       <div className="">
         <p className="author">{message.senderName}</p>
         <div className="message-and-icon">
-          <p className={role == "Coach" ? "send" : "receive"}>{message.body}</p>
+          <p className={role == "Coach" ? "send" : "receive"}>
+            {message.messsageText}
+          </p>
           {/* <img className="trainer-icon" src={img} height={"45px"} /> */}
         </div>
         <p className="message-date">{formattedDate}</p>

@@ -15,7 +15,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function Messages({ currentTab }) {
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState(false);
   const [connection, setConnection] = useState();
   const [userRole, setUserRole] = useState("");
   const [currentUserId, setCurrentUserId] = useState("");
@@ -35,7 +34,6 @@ export default function Messages({ currentTab }) {
     getMessages()
       .then((resp) => {
         setMessages(resp.items);
-        console.log(resp.items);
       })
       .catch((err) => {
         toast.error("Не удалось загрузить сообщения");
@@ -46,7 +44,7 @@ export default function Messages({ currentTab }) {
         ...prev,
         {
           senderName: receiveData.from,
-          messageText: receiveData.message,
+          messsageText: receiveData.message,
           sendDate: receiveData.createdDate,
         },
       ]);
@@ -64,13 +62,11 @@ export default function Messages({ currentTab }) {
         <MessageContainer
           messages={messages}
           role={userRole}
-          newMessage={newMessage}
         ></MessageContainer>
         {userRole === "Coach" && (
           <SendMessageBar
             connection={connection}
             userId={currentUserId}
-            setNewMessage={setNewMessage}
           ></SendMessageBar>
         )}
       </div>
