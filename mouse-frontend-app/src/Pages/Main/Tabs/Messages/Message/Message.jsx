@@ -2,7 +2,7 @@ import "./Message.css";
 import img from "../../Icons/Trainer.png";
 
 export default function Message({ message, role }) {
-  const date = new Date(message.date);
+  const date = new Date(message.sendDate);
   const options = {
     month: "short", // короткое название месяца
     day: "numeric", // день месяца
@@ -19,7 +19,7 @@ export default function Message({ message, role }) {
   return (
     <div className="message-container">
       <div className="">
-        <p className="author">{message.author}</p>
+        <p className="author">{message.senderName}</p>
         <div className="message-and-icon">
           <p className={role == "Coach" ? "send" : "receive"}>{message.body}</p>
           {/* <img className="trainer-icon" src={img} height={"45px"} /> */}

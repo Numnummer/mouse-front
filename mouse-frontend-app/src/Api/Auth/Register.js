@@ -14,6 +14,7 @@ export function register(registerData) {
       }
     })
     .catch((error) => {
+      console.log(error);
       throw new Error(error.response.data.title);
     });
 }

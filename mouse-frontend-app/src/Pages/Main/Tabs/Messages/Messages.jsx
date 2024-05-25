@@ -11,10 +11,11 @@ import {
 import getCurrentRole from "../../../../Api/User/GetCurrentRole.js";
 import getCurrentUserInfo from "../../../../Api/User/GetCurrentUserInfo.js";
 import getMessages from "../../../../Api/Messages/GetMessages.js";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Messages({ currentTab }) {
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState(false);
   const [connection, setConnection] = useState();
   const [userRole, setUserRole] = useState("");
   const [currentUserId, setCurrentUserId] = useState("");
@@ -24,7 +25,6 @@ export default function Messages({ currentTab }) {
       .build();
 
     getCurrentRole().then((response) => {
-      console.log(response);
       setUserRole(response);
     });
 
@@ -34,41 +34,27 @@ export default function Messages({ currentTab }) {
 
     getMessages()
       .then((resp) => {
-        setMessages(resp);
+        setMessages(resp.items);
+        console.log(resp.items);
       })
       .catch((err) => {
         toast.error("Не удалось загрузить сообщения");
       });
 
-    chatConnection.on("ReceiveMessage", (sendDate, coachName, messageText) => {
-      const prevMessages = messages.items;
-      setMessages({
-        items: [
-          ...prevMessages,
-          { author: coachName, body: messageText, date: sendDate },
-        ],
-      });
+    chatConnection.on("ReceiveMessage", (receiveData) => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          senderName: receiveData.from,
+          messageText: receiveData.message,
+          sendDate: receiveData.createdDate,
+        },
+      ]);
     });
 
     chatConnection.start().then(() => {
       setConnection(chatConnection);
     });
-
-    /*setMessages([
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-      {
-        author: "coachName",
-        body: "messageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageTextmessageText",
-        date: new Date(),
-      },
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-      { author: "coachName", body: "messageText", date: new Date() },
-    ]);*/
   }, [currentTab]);
 
   return (
@@ -78,11 +64,13 @@ export default function Messages({ currentTab }) {
         <MessageContainer
           messages={messages}
           role={userRole}
+          newMessage={newMessage}
         ></MessageContainer>
         {userRole === "Coach" && (
           <SendMessageBar
             connection={connection}
             userId={currentUserId}
+            setNewMessage={setNewMessage}
           ></SendMessageBar>
         )}
       </div>

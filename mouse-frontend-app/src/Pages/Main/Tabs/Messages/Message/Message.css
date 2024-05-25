@@ -1,9 +1,9 @@
 @use postcss-nested;
 
 :root {
-  --send-bg: #0B93F6;
+  --send-bg: #0b93f6;
   --send-color: white;
-  --receive-bg: #E5E5EA;
+  --receive-bg: #e5e5ea;
   --receive-text: black;
   --page-background: white;
 }
@@ -16,78 +16,78 @@ p {
   position: relative;
   padding: 10px 20px;
   border-radius: 25px;
-  
-  &:before, &:after {
+
+  &:before,
+  &:after {
     content: "";
-		position: absolute;
+    position: absolute;
     bottom: 0;
     height: 25px;
   }
 }
 
 .send {
-	color: var(--send-color); 
-	background: var(--send-bg);
-	align-self: flex-end;
-		
-	&:before {
-		right: -7px;
+  color: var(--send-color);
+  background: var(--send-bg);
+  align-self: flex-end;
+
+  &:before {
+    right: -7px;
     width: 20px;
     background-color: var(--send-bg);
-		border-bottom-left-radius: 16px 14px;
-	}
+    border-bottom-left-radius: 16px 14px;
+  }
 
-	&:after {
-		right: -26px;
+  &:after {
+    right: -26px;
     width: 26px;
     background-color: var(--page-background);
-		border-bottom-left-radius: 10px;
-	}
+    border-bottom-left-radius: 10px;
+  }
 }
 
-.message-date{
-    font-size: 16px;
-    height: 0px;
-    margin-top: -15px;
-    text-align: end;
+.message-date {
+  font-size: 16px;
+  height: 0px;
+  margin-top: -15px;
+  text-align: end;
 }
 
-.author{
-    font-size: 16px;
-    height: 0px;
-    margin-bottom: -15px;
-    width: 100%;
-    align-self: flex-end;
+.author {
+  font-size: 16px;
+  height: 0px;
+  margin-bottom: -15px;
+  width: 100%;
+  align-self: flex-end;
 }
 
-.user-messages-container{
-
+.user-messages-container {
 }
 
-.trainer-icon{
-    margin-top: -15px;
-    text-align: end;
+.trainer-icon {
+  margin-top: -15px;
+  text-align: end;
 }
 
-.trainer-icon-div{
+.trainer-icon-div {
 }
 
 .receive {
-	background: var(--receive-bg);
-	color: black;
+  background: var(--receive-bg);
+  color: black;
   align-self: flex-start;
-		
-	&:before {
-		left: -7px;
+
+  &:before {
+    left: -7px;
     width: 20px;
     background-color: var(--receive-bg);
-		border-bottom-right-radius: 16px 14px;
-	}
+    border-bottom-right-radius: 16px 14px;
+  }
 
-	&:after {
-		left: -26px;
+  &:after {
+    left: -26px;
     width: 26px;
     background-color: var(--page-background);
-		border-bottom-right-radius: 10px;
-	}
+    border-bottom-right-radius: 10px;
+  }
 }

@@ -4,7 +4,7 @@ import sendMessage from "./Services/SendMessage";
 import { Button, Input, Space } from "antd";
 
 // eslint-disable-next-line react/prop-types
-export default function SendMessageBar({ connection, userId }) {
+export default function SendMessageBar({ connection, userId, setNewMessage }) {
   const [message, setMessage] = useState("");
 
   return (
@@ -24,6 +24,7 @@ export default function SendMessageBar({ connection, userId }) {
           className="send-button"
           onClick={() => {
             sendMessage(userId, message, connection);
+            setNewMessage((prev) => !prev);
           }}
         >
           Send

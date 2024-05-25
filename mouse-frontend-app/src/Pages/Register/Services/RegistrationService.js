@@ -9,6 +9,7 @@ export default function processRegistration(registrationData) {
           resolve(result);
         })
         .catch((error) => {
+          console.log(error);
           reject("Не валидные данные");
         });
     }
