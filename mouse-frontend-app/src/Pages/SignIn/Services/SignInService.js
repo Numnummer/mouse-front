@@ -6,13 +6,20 @@ import {
   RESPONSE_TYPE,
   SCOPE,
   VERSION,
-  VK_AUTHORIZATION_URI
+  VK_AUTHORIZATION_URI,
 } from "../../../Constants/Vk.js";
 
 export function processSignIn(signInData) {
   return new Promise((resolve, reject) => {
     if (isValidSignInData(signInData)) {
-      resolve(signIn(signInData));
+      signIn(signInData)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject("Не удалось войти");
+        });
     } else {
       reject("Invalid sign-in data");
     }

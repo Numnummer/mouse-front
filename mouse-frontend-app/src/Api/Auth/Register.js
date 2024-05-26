@@ -12,6 +12,9 @@ export function register(registerData) {
         };
         return signIn(signInData);
       }
+      return new Promise((_, reject) => {
+        reject(response.data.result.errors[0].code);
+      });
     })
     .catch((error) => {
       console.log(error);

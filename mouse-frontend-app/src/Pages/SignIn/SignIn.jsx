@@ -31,6 +31,7 @@ export default function SignIn() {
         navigate("Main");
       })
       .catch((error) => {
+        console.log(error);
         toast.error(error, { autoClose: 2000 });
       });
   }
