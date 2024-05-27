@@ -18,6 +18,7 @@ import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
 import LogOutIcon from "./Tabs/Profile/Icons/LogOutIcon";
 import { useNavigate } from "react-router-dom";
 import checkUserProfile from "../../Api/UserProfile/CheckUserProfile";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ export default function MainPage() {
       }
     });
   };
+
   useEffect(() => {
     if (localStorage.getItem(currentProfileItem)) {
       setCurrentTab(localStorage.getItem(currentProfileItem));
@@ -109,6 +111,7 @@ export default function MainPage() {
 
   return (
     <div className="menuflex">
+      <ToastContainer limit={1}></ToastContainer>
       <div className="menu">
         <div
           onClick={() => {
@@ -132,6 +135,7 @@ export default function MainPage() {
           <div
             className="tab"
             onClick={() => {
+              setNewMessages(false);
               setCurrentTab("Messages");
             }}
           >

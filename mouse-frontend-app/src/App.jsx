@@ -1,5 +1,6 @@
 import {
   enterPath,
+  googlePath,
   mainPath,
   registrationPath,
   restorePasswordPath,
@@ -16,7 +17,7 @@ import MainBridge from "./Pages/Main/Tabs/MainBridge.jsx";
 import { useEffect } from "react";
 import VkAuth from "./Pages/Vk/VkAuth.jsx";
 import RestorePassword from "./Pages/RestorePassword/RestorePassword.jsx";
-import Vk from "./Pages/SignIn/vk/Vk.jsx";
+import GoogleAuth from "./Pages/Google/GoogleAuth.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path={startPagePath} element={StartPage()}></Route>
         <Route path={vkPath} element={VkAuth()}></Route>
         <Route path={restorePasswordPath} element={RestorePassword()}></Route>
+        <Route path={googlePath} element={GoogleAuth()}></Route>
       </Routes>
     </>
   );

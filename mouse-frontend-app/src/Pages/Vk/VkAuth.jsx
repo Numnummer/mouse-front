@@ -12,7 +12,7 @@ import {
 export default function () {
   useEffect(() => {
     const params = queryString.parse(window.location.search);
-    if (params.code) {
+    if (false) {
       axios
         .get(
           `${VK_AUTHORIZATION_URI}access_token?client_id=${CLIENT_ID}&client_secret=${ServiceKey}&redirect_uri=${REDIRECT_URI}&code=${params.code}`,
