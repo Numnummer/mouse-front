@@ -16,6 +16,7 @@ import image from "./profile-image.png";
 import { DatePicker } from "antd";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Profile({
   userData,
@@ -35,9 +36,13 @@ export default function Profile({
   function onCreateProfile() {
     setEditMode(!editMode);
     if (editMode) {
-      createProfile(userData).then(() => {
-        setIsProfileExists(true);
-      });
+      createProfile(userData)
+        .then(() => {
+          setIsProfileExists(true);
+        })
+        .catch((err) => {
+          toast.error("Не удалось создать профиль");
+        });
     }
   }
 
@@ -55,6 +60,7 @@ export default function Profile({
 
   return (
     <div className="user-page-container">
+      <ToastContainer></ToastContainer>
       <div className="personal-data-title">
         <div className="user-photo">
           <img className="user-photo" src={image} width="250px"></img>
@@ -68,7 +74,24 @@ export default function Profile({
           <label className="physical-data">Персональные данные</label>
           <div className="user-dob">
             Имя:
-            <div className="editModeData">{`${userData.firstName} ${userData.lastName}`}</div>
+            <UnitOfData
+              editMode={editMode}
+              type={"text"}
+              data={userData.firstName}
+              name={"firstName"}
+              onChange={handleInputChange}
+            ></UnitOfData>
+          </div>
+          <div className="user-dob">
+            Фамилия:
+            <UnitOfData
+              editMode={editMode}
+              type={"text"}
+              data={userData.lastName}
+              name={"lastName"}
+              onChange={handleInputChange}
+            ></UnitOfData>
+            {/*<div className="editModeData">{`${userData.firstName} ${userData.lastName}`}</div>*/}
           </div>
           <div className="user-dob">
             Дата рождения:

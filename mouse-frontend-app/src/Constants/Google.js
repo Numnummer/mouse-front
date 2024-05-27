@@ -3,7 +3,7 @@ export const clientIdGoogle =
 
 export const clientSecretGoogle = "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";
 export const redirectUrlGoolgle =
-  "http://localhost:5173/api/sessions/oauth/google";
+  "http://prostitutio.online/api/sessions/oauth/google";
 
 export const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?\
 response_type=code&\

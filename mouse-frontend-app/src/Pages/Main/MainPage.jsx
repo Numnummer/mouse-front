@@ -40,6 +40,7 @@ export default function MainPage() {
   const [tabSwitcher, setTabSwitcher] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
+    lastName: "",
     dateOfBirth: "",
     height: "",
     weight: "",
@@ -58,6 +59,7 @@ export default function MainPage() {
   const loadProfile = () => {
     getCurrentUserInfo().then((response) => {
       response.dateOfBirth = parseToNormalDate(response.dateOfBirth);
+      console.log(response);
       setUserData(response);
       localStorage.setItem(userNameItem, response.firstName);
       if (response) {

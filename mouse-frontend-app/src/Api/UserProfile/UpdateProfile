@@ -18,6 +18,8 @@ export default function updateProfile(userData) {
     2
   )}`;
   const data = {
+    firstName: userData.firstName,
+    lastName: userData.lastName,
     gender: userData.gender === "Мужчина" ? 0 : 1,
     dateOfBirth: userData.dateOfBirth,
     phoneNumber: userData.phoneNumber,

@@ -4,6 +4,8 @@ import { authToken } from "../../Constants/LocalStorageItemKeys";
 export default function createProfile(userData) {
   let token = localStorage.getItem(authToken);
   const data = {
+    firstName: userData.firstName,
+    lastName: userData.lastName,
     gender: userData.gender,
     dateOfBirth: userData.dateOfBirth,
     phoneNumber: userData.phoneNumber,
