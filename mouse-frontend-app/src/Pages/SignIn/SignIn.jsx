@@ -16,6 +16,8 @@ import Pictures from "../StartPage/Pictures.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { restorePasswordPath } from "../../Constants/Paths.js";
+import Form from "./Components/Form.jsx";
+import onFormSubmit from "./Services/FormSubmit.js";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,17 +26,6 @@ export default function SignIn() {
     password: "",
   });
   const navigate = useNavigate();
-  function onFormSubmit(event) {
-    event.preventDefault();
-    processSignIn(signInData)
-      .then(() => {
-        navigate("Main");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error, { autoClose: 2000 });
-      });
-  }
   function onOtherServiceSubmit(event, service) {
     event.preventDefault();
     processSignInByOtherService(service);
@@ -51,29 +42,11 @@ export default function SignIn() {
       <div className={styles.page}>
         <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>
         <div className={style.mainPanel}>
-          <form>
-            <div className={CommonStyles.inputs}>
-              <input
-                type="text"
-                name="email"
-                autoComplete="h87h58g7h8hd"
-                placeholder={"Email"}
-                onChange={(event) => {
-                  setSignInData({ ...signInData, email: event.target.value });
-                }}
-              />
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder={"Пароль"}
-                onChange={(event) => {
-                  setSignInData({
-                    ...signInData,
-                    password: event.target.value,
-                  });
-                }}
-              />
-            </div>
-          </form>
+          <Form
+            setSignInData={setSignInData}
+            showPassword={showPassword}
+            signInData={signInData}
+          ></Form>
           <div>
             <button
               style={{ top: "-45px", left: "400px" }}
