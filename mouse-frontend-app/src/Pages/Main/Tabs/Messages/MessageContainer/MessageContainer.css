@@ -1,0 +1,13 @@
+.messages-container{
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #dcdcdc #ffffff; 
+    scrollbar-width: thin;  
+    margin: 50px;
+    padding-right: 10px;
+    min-width: 200px;
+    margin-left: 10%;
+    position: absolute;
+    width: 85%;
+}

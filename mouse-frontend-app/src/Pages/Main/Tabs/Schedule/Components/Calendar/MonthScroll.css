@@ -1,0 +1,15 @@
+.month-scroll{
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    color: #2667bb;
+
+}
+
+.scrolls{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -60px;
+}

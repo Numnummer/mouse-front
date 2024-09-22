@@ -1,0 +1,41 @@
+.editModeData{
+    color: rgb(91, 91, 91);
+    font-size: 22px;
+    margin: 5px;
+    font-weight: 200 !important;
+}
+
+.editModeInput{
+    display: block;
+    width: 200px;
+    height: 20px;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.editModeInput::placeholder {
+    color: #212529;
+    opacity: 0.4;
+  }
+
+.editModeData, .editModeInput{
+    position: absolute;
+}
+
+.editModeInput:focus {
+    color: #000000;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+  

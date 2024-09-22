@@ -1,0 +1,30 @@
+.day-of-the-weeks{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    justify-content: space-between;
+    width: 445px;
+    margin-left: 20px;
+    color: rgb(177, 177, 177);
+    margin-bottom: 10px;
+}
+
+.day-of-the-week{
+    
+}
+
+.month-info{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    color: #2667bb;
+}
+
+hr {
+    border: none; 
+    background-color: rgb(221, 221, 221); 
+    height: 1px; 
+    margin-bottom: 30px;
+    width: 440px;
+}

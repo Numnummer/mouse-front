@@ -1,0 +1,162 @@
+html,
+body {
+  margin: 0;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+  font-size: 20px;
+}
+
+.user-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.user-info-header {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  cursor: pointer;
+}
+
+.personal-data-title {
+  color: #2F80ED;
+  margin-bottom: 20px;
+}
+
+.user-photo {
+  border-radius: 40px;
+}
+
+.physical-data,
+.contacts {
+  color: #2F80ED;
+  margin-bottom: 10px;
+}
+
+.physical-data-item,
+.contacts-item {
+  height: 70px;
+}
+
+.fill-profile-button{
+  
+}
+
+.fill-profile-button button{
+  background-color: #D2E1FF;
+  color: #2F80ED;
+  font-weight: 600;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 17px;
+  display: flex;
+  position: absolute;
+  top: 90%;
+  right: 5%;
+}
+
+.fill-profile-button button:hover {
+  background-color: #C8DBFF;
+}
+
+.change-button button{
+    background-color: #F7F7F7;
+    color: #8a8a8a;
+    padding: 15px 60px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-left: 25px;
+    z-index: 3;
+    position: relative;
+    top: -80px;
+}
+
+.change-button button:hover {
+    background-color: #dededc;
+  }
+
+.user-page-container{
+    border: solid;
+    border-radius: 40px;
+    border-color: #F5F5F5;
+    border-width: 15px;
+    z-index: 800;
+    background-color: #fff;
+    font-size: 28px;
+    color: #3f3f3f;
+
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    grid-gap: 2rem; 
+    position: relative;
+}
+
+.personal-data-title{
+  margin: 40px;
+}
+
+.info1{
+  position: relative;
+  top: 60px;
+}
+
+.info2{
+  position: fixed;
+  top: 400px;
+  left: 385px;
+}
+
+.info3{
+  position: fixed;
+  top: 400px;
+  left: 685px;
+}
+
+.info{
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+}
+
+.user-dob{
+  height: 70px;
+  font-size: 20px;
+  color: #8a8a8a;
+  font-weight: 600;
+}
+
+body{
+  background-color: #F5F5F5;
+}
+
+.bold-text {
+  font-weight: bold;
+  color: #a3a3a3;
+  margin-bottom: 8px;
+}
+
+.select-container {
+  padding: 4px;
+  font-size: 20px;
+  border-radius: 4px;
+  border-color: #a3a3a3;
+  color: #5b5b5b;
+}
+
+.option-text {
+  font-size: 20px;
+}
+
+.editModeData {
+  font-size: 20px;
+}

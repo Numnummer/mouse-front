@@ -1,0 +1,77 @@
+.user-calendar{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -50%);
+    height: 500px;
+    box-shadow: 0px 0px 10px 0px rgba(174, 173, 173, 0.5); 
+    border-radius: 20px;
+    padding: 15px;
+}   
+
+
+.dayButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.day, .disabled-day, .training-day{
+    width: 70px;
+    height: 70px;
+    border: solid;
+    border-color: #fff;
+    border-radius: 50px;
+    background-color: #fff;
+}
+
+.disabled-day{
+    color: #7c7c7c;
+}
+
+.training-day{
+    background-color: #9ec5ff;
+    border-color: #ffffff;
+    border-width: 15px;
+    cursor: pointer;
+}
+
+.day:hover{
+    background-color: rgba(159, 159, 159, 0.075);
+    cursor: pointer;
+}
+
+.add-training{
+    background-color: #D2E1FF;
+    color: #2F80ED;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    position: absolute;
+    top: 90%;
+    right: 5%;
+    height: 45px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.inputs{
+    width: 380px;
+    border: solid;
+    border-color: white;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.623);
+    margin-top: 20px;
+    font-size: 20px;
+    outline:none;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.date-picker{
+    width: 200px;
+    margin-left: 50px;
+}
+
