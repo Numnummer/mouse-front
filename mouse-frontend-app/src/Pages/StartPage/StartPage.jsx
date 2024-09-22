@@ -1,10 +1,10 @@
 ﻿import styles from "./StartPage.module.css";
 import Button from "./Components/Button/Button.jsx";
 import Pictures from "./Pictures.jsx";
-import CommonStyles from "../../CommonStyles/CommonStyles.module.css"
-import {useNavigate} from "react-router-dom";
-import {enterPath, registrationPath} from "../../Constants/Paths.js";
-
+import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
+import { useNavigate } from "react-router-dom";
+import { enterPath, registrationPath } from "../../Constants/Paths.js";
+import React from "react";
 
 export default function StartPage() {
   const navigate = useNavigate();
@@ -16,13 +16,10 @@ export default function StartPage() {
           <h1 className={CommonStyles.title1}>Трекер Тренировок</h1>
           <div className={styles.buttonPanel}>
             <Button
-                text="Регистрация"
-                handler={()=> navigate(registrationPath)}
+              text="Регистрация"
+              handler={() => navigate(registrationPath)}
             />
-            <Button
-                text="Вход"
-                handler={() => navigate(enterPath)}
-            />
+            <Button text="Вход" handler={() => navigate(enterPath)} />
           </div>
         </div>
       </div>
