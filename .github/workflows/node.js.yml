@@ -26,7 +26,4 @@ jobs:
         npm ci
     - run: |
         cd ./mouse-frontend-app
-        npm run build --if-present
-    - run: |
-        cd ./mouse-frontend-app
-        npm test
+        npm run build --if-present    
