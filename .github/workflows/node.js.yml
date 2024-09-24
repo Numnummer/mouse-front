@@ -28,10 +28,10 @@ jobs:
         cd ./mouse-frontend-app
         npm run build --if-present   
     - name: Run ESLint
-      #run: |
-        #cd ./mouse-frontend-app
-        #npx eslint .
-      uses: stefanoeb/eslint-action@1.0.2
+      run: |
+        cd ./mouse-frontend-app
+        eslint . --ext .js,.jsx
+      #uses: stefanoeb/eslint-action@1.0.2
       continue-on-error: false
         
     - name: Fail if any previous step failed
