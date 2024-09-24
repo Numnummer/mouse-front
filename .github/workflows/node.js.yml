@@ -29,9 +29,8 @@ jobs:
         npm run build --if-present   
         
     - name: Run ESLint          
-      uses: eslint/github-action@draft
-      env:
-        ESLINT_DRAFT: 1
+      working-directory: ./mouse-frontend-app
+      run: npx eslint .
       continue-on-error: false
         
     - name: Fail if any previous step failed
