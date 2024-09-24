@@ -28,9 +28,10 @@ jobs:
         cd ./mouse-frontend-app
         npm run build --if-present   
         
-    - name: Run ESLint          
-      working-directory: ./mouse-frontend-app
-      run: npx eslint .
+    - name: Run ESLint
+      uses: ninosaurus/eslint-check@v5
+      with:
+        eslint-config-path: "./mouse-frontend-app/eslint.config.js"
       continue-on-error: false
         
     - name: Fail if any previous step failed
