@@ -1,23 +1,20 @@
 import styles from "../Register/Register.module.css";
 import { useState } from "react";
-import {
-  processSignIn,
-  processSignInByOtherService,
-} from "./Services/SignInService.js";
+import { processSignInByOtherService } from "./Services/SignInService.js";
 import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
 import VkIcon from "../../Icons.jsx/VkIcon.jsx";
 import GoogleIcon from "../../Icons.jsx/GoogleIcon.jsx";
 import YandexIcon from "../../Icons.jsx/YandexIcon.jsx";
 import style from "./SignIn.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import VisabilityOnIcon from "../../Icons.jsx/VisabilityOnIcon.jsx";
 import VisabilityOffIcon from "../../Icons.jsx/VisabilityOffIcon,.jsx";
 import Pictures from "../StartPage/Pictures.jsx";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { restorePasswordPath } from "../../Constants/Paths.js";
 import Form from "./Components/Form.jsx";
 import onFormSubmit from "./Services/FormSubmit.js";
+import React from "react";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -74,7 +71,9 @@ export default function SignIn() {
               type={"button"}
               className={styles.register}
               value={"Войти"}
-              onClick={onFormSubmit}
+              onClick={(event) =>
+                onFormSubmit(event, signInData, navigate, toast)
+              }
             />
           </div>
         </div>
