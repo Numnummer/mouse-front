@@ -8,8 +8,9 @@ import {
 import { userClient } from "../../Constants/AxiosClients";
 import { useNavigate } from "react-router-dom";
 import { authToken } from "../../Constants/LocalStorageItemKeys";
+import React from "react";
 
-export default function () {
+export default function GoogleAuth() {
   const navigate = useNavigate();
   useEffect(() => {
     const params = queryString.parse(window.location.search);
@@ -36,13 +37,6 @@ export default function () {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          var token = data.access_token;
-          console.log("Token:", data.id_token);
-          /*fetch(
-            `https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=${token}`
-          ).then((resp) => {
-            console.log(resp);
-          });*/
           userClient
             .post("registerWithGoogle", null, {
               params: {

@@ -1,13 +1,10 @@
-// import Button from "../../../StartPage/Components/Button/Button";
-
 import { useEffect, useState } from "react";
 import Main from "./Tabs/Main.jsx";
-import TrainingInfo from "./Tabs/TrainingInfo.jsx";
-import ExcerciseInfo from "./Tabs/ExcerciseInfo.jsx";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import TrainingInfoBridge from "./Tabs/TrainingInfoBridge.jsx";
 import ExcerciseInfoBridge from "./Tabs/ExcerciseInfoBridge.jsx";
-//import { useHistory } from "react-router-dom";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Schedule({ currentTab }) {
   const navigate = useNavigate();
@@ -55,3 +52,7 @@ export default function Schedule({ currentTab }) {
     </Routes>
   );
 }
+
+Schedule.propTypes = {
+  currentTab: PropTypes.string.isRequired,
+};

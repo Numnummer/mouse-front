@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./Tabs/Profile/Profile";
 import Schedule from "./Tabs/Schedule/Schedule";
 import MyExcercises from "./Tabs/MyExcercises/MyExcercises";
@@ -18,7 +18,8 @@ import MyExcercisesIcon from "./Tabs/Profile/Icons/MyExcercisesIcon";
 import LogOutIcon from "./Tabs/Profile/Icons/LogOutIcon";
 import { useNavigate } from "react-router-dom";
 import checkUserProfile from "../../Api/UserProfile/CheckUserProfile";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import React from "react";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -137,7 +138,7 @@ export default function MainPage() {
           <div
             className="tab"
             onClick={() => {
-              setNewMessages(false);
+              //setNewMessages(false);
               setCurrentTab("Messages");
             }}
           >

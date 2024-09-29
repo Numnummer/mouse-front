@@ -4,8 +4,9 @@ import { getCode, resetPassword } from "./Functions";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { enterPath } from "../../Constants/Paths";
+import React from "react";
 
-export default function () {
+export default function RestorePassword() {
   const [gotCode, setGotCode] = useState(false);
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -47,11 +48,11 @@ export default function () {
         <button
           onClick={() => {
             getCode(email)
-              .then((res) => {
+              .then(() => {
                 toast("Код отправлен на указанную почту");
                 setGotCode(true);
               })
-              .catch((err) => {
+              .catch(() => {
                 toast("Не удалось отправить код");
               });
           }}
@@ -62,11 +63,11 @@ export default function () {
         <button
           onClick={() => {
             resetPassword(email, password, code)
-              .then((res) => {
+              .then(() => {
                 toast("Новый пароль установлен");
                 navigate(enterPath);
               })
-              .catch((err) => {
+              .catch(() => {
                 toast("Не удалось отправить код");
               });
           }}
