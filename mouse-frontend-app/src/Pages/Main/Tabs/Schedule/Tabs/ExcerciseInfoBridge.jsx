@@ -1,14 +1,20 @@
+import PropTypes from "prop-types";
 import ExcerciseInfo from "./ExcerciseInfo.jsx";
-export default function ({
+import React from "react";
+
+export default function ExcerciseInfoBridge({
   currentExcercise,
   navigatorSwitcher,
-  setNavigatorSwitcher,
 }) {
   return (
     <ExcerciseInfo
-      excerciseP={currentExcercise}
+      currentExcercise={currentExcercise}
       navigatorSwitcher={navigatorSwitcher}
-      setNavigatorSwitcher={setNavigatorSwitcher}
     ></ExcerciseInfo>
   );
 }
+
+ExcerciseInfoBridge.propTypes = {
+  currentExcercise: PropTypes.object.isRequired,
+  navigatorSwitcher: PropTypes.bool.isRequired,
+};

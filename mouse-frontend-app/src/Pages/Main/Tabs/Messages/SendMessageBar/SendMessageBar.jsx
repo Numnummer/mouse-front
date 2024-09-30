@@ -2,8 +2,10 @@ import { useState } from "react";
 import "./SendMessageBar.css";
 import sendMessage from "./Services/SendMessage";
 import { Button, Input, Space } from "antd";
+import React from "react";
+import PropTypes from "prop-types";
+import { HubConnection } from "@microsoft/signalr";
 
-// eslint-disable-next-line react/prop-types
 export default function SendMessageBar({ connection, userId }) {
   const [message, setMessage] = useState("");
 
@@ -32,3 +34,8 @@ export default function SendMessageBar({ connection, userId }) {
     </div>
   );
 }
+
+SendMessageBar.propTypes = {
+  connection: PropTypes.instanceOf(HubConnection).isRequired,
+  userId: PropTypes.string.isRequired,
+};

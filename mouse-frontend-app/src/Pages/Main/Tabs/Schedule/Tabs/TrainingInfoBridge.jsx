@@ -1,20 +1,19 @@
-import { useEffect } from "react";
+import PropTypes from "prop-types";
 import TrainingInfo from "./TrainingInfo";
+import React from "react";
 
-export default function ({
+export default function TrainingInfoBridge({
   currentTraining,
   currentTrainingDate,
   setCurrentExcercise,
-  setCurrentTraining,
   navigate,
   navigatorSwitcher,
   setNavigatorSwitcher,
 }) {
   return (
     <TrainingInfo
-      setCurrentTraining={setCurrentTraining}
-      trainingP={currentTraining}
-      dateP={currentTrainingDate}
+      currentTraining={currentTraining}
+      currentTrainingDate={currentTrainingDate}
       setCurrentExcercise={setCurrentExcercise}
       navigate={navigate}
       navigatorSwitcher={navigatorSwitcher}
@@ -22,3 +21,12 @@ export default function ({
     ></TrainingInfo>
   );
 }
+
+TrainingInfoBridge.propTypes = {
+  currentTraining: PropTypes.object.isRequired,
+  currentTrainingDate: PropTypes.object.isRequired,
+  setCurrentExcercise: PropTypes.func.isRequired,
+  navigate: PropTypes.object.isRequired,
+  navigatorSwitcher: PropTypes.bool.isRequired,
+  setNavigatorSwitcher: PropTypes.func.isRequired,
+};

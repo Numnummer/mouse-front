@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import Message from "../Message/Message";
 import "./MessageContainer.css";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function MessageContainer({ messages, role }) {
   const messageContainer = useRef();
@@ -22,3 +24,8 @@ export default function MessageContainer({ messages, role }) {
     </div>
   );
 }
+
+MessageContainer.propTypes = {
+  messages: PropTypes.array.isRequired,
+  role: PropTypes.string.isRequired,
+};

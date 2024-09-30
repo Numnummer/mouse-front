@@ -2,13 +2,11 @@ import "./ExcerciseInfo.css";
 import image from "../../../../../../public/video-image.png";
 import { useEffect, useState } from "react";
 import { currentExcerciseParam } from "../../../../../Constants/LocalStorageItemKeys";
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function ExerciseInfo({
-  excerciseP,
-  navigatorSwitcher,
-  setNavigatorSwitcher,
-}) {
-  const [excercise, setExcercise] = useState(excerciseP);
+export default function ExerciseInfo({ currentExcercise, navigatorSwitcher }) {
+  const [excercise, setExcercise] = useState(currentExcercise);
   useEffect(() => {
     if (!excercise.name) {
       setExcercise(JSON.parse(localStorage.getItem(currentExcerciseParam)));
@@ -39,3 +37,8 @@ export default function ExerciseInfo({
     </div>
   );
 }
+
+ExerciseInfo.propTypes = {
+  currentExcercise: PropTypes.object.isRequired,
+  navigatorSwitcher: PropTypes.bool.isRequired,
+};

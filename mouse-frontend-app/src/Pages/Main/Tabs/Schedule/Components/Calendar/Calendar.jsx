@@ -1,13 +1,9 @@
 import {
-  addMonths,
   eachDayOfInterval,
   endOfMonth,
   endOfWeek,
-  format,
   startOfMonth,
-  startOfToday,
   startOfWeek,
-  subMonths,
 } from "date-fns";
 import { ru } from "date-fns/locale";
 import CalendarDays from "./CalendarDays";
@@ -15,7 +11,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import MonthInfo from "./MonthInfo";
 import MonthScroll from "./MonthScroll";
-import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Calendar({
   today,
@@ -71,3 +68,12 @@ export default function Calendar({
     </>
   );
 }
+
+Calendar.propTypes = {
+  today: PropTypes.object.isRequired,
+  setToday: PropTypes.func.isRequired,
+  handleTrainingDayClick: PropTypes.func.isRequired,
+  switcher: PropTypes.bool.isRequired,
+  allTrainings: PropTypes.object.isRequired,
+  fetchTrainings: PropTypes.func.isRequired,
+};

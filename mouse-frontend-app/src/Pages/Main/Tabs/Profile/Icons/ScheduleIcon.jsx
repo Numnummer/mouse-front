@@ -1,4 +1,5 @@
-// eslint-disable-next-line react/display-name
+/* eslint-disable react/display-name */
+/* eslint-disable react/react-in-jsx-scope */
 export default () => (
   <>
     <svg

@@ -6,6 +6,7 @@ import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
 import image from "../../../../../public/video-image.png";
 import { deleteExcercise } from "../../../../Api/Excercise/DeleteExcercise";
 import { ToastContainer, toast } from "react-toastify";
+import React from "react";
 
 export default function MyExcercises() {
   const [open, setOpen] = useState(false);
@@ -29,10 +30,10 @@ export default function MyExcercises() {
   const onModalOk = () => {
     setOpen(false);
     postNewExcercise(excerciseData)
-      .then((resp) => {
+      .then(() => {
         setExcercisePushSwithcher(!excercisePushSwitcher);
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Не удалось добавить упражнение", { autoClose: 2000 });
       });
   };
@@ -86,7 +87,7 @@ export default function MyExcercises() {
                   <Button
                     className="delete-button"
                     onClick={() => {
-                      deleteExcercise(excercise.id).then((resp) => {
+                      deleteExcercise(excercise.id).then(() => {
                         setExcercisePushSwithcher(!excercisePushSwitcher);
                       });
                     }}
