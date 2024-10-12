@@ -1,11 +1,13 @@
 import Calendar from "../Components/Calendar/Calendar";
 import "../Schedule.css";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Modal } from "antd";
 import { DatePicker } from "antd";
 import { startOfToday } from "date-fns";
 import { postTraining } from "../../../../../Api/Trainings/PostTraining";
 import { getAllTrainings } from "../../../../../Api/Trainings/GetAllTrainings";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Main({
   setCurrentTraining,
@@ -28,7 +30,7 @@ export default function Main({
     setOpen(false);
     setToday(startOfToday());
     postTraining(trainingData)
-      .then((result) => {
+      .then(() => {
         window.location.reload();
       })
       .catch((error) => {
@@ -41,7 +43,7 @@ export default function Main({
         setAllTrainings(result);
         setToday(startOfToday());
       })
-      .catch((error) => {});
+      .catch(() => {});
   };
   useEffect(() => {
     fetchTrainings();
@@ -122,3 +124,11 @@ export default function Main({
     </div>
   );
 }
+
+Main.propTypes = {
+  setCurrentTraining: PropTypes.func.isRequired,
+  setCurrentTrainingDate: PropTypes.func.isRequired,
+  navigate: PropTypes.object.isRequired,
+  navigatorSwitcher: PropTypes.bool.isRequired,
+  setNavigatorSwitcher: PropTypes.func.isRequired,
+};

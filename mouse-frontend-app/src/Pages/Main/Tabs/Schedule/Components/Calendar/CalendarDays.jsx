@@ -1,16 +1,16 @@
-import { format, isSameDay, isSameMonth, startOfToday } from "date-fns";
+import { format, isSameDay, isSameMonth } from "date-fns";
 import "./CalendarDays.css";
 import { useEffect, useState } from "react";
-import { getAllTrainings } from "../../../../../../Api/Trainings/GetAllTrainings";
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({
+export default function CalendarDays({
   days,
   daysOfWeek,
   locale,
   today,
   allTrainings,
   handleTrainingDayClick,
-  fetchTrainings,
 }) {
   const weeks = [];
   const isTrainingDay = (day) => {
@@ -75,3 +75,12 @@ export default function ({
     </div>
   );
 }
+
+CalendarDays.propTypes = {
+  days: PropTypes.array.isRequired,
+  daysOfWeek: PropTypes.array.isRequired,
+  locale: PropTypes.object.isRequired,
+  today: PropTypes.object.isRequired,
+  allTrainings: PropTypes.object.isRequired,
+  handleTrainingDayClick: PropTypes.func.isRequired,
+};

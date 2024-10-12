@@ -3,15 +3,12 @@ import { useEffect, useState } from "react";
 import { hubConnectionUrl } from "../../../../Constants/Messages";
 import MessageContainer from "./MessageContainer/MessageContainer";
 import SendMessageBar from "./SendMessageBar/SendMessageBar";
-import { authToken } from "../../../../Constants/LocalStorageItemKeys";
-import {
-  messagesClient,
-  userClient,
-} from "../../../../Constants/AxiosClients.js";
 import getCurrentRole from "../../../../Api/User/GetCurrentRole.js";
 import getCurrentUserInfo from "../../../../Api/User/GetCurrentUserInfo.js";
 import getMessages from "../../../../Api/Messages/GetMessages.js";
 import { ToastContainer, toast } from "react-toastify";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Messages({ currentTab }) {
   const [messages, setMessages] = useState([]);
@@ -35,7 +32,7 @@ export default function Messages({ currentTab }) {
       .then((resp) => {
         setMessages(resp.items);
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Не удалось загрузить сообщения");
       });
 
@@ -73,3 +70,7 @@ export default function Messages({ currentTab }) {
     </div>
   );
 }
+
+Messages.propTypes = {
+  currentTab: PropTypes.string.isRequired,
+};

@@ -1,5 +1,4 @@
 import { userClient } from "../../Constants/AxiosClients";
-import { authToken } from "../../Constants/LocalStorageItemKeys";
 
 export default function sendResetPasswordCode(email) {
   return userClient

@@ -1,5 +1,5 @@
 import styles from "./Register.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import processRegistration from "./Services/RegistrationService.js";
 import CommonStyles from "../../CommonStyles/CommonStyles.module.css";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import "./Registration228.css";
 import Pictures from "../StartPage/Pictures.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);

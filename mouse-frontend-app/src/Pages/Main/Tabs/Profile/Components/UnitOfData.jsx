@@ -1,4 +1,6 @@
+import PropTypes from "prop-types";
 import "./UnitOfData.css";
+import React from "react";
 
 export default function UnitOfData({ editMode, data, type, name, onChange }) {
   return (
@@ -19,3 +21,11 @@ export default function UnitOfData({ editMode, data, type, name, onChange }) {
     </>
   );
 }
+
+UnitOfData.propTypes = {
+  editMode: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

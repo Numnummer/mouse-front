@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const backendOrigin = "http://192.144.12.224:8080";
-//export const backendOrigin = "https://localhost:7267";
+//export const backendOrigin = "http://192.144.12.224:8080";
+export const backendOrigin = "http://localhost:8080";
 
 export const userClient = axios.create({
   baseURL: `${backendOrigin}/api/User/`,

@@ -4,7 +4,6 @@ import {
   userIdItem,
   userNameItem,
 } from "../../Constants/LocalStorageItemKeys.js";
-import getCurrentUserInfo from "../User/GetCurrentUserInfo.js";
 
 export function signIn(signInData) {
   localStorage.removeItem(authToken);

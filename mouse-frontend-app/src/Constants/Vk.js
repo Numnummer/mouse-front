@@ -1,5 +1,3 @@
-import { backendOrigin } from "./AxiosClients.js";
-
 export const CLIENT_ID = "51816062";
 export const VERSION = "5.131";
 export const SCOPE = "email";

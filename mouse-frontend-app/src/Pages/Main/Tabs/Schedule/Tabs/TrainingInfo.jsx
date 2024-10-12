@@ -8,22 +8,19 @@ import { Button, Modal, Tooltip } from "antd";
 import { getTrainingById } from "../../../../../Api/Trainings/GetTrainingById";
 import { getAllExcercises } from "../../../../../Api/Excercise/GetAllExcercises";
 import "./TrainingInfo.css";
-import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space, Typography } from "antd";
 import { deleteTraining } from "../../../../../Api/Trainings/DeleteTraining";
 import {
   dateParam,
-  setCurrentExcerciseParam,
-  trainingNavigateParam,
   trainingParam,
 } from "../../../../../Constants/LocalStorageItemKeys";
 import GarbageIcon from "../../Profile/Icons/GarbageIcon";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function TrainingInfo({
-  trainingP,
-  dateP,
+  currentTraining,
+  currentTrainingDate,
   setCurrentExcercise,
-  setCurrentTraining,
   navigate,
   navigatorSwitcher,
   setNavigatorSwitcher,
@@ -37,8 +34,8 @@ export default function TrainingInfo({
 
   const [selectName, setSelectName] = useState();
 
-  const [date, setDate] = useState(dateP);
-  const [training, setTraining] = useState(trainingP);
+  const [date, setDate] = useState(currentTrainingDate);
+  const [training, setTraining] = useState(currentTraining);
 
   useEffect(() => {
     if (!date) {
@@ -50,27 +47,11 @@ export default function TrainingInfo({
     }
   }, [navigatorSwitcher]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setExcerciseData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  const [excerciseData, setExcerciseData] = useState({
-    name: training && training.name,
-    description: "",
-    approaches: "",
-    repetitions: "",
-    implementationProgress: "",
-    explanationVideo: "",
-  });
   const onModalOk = () => {
     const data = items.find((item) => item.name === selectName);
-    setExcerciseData(data);
     setOpen(false);
     postNewExcerciseOnTraining(training.id, data)
-      .then((resp) => {
+      .then(() => {
         toast.success("Упражнение добавлено", { autoClose: 2000 });
         setExcercisePushSwithcher(!excercisePushSwitcher);
       })
@@ -95,12 +76,12 @@ export default function TrainingInfo({
       .then((result) => {
         setExcercises(result.exercises);
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Не удалось подгрузить упражнения", { autoClose: 2000 });
       });
     getAllExcercises().then((result) => {
       setItems(result.items);
-      const names = result.items.map((item, index) => item.name);
+      const names = result.items.map((item) => item.name);
       setExcerciseNames(names);
       setSelectName(names[0] || null);
     });
@@ -198,3 +179,12 @@ export default function TrainingInfo({
     </div>
   );
 }
+
+TrainingInfo.propTypes = {
+  currentTraining: PropTypes.object.isRequired,
+  currentTrainingDate: PropTypes.object.isRequired,
+  setCurrentExcercise: PropTypes.func.isRequired,
+  navigate: PropTypes.object.isRequired,
+  navigatorSwitcher: PropTypes.bool.isRequired,
+  setNavigatorSwitcher: PropTypes.func.isRequired,
+};

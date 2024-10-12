@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../../StartPage/Components/Button/Button";
 import "./Profile.css";
-import getCurrentUserInfo from "../../../../Api/User/GetCurrentUserInfo";
-import getUserProfile from "../../../../Api/UserProfile/GetUserProfile";
-import { useCookies } from "react-cookie";
-import checkUserProfile from "../../../../Api/UserProfile/CheckUserProfile";
 import UnitOfData from "./Components/UnitOfData";
-import {
-  authToken,
-  userNameItem,
-} from "../../../../Constants/LocalStorageItemKeys";
 import createProfile from "../../../../Api/UserProfile/CreateProfile";
-import updateProfile from "../../../../Api/UserProfile/UpdateProfile";
+import updateProfile from "../../../../Api/UserProfile/UpdateProfile.js";
 import image from "./profile-image.png";
 import { DatePicker } from "antd";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
 import { ToastContainer, toast } from "react-toastify";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Profile({
   userData,
@@ -26,7 +20,7 @@ export default function Profile({
 }) {
   const [editMode, setEditMode] = useState(false);
 
-  function onEditProfileClicked(event) {
+  function onEditProfileClicked() {
     setEditMode(!editMode);
     if (editMode) {
       updateProfile(userData);
@@ -40,7 +34,7 @@ export default function Profile({
         .then(() => {
           setIsProfileExists(true);
         })
-        .catch((err) => {
+        .catch(() => {
           toast.error("Не удалось создать профиль");
         });
     }
@@ -193,3 +187,10 @@ export default function Profile({
     </div>
   );
 }
+
+Profile.propTypes = {
+  userData: PropTypes.object.isRequired,
+  setUserData: PropTypes.func.isRequired,
+  isProfileExists: PropTypes.bool.isRequired,
+  setIsProfileExists: PropTypes.func.isRequired,
+};

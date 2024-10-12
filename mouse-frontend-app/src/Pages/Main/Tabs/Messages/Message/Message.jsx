@@ -1,5 +1,6 @@
 import "./Message.css";
-import img from "../../Icons/Trainer.png";
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function Message({ message, role }) {
   const date = new Date(message.sendDate);
@@ -31,3 +32,8 @@ export default function Message({ message, role }) {
     </div>
   );
 }
+
+Message.propTypes = {
+  message: PropTypes.object.isRequired,
+  role: PropTypes.string.isRequired,
+};

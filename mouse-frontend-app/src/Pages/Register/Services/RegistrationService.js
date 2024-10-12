@@ -8,7 +8,7 @@ export default function processRegistration(registrationData) {
         .then((result) => {
           resolve(result);
         })
-        .catch((error) => {
+        .catch(() => {
           reject("Не валидные данные");
         });
     }

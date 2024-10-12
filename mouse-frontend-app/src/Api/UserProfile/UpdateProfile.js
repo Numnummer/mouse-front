@@ -1,22 +1,8 @@
 import { userProfileClient } from "../../Constants/AxiosClients";
 import { authToken } from "../../Constants/LocalStorageItemKeys";
 
-function padWithZero(number, length) {
-  let str = String(number);
-  while (str.length < length) {
-    str = "0" + str;
-  }
-  return str;
-}
-
 export default function updateProfile(userData) {
   let token = localStorage.getItem(authToken);
-  let dateString = userData.dateOfBirth;
-  let parts = dateString.split("/");
-  let isoDate = `${parts[2]}-${padWithZero(parts[0], 2)}-${padWithZero(
-    parts[1],
-    2
-  )}`;
   const data = {
     firstName: userData.firstName,
     lastName: userData.lastName,

@@ -1,4 +1,4 @@
-// eslint-disable-next-line react/display-name
+/* eslint-disable */
 export default () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -18,4 +18,4 @@ export default () => (
       <rect x="37" y="20" width="2" height="34" />
     </g>
   </svg>
-);      
+);
