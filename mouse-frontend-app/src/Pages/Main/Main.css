@@ -1,0 +1,79 @@
+.menuflex{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.menu {
+    background-color: #F5F5F5;
+    padding: 20px;
+    width: 320px;
+    position: relative;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+  
+.menu div {
+    color: #6e6e6e;
+    cursor: pointer;
+}
+
+.item-icon{
+    width: 20px;
+}
+
+.menu-item{
+    align-items: start;
+}
+.tabs{
+    position: fixed;
+    top: 110px;
+}
+.tab{
+    padding: 12px;
+    margin-left: 15px;
+}
+
+.tab label{
+    padding: 20px;
+    cursor: pointer;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffffbd;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.user-info-header-left,
+.user-info-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-info-header-left{
+  background-color: #2f81ed3a;
+  border-radius: 50px;
+  height: 65px;
+  width: 250px;
+}
+
+.username {
+    margin-left: 10px;
+}
+  
+.tab_logout{
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.logout_label{
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.logOutIcon{
+    margin-top: 2px;
+    position: relative;
+}

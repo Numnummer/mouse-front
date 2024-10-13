@@ -1,0 +1,24 @@
+.title1{
+    font-size:50px; 
+    color: #2280E2; 
+    width: min-content;
+    margin-left: 100px;
+}
+
+.inputs input{
+    width: 380px;
+    border: solid;
+    border-color: white;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    margin-top: 20px;
+    font-size: 20px;
+    outline:none;
+}
+
+.inputs{
+    width: 300px;
+    margin-left: 50px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
