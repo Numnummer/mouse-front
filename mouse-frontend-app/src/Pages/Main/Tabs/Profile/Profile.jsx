@@ -4,7 +4,6 @@ import "./Profile.css";
 import UnitOfData from "./Components/UnitOfData";
 import createProfile from "../../../../Api/UserProfile/CreateProfile";
 import updateProfile from "../../../../Api/UserProfile/UpdateProfile.js";
-import image from "./profile-image.png";
 import { DatePicker } from "antd";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale/ru";
@@ -19,6 +18,7 @@ export default function Profile({
   setIsProfileExists,
 }) {
   const [editMode, setEditMode] = useState(false);
+  const image = "./profile-image.png";
 
   function onEditProfileClicked() {
     setEditMode(!editMode);

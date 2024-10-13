@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint --max-warnings 0 .",
     "preview": "vite preview",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/preset-env": "^7.25.8",

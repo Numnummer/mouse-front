@@ -1,13 +1,12 @@
-// StartPage.test.jsx
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter, useNavigate } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import SignIn from "./SignIn";
-import { enterPath, registrationPath } from "../../Constants/Paths";
 import "@testing-library/jest-dom";
+import { describe, test, expect } from "@jest/globals";
 
-describe("StartPage", () => {
-  test("renders StartPage with title and buttons", () => {
+describe("SignIn", () => {
+  test("renders SignIn with title and button", () => {
     render(
       <MemoryRouter>
         <SignIn />

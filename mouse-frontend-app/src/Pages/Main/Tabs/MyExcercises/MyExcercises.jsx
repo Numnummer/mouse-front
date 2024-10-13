@@ -3,12 +3,12 @@ import { Button, Modal, Tooltip } from "antd";
 import "./MyExcercises.css";
 import { getAllExcercises } from "../../../../Api/Excercise/GetAllExcercises";
 import { postNewExcercise } from "../../../../Api/Excercise/PostNewExcercise";
-import image from "../../../../../public/video-image.png";
 import { deleteExcercise } from "../../../../Api/Excercise/DeleteExcercise";
 import { ToastContainer, toast } from "react-toastify";
 import React from "react";
 
 export default function MyExcercises() {
+  const image = "../../../../../public/video-image.png";
   const [open, setOpen] = useState(false);
   const [excercisePushSwitcher, setExcercisePushSwithcher] = useState(false);
 
