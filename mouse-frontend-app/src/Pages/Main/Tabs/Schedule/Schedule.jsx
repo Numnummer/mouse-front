@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 export default function Schedule({ currentTab }) {
   const navigate = useNavigate();
   const [currentTraining, setCurrentTraining] = useState({});
-  const [currentTrainingDate, setCurrentTrainingDate] = useState();
+  const [currentTrainingDate, setCurrentTrainingDate] = useState({});
   const [currentExcercise, setCurrentExcercise] = useState({});
   const [navigatorSwitcher, setNavigatorSwitcher] = useState(false);
 

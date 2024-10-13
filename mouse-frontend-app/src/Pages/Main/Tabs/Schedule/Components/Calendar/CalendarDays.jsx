@@ -30,7 +30,6 @@ export default function CalendarDays({
   }
   const [a, setA] = useState(false);
   useEffect(() => {
-    console.log(allTrainings);
     //fetchTrainings();
     setA(!a);
   }, [allTrainings]);

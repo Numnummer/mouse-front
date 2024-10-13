@@ -184,7 +184,7 @@ TrainingInfo.propTypes = {
   currentTraining: PropTypes.object.isRequired,
   currentTrainingDate: PropTypes.object.isRequired,
   setCurrentExcercise: PropTypes.func.isRequired,
-  navigate: PropTypes.object.isRequired,
+  navigate: PropTypes.func.isRequired,
   navigatorSwitcher: PropTypes.bool.isRequired,
   setNavigatorSwitcher: PropTypes.func.isRequired,
 };

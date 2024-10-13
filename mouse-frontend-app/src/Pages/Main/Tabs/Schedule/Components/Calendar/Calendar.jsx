@@ -37,7 +37,6 @@ export default function Calendar({
 
   const [a, setA] = useState(false);
   useEffect(() => {
-    console.log("asd");
     fetchTrainings();
     setA(!a);
   }, [switcher]);

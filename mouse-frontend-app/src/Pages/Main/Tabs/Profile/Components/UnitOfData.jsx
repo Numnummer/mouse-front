@@ -25,7 +25,7 @@ export default function UnitOfData({ editMode, data, type, name, onChange }) {
 UnitOfData.propTypes = {
   editMode: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  data: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
