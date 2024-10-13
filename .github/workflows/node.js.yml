@@ -37,6 +37,11 @@ jobs:
       working-directory: ./mouse-frontend-app
       run: npm run lint
       continue-on-error: false
+
+    - name: Run Tests
+      working-directory: ./mouse-frontend-app
+      run: npm run test
+      continue-on-error: false
         
     - name: Fail if any previous step failed
       if: ${{ failure() }}
