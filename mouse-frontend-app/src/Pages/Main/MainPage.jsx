@@ -182,7 +182,6 @@ export default function MainPage() {
         onCancel={() => {
           setChatOpen(false);
         }}
-        width={600}
         styles={modalStyles}
       >
         <SupportChat></SupportChat>
