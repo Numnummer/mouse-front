@@ -1,0 +1,32 @@
+.ChatMessage_Container {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  background-color: rgb(207, 207, 207);
+  max-width: 20vw;
+  word-wrap: break-word;
+}
+
+.ChatMessage_Container_SelfMessage {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  background-color: rgb(125, 125, 238);
+  margin-left: 15%;
+  max-width: 20vw;
+  word-wrap: break-word;
+}
+
+.ChatMessage_from {
+  font-size: 1.5vw;
+  margin-left: 10%;
+}
+
+.ChatMessage_Text {
+  font-size: 1.3vw;
+}
+
+.ChatMessage_Date {
+  font-size: 1.2vw;
+  margin-left: 67%;
+}
