@@ -1,0 +1,4 @@
+.SendMessageArea_Container {
+  display: flex;
+  flex-direction: row;
+}

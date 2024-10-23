@@ -21,6 +21,6 @@ export default function ChatMessage({ from, text, date, isFromSelf }) {
 ChatMessage.propTypes = {
   from: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  date: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
   isFromSelf: PropTypes.bool.isRequired,
 };

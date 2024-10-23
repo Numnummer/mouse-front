@@ -3,12 +3,13 @@ import PastMessagesArea from "./Components/PastMessagesArea/PastMessagesArea";
 import SendMessageArea from "./Components/SendMessageArea/SendMessageArea";
 import "./Chat.css";
 import PropTypes from "prop-types";
+import { HubConnection } from "@microsoft/signalr";
 
-export default function Chat({ messages }) {
+export default function Chat({ messages, connection }) {
   return (
     <div className="Chat_Container">
       <PastMessagesArea messages={messages}></PastMessagesArea>
-      <SendMessageArea></SendMessageArea>
+      <SendMessageArea connection={connection}></SendMessageArea>
     </div>
   );
 }
@@ -22,4 +23,5 @@ Chat.propTypes = {
       isFromSelf: PropTypes.bool,
     })
   ),
+  connection: PropTypes.instanceOf(HubConnection).isRequired,
 };

@@ -3,11 +3,17 @@ import {
   hubCunnectionUrl,
   onMessageReceiveName,
 } from "../Constants/HubConnectionConstants";
-import onMessageReceive from "./OnMessageReceive";
+import { authToken } from "../../../../../Constants/LocalStorageItemKeys";
 
-export async function connectChat() {
+export async function connectChat(onMessageReceive) {
   const chatConnection = new HubConnectionBuilder()
-    .withUrl(hubCunnectionUrl)
+    .withUrl(hubCunnectionUrl, {
+      accessTokenFactory: () => localStorage.getItem(authToken),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${localStorage.getItem(authToken)}`,
+      },
+    })
     .configureLogging(LogLevel.Information)
     .withAutomaticReconnect()
     .build();

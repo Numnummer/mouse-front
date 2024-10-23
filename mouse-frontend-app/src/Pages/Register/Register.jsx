@@ -10,6 +10,7 @@ import Pictures from "../StartPage/Pictures.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
+import { coachRole, standartRole } from "./Constants/UserRoles.js";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +18,7 @@ export default function Register() {
     userName: "",
     firstName: "",
     lastName: "",
-    role: "User",
+    role: standartRole,
     email: "",
     password: "",
   });
@@ -102,8 +103,8 @@ export default function Register() {
                 className={styles.checkboxCoach}
                 type="checkbox"
                 onChange={(e) => {
-                  let role = "User";
-                  if (e.target.checked) role = "Coach";
+                  let role = standartRole;
+                  if (e.target.checked) role = coachRole;
                   setRegistrationData({ ...registrationData, Role: role });
                 }}
               />
