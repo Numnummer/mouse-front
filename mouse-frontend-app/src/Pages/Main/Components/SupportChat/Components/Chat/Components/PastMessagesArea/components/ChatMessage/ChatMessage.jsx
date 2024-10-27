@@ -2,7 +2,13 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./ChatMessage.css";
 
-export default function ChatMessage({ from, text, date, isFromSelf }) {
+export default function ChatMessage({
+  from,
+  text,
+  date,
+  isFromSelf,
+  onAuthorClick,
+}) {
   return (
     <div
       className={
@@ -11,7 +17,9 @@ export default function ChatMessage({ from, text, date, isFromSelf }) {
           : "ChatMessage_Container"
       }
     >
-      <div className="ChatMessage_from">{from}</div>
+      <div className="ChatMessage_from" onClick={() => onAuthorClick(from)}>
+        {from}
+      </div>
       <div className="ChatMessage_Text">{text}</div>
       <div className="ChatMessage_Date">{date}</div>
     </div>
@@ -23,4 +31,5 @@ ChatMessage.propTypes = {
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   isFromSelf: PropTypes.bool.isRequired,
+  onAuthorClick: PropTypes.func.isRequired,
 };

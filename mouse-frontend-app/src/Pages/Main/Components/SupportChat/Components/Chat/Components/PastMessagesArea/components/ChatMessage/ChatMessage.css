@@ -22,6 +22,10 @@
   margin-left: 10%;
 }
 
+.ChatMessage_from:hover {
+  text-decoration: underline;
+}
+
 .ChatMessage_Text {
   font-size: 1.3vw;
 }

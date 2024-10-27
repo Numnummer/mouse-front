@@ -1,4 +1,4 @@
-export function loadChatHistory() {
+export default function loadUnicastChatHistory(email) {
   return new Promise((resolve) =>
     resolve([
       {
@@ -10,6 +10,6 @@ export function loadChatHistory() {
       { from: "asd2", text: "asdte12xt", date: "120", isFromSelf: false },
       { from: "asd3", text: "asdtex31t", date: "120", isFromSelf: true },
       { from: "asd2", text: "asdtex2131t", date: "120", isFromSelf: false },
-    ])
+    ]),
   );
 }

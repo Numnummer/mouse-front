@@ -2,7 +2,11 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./ChooseDestination.css";
 
-export default function ChooseDestination({ setDestination, role }) {
+export default function ChooseDestination({
+  setDestination,
+  setGroupDestination,
+  role,
+}) {
   return (
     <div className="ChooseDestination_Buttons_Area">
       <button
@@ -12,16 +16,17 @@ export default function ChooseDestination({ setDestination, role }) {
             role == "User"
               ? "Тренер"
               : role == "Coach"
-              ? "Пользователь"
-              : "Тренер";
+                ? "Пользователь"
+                : "Тренер";
           setDestination(destination);
+          setGroupDestination(destination);
         }}
       >
         {role == "User"
           ? "Отправить тренеру"
           : role == "Coach"
-          ? "Отправить пользователю"
-          : "Отправить тренеру"}
+            ? "Отправить пользователю"
+            : "Отправить тренеру"}
       </button>
       <button
         className="ChooseDestination_Button"
@@ -30,16 +35,17 @@ export default function ChooseDestination({ setDestination, role }) {
             role == "User"
               ? "Админ"
               : role == "Coach"
-              ? "Админ"
-              : "Пользователь";
+                ? "Админ"
+                : "Пользователь";
           setDestination(destination);
+          setGroupDestination(destination);
         }}
       >
         {role == "User"
           ? "Отправить админу сайта"
           : role == "Coach"
-          ? "Отправить админу сайта"
-          : "Отправить пользователю"}
+            ? "Отправить админу сайта"
+            : "Отправить пользователю"}
       </button>
     </div>
   );
@@ -47,5 +53,6 @@ export default function ChooseDestination({ setDestination, role }) {
 
 ChooseDestination.propTypes = {
   setDestination: PropTypes.func.isRequired,
+  setGroupDestination: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
 };

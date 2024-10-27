@@ -2,7 +2,7 @@ import React from "react";
 import ChatMessage from "./components/ChatMessage/ChatMessage";
 import PropTypes from "prop-types";
 
-export default function PastMessagesArea({ messages }) {
+export default function PastMessagesArea({ messages, onAuthorClick }) {
   return (
     <div className="PastMessagesArea_Container">
       {messages.map((message, index) => (
@@ -12,6 +12,7 @@ export default function PastMessagesArea({ messages }) {
           text={message.text}
           date={message.date}
           isFromSelf={message.isFromSelf}
+          onAuthorClick={onAuthorClick}
         ></ChatMessage>
       ))}
     </div>
@@ -25,6 +26,7 @@ PastMessagesArea.propTypes = {
       text: PropTypes.string,
       date: PropTypes.string,
       isFromSelf: PropTypes.bool,
-    })
+    }),
   ),
+  onAuthorClick: PropTypes.func.isRequired,
 };

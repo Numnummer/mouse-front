@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./SendMessageArea.css";
 import PropTypes from "prop-types";
-import sendChatMessage from "./Services/SendChatMessage";
+import sendChatMessage from "../../../../Services/SendChatMessage.js";
 import { HubConnection } from "@microsoft/signalr";
 
-export default function SendMessageArea({ connection }) {
+export default function SendMessageArea({ connection, destination }) {
   const [currentMessage, setCurrentMessage] = useState("");
   return (
     <div className="SendMessageArea_Container">
@@ -17,7 +17,7 @@ export default function SendMessageArea({ connection }) {
       ></input>
       <button
         className="SendMessageArea_Button"
-        onClick={() => sendChatMessage(connection, currentMessage)}
+        onClick={() => sendChatMessage(connection, currentMessage, destination)}
       ></button>
     </div>
   );
@@ -25,4 +25,5 @@ export default function SendMessageArea({ connection }) {
 
 SendMessageArea.propTypes = {
   connection: PropTypes.instanceOf(HubConnection).isRequired,
+  destination: PropTypes.string.isRequired,
 };
