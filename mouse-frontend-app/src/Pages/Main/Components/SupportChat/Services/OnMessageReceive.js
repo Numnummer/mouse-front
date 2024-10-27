@@ -7,11 +7,11 @@ export default function onMessageReceive(
 ) {
   setMessages([
     ...messages,
-    new {
+    {
       from: author,
       text: text,
       date: date,
       isFromSelf: false,
-    }(),
+    },
   ]);
 }

@@ -22,3 +22,7 @@ export const trainingClient = axios.create({
 export const messagesClient = axios.create({
   baseURL: `${backendOrigin}/api/Message/`,
 });
+
+export const chatMessagesClient = axios.create({
+  baseURL: `${backendOrigin}/api/SupportChat/`,
+});

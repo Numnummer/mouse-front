@@ -1,15 +1,16 @@
+import { authToken } from "../../../../../Constants/LocalStorageItemKeys.js";
+import { chatMessagesClient } from "../../../../../Constants/AxiosClients.js";
+
 export function loadMulticastChatHistory(group) {
-  return new Promise((resolve) =>
-    resolve([
-      {
-        from: "asd1",
-        text: "asdtext1200000000000000000000000000000000000000000000",
-        date: "120",
-        isFromSelf: false,
-      },
-      { from: "asd2", text: "asdte12xt", date: "120", isFromSelf: false },
-      { from: "asd3", text: "asdtex31t", date: "120", isFromSelf: true },
-      { from: "asd2", text: "asdtex2131t", date: "120", isFromSelf: false },
-    ]),
-  );
+  const token = localStorage.getItem(authToken);
+  return chatMessagesClient
+    .get(`multicast/${group}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
 }

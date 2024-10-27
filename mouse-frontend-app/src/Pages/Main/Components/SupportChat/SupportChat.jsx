@@ -7,6 +7,7 @@ import getCurrentRole from "../../../../Api/User/GetCurrentRole";
 import onMessageReceive from "./Services/OnMessageReceive.js";
 import onAuthorClick from "./Services/OnAuthorClick.js";
 import onBackButtonClick from "./Services/OnBackButtonClick.js";
+import getCurrentUserInfo from "../../../../Api/User/GetCurrentUserInfo.js";
 
 export default function SupportChat() {
   const [destination, setDestination] = useState();
@@ -15,6 +16,7 @@ export default function SupportChat() {
   const [connection, setConnection] = useState();
   const [role, setRole] = useState("User");
   const [isUnicast, setIsUnicast] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     // Подгрузить текущую роль
@@ -27,17 +29,25 @@ export default function SupportChat() {
       });
     });
 
-    // Подключаемся к хабу на бэкэнде
-    connectChat((author, text, date) =>
-      onMessageReceive(author, text, date, messages, setMessages),
-    ).then((resultConnection) => {
-      setConnection(resultConnection);
+    getCurrentUserInfo().then((data) => {
+      setEmail(data.email);
+      // Подключаемся к хабу на бэкэнде
+      connectChat(
+        (author, text, date) => {
+          onMessageReceive(author, text, date, messages, setMessages);
+        },
+        role,
+        data.Email,
+      ).then((resultConnection) => {
+        setConnection(resultConnection);
+      });
     });
 
     return () => {
       connection.stop();
     };
   }, []);
+  console.log(email);
   return (
     <div>
       {destination ? (
@@ -46,6 +56,7 @@ export default function SupportChat() {
           messages={messages}
           connection={connection}
           isUnicast={isUnicast}
+          email={email}
           onAuthorClick={(email) =>
             onAuthorClick(email, setMessages, setDestination, setIsUnicast)
           }

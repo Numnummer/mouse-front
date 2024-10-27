@@ -1,11 +1,13 @@
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import {
+  addEmailMethodName,
+  addToGroupByRoleMethodName,
   hubCunnectionUrl,
   onMessageReceiveName,
 } from "../Constants/HubConnectionConstants";
 import { authToken } from "../../../../../Constants/LocalStorageItemKeys";
 
-export async function connectChat(onMessageReceive) {
+export async function connectChat(onMessageReceive, role, email) {
   const token = localStorage.getItem(authToken);
 
   const chatConnection = new HubConnectionBuilder()
@@ -17,5 +19,7 @@ export async function connectChat(onMessageReceive) {
     .build();
   chatConnection.on(onMessageReceiveName, onMessageReceive);
   await chatConnection.start();
+  await chatConnection.invoke(addToGroupByRoleMethodName, role);
+  await chatConnection.invoke(addEmailMethodName, email);
   return chatConnection;
 }

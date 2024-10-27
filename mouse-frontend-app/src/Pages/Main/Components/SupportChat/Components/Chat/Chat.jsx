@@ -13,6 +13,7 @@ export default function Chat({
   isUnicast,
   onAuthorClick,
   onBackButtonClick,
+  email,
 }) {
   return (
     <div className="Chat_Container">
@@ -28,6 +29,8 @@ export default function Chat({
       <SendMessageArea
         connection={connection}
         destination={destination}
+        isUnicast={isUnicast}
+        email={email}
       ></SendMessageArea>
     </div>
   );
@@ -47,4 +50,5 @@ Chat.propTypes = {
   isUnicast: PropTypes.bool.isRequired,
   onAuthorClick: PropTypes.func.isRequired,
   onBackButtonClick: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
 };
