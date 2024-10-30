@@ -1,6 +1,7 @@
 import React from "react";
 import ChatMessage from "./components/ChatMessage/ChatMessage";
 import PropTypes from "prop-types";
+import "./PastMessagesArea.css";
 
 export default function PastMessagesArea({ messages, onAuthorClick }) {
   return (

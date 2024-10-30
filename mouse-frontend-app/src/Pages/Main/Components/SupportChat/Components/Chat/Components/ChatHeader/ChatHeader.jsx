@@ -2,14 +2,10 @@ import "./ChatHeader.css";
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function ChatHeader({
-  destination,
-  isUnicast,
-  onBackButtonClick,
-}) {
+export default function ChatHeader({ destination, onBackButtonClick }) {
   return (
     <div className="chat-header">
-      {isUnicast ? (
+      {destination ? (
         <button className="chat-header-back-button" onClick={onBackButtonClick}>
           {"<-"}
         </button>
@@ -23,6 +19,5 @@ export default function ChatHeader({
 
 ChatHeader.propTypes = {
   destination: PropTypes.string.isRequired,
-  isUnicast: PropTypes.bool.isRequired,
   onBackButtonClick: PropTypes.func.isRequired,
 };

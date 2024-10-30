@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Chat from "./Components/Chat/Chat";
 import ChooseDestination from "./Components/ChooseDestination/ChooseDestination";
-import { loadMulticastChatHistory } from "./Services/LoadMulticastChatHistory.js";
 import { connectChat } from "./Services/ConnectChat";
 import getCurrentRole from "../../../../Api/User/GetCurrentRole";
 import onMessageReceive from "./Services/OnMessageReceive.js";
@@ -22,11 +21,6 @@ export default function SupportChat() {
     // Подгрузить текущую роль
     getCurrentRole().then((value) => {
       setRole(value);
-
-      // подгрузить историю чата
-      loadMulticastChatHistory(destination).then((messages) => {
-        setMessages(messages);
-      });
     });
 
     getCurrentUserInfo().then((data) => {
@@ -34,7 +28,7 @@ export default function SupportChat() {
       // Подключаемся к хабу на бэкэнде
       connectChat(
         (author, text, date) => {
-          onMessageReceive(author, text, date, messages, setMessages);
+          onMessageReceive(author, text, date, setMessages);
         },
         role,
         data.Email,
@@ -47,7 +41,6 @@ export default function SupportChat() {
       connection.stop();
     };
   }, []);
-  console.log(email);
   return (
     <div>
       {destination ? (
@@ -66,8 +59,11 @@ export default function SupportChat() {
               setMessages,
               setIsUnicast,
               setDestination,
+              isUnicast,
             )
           }
+          setMessages={setMessages}
+          role={role}
         ></Chat>
       ) : (
         <ChooseDestination

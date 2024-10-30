@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PastMessagesArea from "./Components/PastMessagesArea/PastMessagesArea";
 import SendMessageArea from "./Components/SendMessageArea/SendMessageArea";
 import "./Chat.css";
 import PropTypes from "prop-types";
 import { HubConnection } from "@microsoft/signalr";
 import ChatHeader from "./Components/ChatHeader/ChatHeader.jsx";
+import loadChatHistory from "./Services/LoadChatHistory.js";
 
 export default function Chat({
   messages,
@@ -14,7 +15,13 @@ export default function Chat({
   onAuthorClick,
   onBackButtonClick,
   email,
+  setMessages,
+  role,
 }) {
+  useEffect(() => {
+    // подгрузить историю чата
+    loadChatHistory(isUnicast, destination, setMessages, email, role);
+  }, [isUnicast, destination]);
   return (
     <div className="Chat_Container">
       <ChatHeader
@@ -31,6 +38,7 @@ export default function Chat({
         destination={destination}
         isUnicast={isUnicast}
         email={email}
+        setMessages={setMessages}
       ></SendMessageArea>
     </div>
   );
@@ -51,4 +59,6 @@ Chat.propTypes = {
   onAuthorClick: PropTypes.func.isRequired,
   onBackButtonClick: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
+  setMessages: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };

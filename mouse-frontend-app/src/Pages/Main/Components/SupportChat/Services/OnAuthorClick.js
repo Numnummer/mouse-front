@@ -1,4 +1,4 @@
-import loadUnicastChatHistory from "./LoadUnicastChatHistory.js";
+import loadUnicastChatHistory from "../Components/Chat/Services/LoadUnicastChatHistory.js";
 
 export default function onAuthorClick(
   email,

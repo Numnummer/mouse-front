@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./SendMessageArea.css";
 import PropTypes from "prop-types";
-import sendChatMessage from "../../../../Services/SendChatMessage.js";
 import { HubConnection } from "@microsoft/signalr";
+import onSendMessage from "./Services/OnSendMessage.js";
 
 export default function SendMessageArea({
   connection,
   destination,
   isUnicast,
   email,
+  setMessages,
 }) {
   const [currentMessage, setCurrentMessage] = useState("");
   return (
@@ -22,16 +23,20 @@ export default function SendMessageArea({
       ></input>
       <button
         className="SendMessageArea_Button"
-        onClick={() =>
-          sendChatMessage(
+        onClick={() => {
+          onSendMessage(
             email,
             connection,
+            setMessages,
             currentMessage,
+            setCurrentMessage,
             destination,
             isUnicast,
-          )
-        }
-      ></button>
+          );
+        }}
+      >
+        Отправить
+      </button>
     </div>
   );
 }
@@ -41,4 +46,5 @@ SendMessageArea.propTypes = {
   destination: PropTypes.string.isRequired,
   isUnicast: PropTypes.bool.isRequired,
   email: PropTypes.string.isRequired,
+  setMessages: PropTypes.func.isRequired,
 };

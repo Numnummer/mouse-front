@@ -1,14 +1,19 @@
-import { loadMulticastChatHistory } from "./LoadMulticastChatHistory.js";
+import { loadMulticastChatHistory } from "../Components/Chat/Services/LoadMulticastChatHistory.js";
 
 export default function onBackButtonClick(
   groupDestination,
   setMessages,
   setIsUnicast,
   setDestination,
+  isUnicast,
 ) {
-  loadMulticastChatHistory(groupDestination).then((messages) => {
-    setMessages(messages);
-  });
-  setDestination(groupDestination);
-  setIsUnicast(false);
+  if (isUnicast) {
+    loadMulticastChatHistory(groupDestination).then((messages) => {
+      setMessages(messages);
+    });
+    setDestination(groupDestination);
+    setIsUnicast(false);
+  } else {
+    setDestination(undefined);
+  }
 }

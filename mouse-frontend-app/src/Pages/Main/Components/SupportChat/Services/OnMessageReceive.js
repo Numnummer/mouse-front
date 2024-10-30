@@ -1,16 +1,13 @@
-export default function onMessageReceive(
-  author,
-  text,
-  date,
-  messages,
-  setMessages,
-) {
-  setMessages([
-    ...messages,
+import formatMessageDate from "./FormatDate.js";
+
+export default function onMessageReceive(author, text, date, setMessages) {
+  const formattedDate = formatMessageDate(date);
+  setMessages((prev) => [
+    ...prev,
     {
       from: author,
       text: text,
-      date: date,
+      date: formattedDate,
       isFromSelf: false,
     },
   ]);

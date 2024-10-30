@@ -1,5 +1,5 @@
-import { authToken } from "../../../../../Constants/LocalStorageItemKeys.js";
-import { chatMessagesClient } from "../../../../../Constants/AxiosClients.js";
+import { authToken } from "../../../../../../../Constants/LocalStorageItemKeys.js";
+import { chatMessagesClient } from "../../../../../../../Constants/AxiosClients.js";
 
 export function loadMulticastChatHistory(group) {
   const token = localStorage.getItem(authToken);

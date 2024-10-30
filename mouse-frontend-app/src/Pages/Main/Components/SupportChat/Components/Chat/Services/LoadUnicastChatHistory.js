@@ -1,5 +1,5 @@
-import { authToken } from "../../../../../Constants/LocalStorageItemKeys.js";
-import { chatMessagesClient } from "../../../../../Constants/AxiosClients.js";
+import { authToken } from "../../../../../../../Constants/LocalStorageItemKeys.js";
+import { chatMessagesClient } from "../../../../../../../Constants/AxiosClients.js";
 
 export default function loadUnicastChatHistory(email) {
   const token = localStorage.getItem(authToken);
