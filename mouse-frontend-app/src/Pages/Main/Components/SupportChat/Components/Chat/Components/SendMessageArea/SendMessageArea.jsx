@@ -10,6 +10,7 @@ export default function SendMessageArea({
   isUnicast,
   email,
   setMessages,
+  role,
 }) {
   const [currentMessage, setCurrentMessage] = useState("");
   return (
@@ -32,6 +33,7 @@ export default function SendMessageArea({
             setCurrentMessage,
             destination,
             isUnicast,
+            role,
           );
         }}
       >
@@ -47,4 +49,5 @@ SendMessageArea.propTypes = {
   isUnicast: PropTypes.bool.isRequired,
   email: PropTypes.string.isRequired,
   setMessages: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };

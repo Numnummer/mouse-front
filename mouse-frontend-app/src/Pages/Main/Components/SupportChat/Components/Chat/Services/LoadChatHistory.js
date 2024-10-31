@@ -21,37 +21,32 @@ export default function loadChatHistory(
     });
   } else {
     let group;
-    switch (destination) {
-      case "Пользователь":
-        if (role === "Coach") {
-          group = "Coaches";
-        } else {
-          group = "Admins";
-        }
+    switch (destination + " " + role) {
+      case "Пользователь Coach":
+        group = "UserCoach";
         break;
-      case "Тренер":
-        if (role === "User") {
-          group = "Users";
-        } else {
-          group = "Admins";
-        }
+      case "Пользователь Administrator":
+        group = "UserAdmin";
         break;
-      case "Админ":
-        if (role === "User") {
-          group = "Users";
-        } else {
-          group = "Coaches";
-        }
+      case "Тренер User":
+        group = "UserCoach";
+        break;
+      case "Тренер Administrator":
+        group = "CoachAdmin";
+        break;
+      case "Админ User":
+        group = "UserAdmin";
+        break;
+      case "Админ Coach":
+        group = "CoachAdmin";
         break;
     }
     loadMulticastChatHistory(group).then((messages) => {
       const mappedMessages = messages.map((m) => ({
-        from: m.senderEmail.charAt(0).toLowerCase() + m.senderEmail.slice(1),
+        from: m.senderEmail,
         text: m.messageText,
         date: formatMessageDate(m.sentDateTime),
-        isFromSelf:
-          email ===
-          m.senderEmail.charAt(0).toLowerCase() + m.senderEmail.slice(1),
+        isFromSelf: email === m.senderEmail,
       }));
       setMessages(mappedMessages);
     });

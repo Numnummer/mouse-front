@@ -9,6 +9,7 @@ export default async function sendChatMessage(
   messageText,
   destination,
   isUnicast,
+  role,
 ) {
   if (isUnicast) {
     await connection.invoke(
@@ -23,6 +24,7 @@ export default async function sendChatMessage(
       author,
       messageText,
       destination,
+      role,
     );
   }
 }

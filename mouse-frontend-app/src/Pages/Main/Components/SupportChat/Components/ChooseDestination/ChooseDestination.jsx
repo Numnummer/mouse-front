@@ -12,40 +12,46 @@ export default function ChooseDestination({
       <button
         className="ChooseDestination_Button"
         onClick={() => {
+          if (!role) return;
           let destination =
-            role == "User"
+            role === "User"
               ? "Тренер"
-              : role == "Coach"
+              : role === "Coach"
                 ? "Пользователь"
                 : "Тренер";
           setDestination(destination);
           setGroupDestination(destination);
         }}
       >
-        {role == "User"
+        {role === "User"
           ? "Отправить тренеру"
-          : role == "Coach"
+          : role === "Coach"
             ? "Отправить пользователю"
-            : "Отправить тренеру"}
+            : role === "Administrator"
+              ? "Отправить тренеру"
+              : "Загрузка"}
       </button>
       <button
         className="ChooseDestination_Button"
         onClick={() => {
+          if (!role) return;
           let destination =
-            role == "User"
+            role === "User"
               ? "Админ"
-              : role == "Coach"
+              : role === "Coach"
                 ? "Админ"
                 : "Пользователь";
           setDestination(destination);
           setGroupDestination(destination);
         }}
       >
-        {role == "User"
+        {role === "User"
           ? "Отправить админу сайта"
-          : role == "Coach"
+          : role === "Coach"
             ? "Отправить админу сайта"
-            : "Отправить пользователю"}
+            : role === "Administrator"
+              ? "Отправить пользователю"
+              : "Загрузка"}
       </button>
     </div>
   );

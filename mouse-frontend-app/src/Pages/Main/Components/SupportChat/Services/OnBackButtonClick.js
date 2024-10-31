@@ -6,6 +6,7 @@ export default function onBackButtonClick(
   setIsUnicast,
   setDestination,
   isUnicast,
+  connection,
 ) {
   if (isUnicast) {
     loadMulticastChatHistory(groupDestination).then((messages) => {
@@ -14,6 +15,8 @@ export default function onBackButtonClick(
     setDestination(groupDestination);
     setIsUnicast(false);
   } else {
-    setDestination(undefined);
+    connection.stop().then(() => {
+      setDestination(undefined);
+    });
   }
 }

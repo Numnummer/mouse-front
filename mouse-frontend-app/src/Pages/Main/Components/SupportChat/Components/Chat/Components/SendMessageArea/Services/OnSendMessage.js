@@ -9,11 +9,19 @@ export default function onSendMessage(
   setCurrentMessage,
   destination,
   isUnicast,
+  role,
 ) {
   if (currentMessage === "") {
     return;
   }
-  sendChatMessage(email, connection, currentMessage, destination, isUnicast);
+  sendChatMessage(
+    email,
+    connection,
+    currentMessage,
+    destination,
+    isUnicast,
+    role,
+  );
   setMessages((prev) => [
     ...prev,
     {
