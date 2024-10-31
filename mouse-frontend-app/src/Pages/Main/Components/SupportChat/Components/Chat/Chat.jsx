@@ -26,6 +26,7 @@ export default function Chat({
   useEffect(() => {
     getCurrentUserInfo().then((data) => {
       setEmail(data.email);
+      const currentEmail = data.email;
       // Подключаемся к хабу на бэкэнде
       connectChat(
         (author, text, date, group) => {
@@ -40,7 +41,7 @@ export default function Chat({
           );
         },
         role,
-        data.Email,
+        currentEmail,
       ).then((resultConnection) => {
         setConnection(resultConnection);
 

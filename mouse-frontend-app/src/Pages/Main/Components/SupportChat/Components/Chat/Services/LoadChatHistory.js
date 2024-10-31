@@ -10,7 +10,7 @@ export default function loadChatHistory(
   role,
 ) {
   if (isUnicast) {
-    loadUnicastChatHistory(destination).then((messages) => {
+    loadUnicastChatHistory(email, destination).then((messages) => {
       const mappedMessages = messages.map((m) => ({
         from: m.senderEmail,
         text: m.messageText,

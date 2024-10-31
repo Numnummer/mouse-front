@@ -1,10 +1,10 @@
 import { authToken } from "../../../../../../../Constants/LocalStorageItemKeys.js";
 import { chatMessagesClient } from "../../../../../../../Constants/AxiosClients.js";
 
-export default function loadUnicastChatHistory(email) {
+export default function loadUnicastChatHistory(fromEmail, toEmail) {
   const token = localStorage.getItem(authToken);
   return chatMessagesClient
-    .get(`unicast/${email}`, {
+    .get(`unicast/${fromEmail}/${toEmail}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {

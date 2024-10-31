@@ -20,6 +20,8 @@ export async function connectChat(onMessageReceive, role, email) {
   chatConnection.on(onMessageReceiveName, onMessageReceive);
   await chatConnection.start();
   await chatConnection.invoke(addToGroupByRoleMethodName, role);
+  console.log(email);
+  console.log(role);
   await chatConnection.invoke(addEmailMethodName, email);
   return chatConnection;
 }
