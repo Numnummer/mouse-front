@@ -13,7 +13,6 @@ export default function onMessageReceive(
   switch (destination) {
     case "Пользователь":
       if (!group.includes("User")) {
-        console.log(group);
         return;
       }
       break;
@@ -29,14 +28,29 @@ export default function onMessageReceive(
       break;
   }
   const formattedDate = formatMessageDate(date);
-  console.log(email);
-  setMessages((prev) => [
-    ...prev,
-    {
+  setMessages((prev) => {
+    // Получаем последний элемент в предыдущем состоянии
+    const lastMessage = prev[prev.length - 1];
+
+    // Проверяем, совпадают ли поля с новым сообщением
+    const newMessage = {
       from: author,
       text: text,
       date: formattedDate,
       isFromSelf: false,
-    },
-  ]);
+    };
+
+    // Если последний элемент и новое сообщение не совпадают, добавляем его в массив
+    if (
+      !lastMessage ||
+      lastMessage.from !== newMessage.from ||
+      lastMessage.text !== newMessage.text ||
+      lastMessage.date !== newMessage.date
+    ) {
+      return [...prev, newMessage];
+    }
+
+    // Если совпадающие поля, возвращаем предыдущее состояние без изменений
+    return prev;
+  });
 }
