@@ -8,6 +8,7 @@ import { postTraining } from "../../../../../Api/Trainings/PostTraining";
 import { getAllTrainings } from "../../../../../Api/Trainings/GetAllTrainings";
 import React from "react";
 import PropTypes from "prop-types";
+import { modalStyles } from "../../../CustomStyles/ModalStyles";
 
 export default function Main({
   setCurrentTraining,
@@ -63,11 +64,7 @@ export default function Main({
       setToday(startOfToday());
     }, 500);
   }, []);
-  const modalStyles = {
-    mask: {
-      backdropFilter: "blur(10px)",
-    },
-  };
+
   return (
     <div className="user-page-container">
       <label className="title-label">Расписание</label>

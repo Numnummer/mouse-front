@@ -1,0 +1,14 @@
+.SendMessageArea_Container {
+  display: flex;
+  flex-direction: row;
+}
+
+.SendMessageArea_Input{
+  font-size: 1.3vw;
+  margin-left: 4%;
+}
+
+.SendMessageArea_Button{
+  font-size: 1vw;
+  margin-left: 4%;
+}
