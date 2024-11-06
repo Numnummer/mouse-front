@@ -1,9 +1,9 @@
 export const clientIdGoogle =
-  "1038289489674-6mfj5q428gg5qqcrgdqk2p46g2om3e8e.apps.googleusercontent.com";
+  "1038289489674-41usljcf84c0lbbtcrnvsccjc57hj4ko.apps.googleusercontent.com";
 
-export const clientSecretGoogle = "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";
+export const clientSecretGoogle = "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";
 export const redirectUrlGoolgle =
-  "http://prostitutio.online/api/sessions/oauth/google";
+  "http://localhost:5173/api/sessions/oauth/google";
 
 export const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?\
 response_type=code&\

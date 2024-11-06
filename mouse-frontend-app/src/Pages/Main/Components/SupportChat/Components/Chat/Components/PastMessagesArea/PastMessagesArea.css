@@ -1,0 +1,6 @@
+.PastMessagesArea_Container {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  overflow-y: auto;
+}

@@ -1,0 +1,22 @@
+.ChooseDestination_Buttons_Area {
+  display: flex;
+  flex-direction: row;
+}
+
+.ChooseDestination_Button {
+  border: none;
+  border-radius: 3vh;
+  text-decoration: none;
+  color: white;
+  background: #0b63f6;
+  box-shadow: 0 1.5vh 0 #003cc5;
+  font-size: 1.7vw;
+  margin: 2vh;
+}
+
+.ChooseDestination_Button:hover {
+  background: #003cc5;
+  box-shadow: none;
+  position: relative;
+  top: 1.5vh;
+}

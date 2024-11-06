@@ -10,7 +10,6 @@ export function getAllExcercises() {
       },
     })
     .then((response) => {
-      console.log(response);
       return response.data;
     })
     .catch((error) => {

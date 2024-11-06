@@ -8,7 +8,7 @@ import {
   VK_AUTHORIZATION_URI,
 } from "../../Constants/Vk";
 
-export default function () {
+export default function VkAuth() {
   useEffect(() => {
     const params = queryString.parse(window.location.search);
     axios

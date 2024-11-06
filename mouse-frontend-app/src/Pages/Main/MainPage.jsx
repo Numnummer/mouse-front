@@ -20,6 +20,9 @@ import { useNavigate } from "react-router-dom";
 import checkUserProfile from "../../Api/UserProfile/CheckUserProfile";
 import { ToastContainer } from "react-toastify";
 import React from "react";
+import { Modal } from "antd";
+import SupportChat from "./Components/SupportChat/SupportChat";
+import { modalStyles } from "./CustomStyles/ModalStyles";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -38,6 +41,10 @@ export default function MainPage() {
       );
     }
   }
+
+  // Состояние показа/непоказа окна поддержки
+  const [chatOpen, setChatOpen] = useState(false);
+
   const [tabSwitcher, setTabSwitcher] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
@@ -138,8 +145,7 @@ export default function MainPage() {
           <div
             className="tab"
             onClick={() => {
-              //setNewMessages(false);
-              setCurrentTab("Messages");
+              setChatOpen(true);
             }}
           >
             <MessagesIcon />
@@ -167,6 +173,19 @@ export default function MainPage() {
         </div>
       </div>
       {currentTabComponent}
+      <Modal
+        title="Чат поддержки"
+        open={chatOpen}
+        onOk={() => {
+          setChatOpen(false);
+        }}
+        onCancel={() => {
+          setChatOpen(false);
+        }}
+        styles={modalStyles}
+      >
+        <SupportChat></SupportChat>
+      </Modal>
     </div>
   );
 }
