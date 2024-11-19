@@ -7,8 +7,9 @@ import ChatHeader from "./Components/ChatHeader/ChatHeader.jsx";
 import loadChatHistory from "./Services/LoadChatHistory.js";
 import getCurrentUserInfo from "../../../../../../Api/User/GetCurrentUserInfo.js";
 import { connectChat } from "../../Services/ConnectChat.js";
-import onMessageReceive from "../../Services/OnMessageReceive.js";
 import { HubConnection } from "@microsoft/signalr";
+import onUnicastMessageReceive from "../../Services/OnUnicastMessageReceive.js";
+import onMulticastMessageReceive from "../../Services/OnMulticastMessageReceive.js";
 
 export default function Chat({
   messages,
@@ -29,8 +30,19 @@ export default function Chat({
       const currentEmail = data.email;
       // Подключаемся к хабу на бэкэнде
       connectChat(
+        (author, text, date) => {
+          onUnicastMessageReceive(
+            author,
+            text,
+            date,
+            isUnicast,
+            destination,
+            setMessages,
+            data.email,
+          );
+        },
         (author, text, date, group) => {
-          onMessageReceive(
+          onMulticastMessageReceive(
             author,
             text,
             date,
