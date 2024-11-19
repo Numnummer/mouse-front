@@ -10,23 +10,26 @@ export default function onMessageReceive(
   email,
 ) {
   if (author === email) return;
-  switch (destination) {
-    case "Пользователь":
-      if (!group.includes("User")) {
-        return;
-      }
-      break;
-    case "Тренер":
-      if (!group.includes("Coach")) {
-        return;
-      }
-      break;
-    case "Админ":
-      if (!group.includes("Admin")) {
-        return;
-      }
-      break;
+  if (group) {
+    switch (destination) {
+      case "Пользователь":
+        if (!group.includes("User")) {
+          return;
+        }
+        break;
+      case "Тренер":
+        if (!group.includes("Coach")) {
+          return;
+        }
+        break;
+      case "Админ":
+        if (!group.includes("Admin")) {
+          return;
+        }
+        break;
+    }
   }
+
   const formattedDate = formatMessageDate(date);
   setMessages((prev) => {
     // Получаем последний элемент в предыдущем состоянии
