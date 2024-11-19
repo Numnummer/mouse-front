@@ -1,4 +1,6 @@
-export const hubCunnectionUrl = "http://localhost:5049/supportChat";
+import { backendOrigin } from "../../../../../Constants/AxiosClients.js";
+
+export const hubCunnectionUrl = `${backendOrigin}/supportChat`;
 export const onMessageReceiveName = "onMessageReceive";
 export const addToGroupByRoleMethodName = "AddToGroupByRoleAsync";
 export const addEmailMethodName = "AddEmailAsync";
