@@ -21,6 +21,7 @@ export default function PastMessagesArea({ messages, onAuthorClick }) {
           date={message.date}
           isFromSelf={message.isFromSelf}
           onAuthorClick={onAuthorClick}
+          fileNames={message.fileNames}
         ></ChatMessage>
       ))}
     </div>

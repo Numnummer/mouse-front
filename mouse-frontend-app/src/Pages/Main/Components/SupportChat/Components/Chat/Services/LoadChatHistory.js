@@ -42,11 +42,13 @@ export default function loadChatHistory(
         break;
     }
     loadMulticastChatHistory(group).then((messages) => {
+      console.log(messages);
       const mappedMessages = messages.map((m) => ({
         from: m.senderEmail,
         text: m.messageText,
         date: formatMessageDate(m.sentDateTime),
         isFromSelf: email === m.senderEmail,
+        fileNames: m.files.map((file) => file.fileName),
       }));
       setMessages(mappedMessages);
     });

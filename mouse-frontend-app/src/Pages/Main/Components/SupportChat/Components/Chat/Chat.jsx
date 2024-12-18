@@ -55,6 +55,7 @@ export default function Chat({
         role,
         currentEmail,
       ).then((resultConnection) => {
+        console.log(resultConnection);
         setConnection(resultConnection);
 
         // подгрузить историю чата

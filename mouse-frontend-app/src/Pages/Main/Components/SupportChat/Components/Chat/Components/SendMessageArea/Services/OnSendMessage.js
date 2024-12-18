@@ -10,6 +10,8 @@ export default function onSendMessage(
   destination,
   isUnicast,
   role,
+  fileNames,
+  filesContent,
 ) {
   if (currentMessage === "") {
     return;
@@ -21,6 +23,8 @@ export default function onSendMessage(
     destination,
     isUnicast,
     role,
+    fileNames,
+    filesContent,
   );
   setMessages((prev) => [
     ...prev,
