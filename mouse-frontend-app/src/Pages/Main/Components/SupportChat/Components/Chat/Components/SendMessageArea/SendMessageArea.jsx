@@ -53,7 +53,10 @@ export default function SendMessageArea({
       <input
         className="SendMessageArea_FileInput"
         type="file"
-        onChange={(e) => onFileChange(e, setSelectedFiles, setFileContents)}
+        onChange={(e) => {
+          onFileChange(e, setSelectedFiles, setFileContents);
+          console.log(selectedFiles);
+        }}
         multiple // Allows selecting multiple files
       />
     </div>
