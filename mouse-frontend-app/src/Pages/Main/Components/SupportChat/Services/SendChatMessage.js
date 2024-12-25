@@ -10,6 +10,8 @@ export default async function sendChatMessage(
   destination,
   isUnicast,
   role,
+  fileNames,
+  filesContent,
 ) {
   if (isUnicast) {
     await connection.invoke(
@@ -17,6 +19,8 @@ export default async function sendChatMessage(
       author,
       messageText,
       destination,
+      fileNames,
+      filesContent,
     );
   } else {
     await connection.invoke(
@@ -25,6 +29,8 @@ export default async function sendChatMessage(
       messageText,
       destination,
       role,
+      fileNames,
+      filesContent,
     );
   }
 }

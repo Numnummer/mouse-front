@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import "./ChatMessage.css";
+import { onFileNameClick } from "../../Services/OnFileNameClick.js";
 
 export default function ChatMessage({
   from,
@@ -8,6 +9,7 @@ export default function ChatMessage({
   date,
   isFromSelf,
   onAuthorClick,
+  fileNames,
 }) {
   return (
     <div
@@ -21,6 +23,15 @@ export default function ChatMessage({
         {from}
       </div>
       <div className="ChatMessage_Text">{text}</div>
+      {fileNames.map((fileName, index) => (
+        <div
+          className="ChatMessage_File"
+          key={index}
+          onClick={() => onFileNameClick(fileName)}
+        >
+          {fileName}
+        </div>
+      ))}
       <div className="ChatMessage_Date">{date}</div>
     </div>
   );
@@ -32,4 +43,5 @@ ChatMessage.propTypes = {
   date: PropTypes.string.isRequired,
   isFromSelf: PropTypes.bool.isRequired,
   onAuthorClick: PropTypes.func.isRequired,
+  fileNames: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

@@ -8,7 +8,16 @@ export default function onUnicastMessageReceive(
   destination,
   setMessages,
   email,
+  fileNames,
 ) {
   if (!isUnicast) return;
-  onMessageReceive(author, text, date, destination, setMessages, email);
+  onMessageReceive(
+    author,
+    text,
+    date,
+    destination,
+    setMessages,
+    email,
+    fileNames,
+  );
 }
