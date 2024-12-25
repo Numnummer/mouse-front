@@ -18,42 +18,44 @@ export default function SendMessageArea({
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [fileContents, setFileContents] = useState([]);
   return (
-    <div className="SendMessageArea_Container">
+    <div>
+      <div className="SendMessageArea_Container">
+        <input
+          className="SendMessageArea_Input"
+          onChange={(event) => {
+            setCurrentMessage(event.target.value);
+          }}
+          value={currentMessage}
+        ></input>
+        <button
+          className="SendMessageArea_Button"
+          onClick={() => {
+            console.log(fileContents);
+            onSendMessage(
+              email,
+              connection,
+              setMessages,
+              currentMessage,
+              setCurrentMessage,
+              destination,
+              isUnicast,
+              role,
+              fileContents.map((file) => file.fileName),
+              fileContents.map((file) =>
+                uint8ArrayToBase64(new Uint8Array(file.content)),
+              ),
+            );
+          }}
+        >
+          Отправить
+        </button>
+      </div>
       <input
         className="SendMessageArea_FileInput"
         type="file"
         onChange={(e) => onFileChange(e, setSelectedFiles, setFileContents)}
         multiple // Allows selecting multiple files
       />
-      <input
-        className="SendMessageArea_Input"
-        onChange={(event) => {
-          setCurrentMessage(event.target.value);
-        }}
-        value={currentMessage}
-      ></input>
-      <button
-        className="SendMessageArea_Button"
-        onClick={() => {
-          console.log(fileContents);
-          onSendMessage(
-            email,
-            connection,
-            setMessages,
-            currentMessage,
-            setCurrentMessage,
-            destination,
-            isUnicast,
-            role,
-            fileContents.map((file) => file.fileName),
-            fileContents.map((file) =>
-              uint8ArrayToBase64(new Uint8Array(file.content)),
-            ),
-          );
-        }}
-      >
-        Отправить
-      </button>
     </div>
   );
 }

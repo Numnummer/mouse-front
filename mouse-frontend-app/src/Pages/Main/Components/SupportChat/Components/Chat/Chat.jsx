@@ -30,7 +30,7 @@ export default function Chat({
       const currentEmail = data.email;
       // Подключаемся к хабу на бэкэнде
       connectChat(
-        (author, text, date) => {
+        (author, text, date, fileNames) => {
           onUnicastMessageReceive(
             author,
             text,
@@ -39,9 +39,10 @@ export default function Chat({
             destination,
             setMessages,
             data.email,
+            fileNames,
           );
         },
-        (author, text, date, group) => {
+        (author, text, date, group, fileNames) => {
           onMulticastMessageReceive(
             author,
             text,
@@ -50,6 +51,7 @@ export default function Chat({
             destination,
             setMessages,
             data.email,
+            fileNames,
           );
         },
         role,

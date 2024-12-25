@@ -8,6 +8,7 @@ export default function onMulticastMessageReceive(
   destination,
   setMessages,
   email,
+  fileNames,
 ) {
   if (group) {
     switch (destination) {
@@ -28,5 +29,13 @@ export default function onMulticastMessageReceive(
         break;
     }
   }
-  onMessageReceive(author, text, date, destination, setMessages, email);
+  onMessageReceive(
+    author,
+    text,
+    date,
+    destination,
+    setMessages,
+    email,
+    fileNames,
+  );
 }

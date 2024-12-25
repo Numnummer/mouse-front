@@ -33,6 +33,7 @@ export default function onSendMessage(
       text: currentMessage,
       date: formatMessageDate(new Date()),
       isFromSelf: true,
+      fileNames: fileNames,
     },
   ]);
   setCurrentMessage("");

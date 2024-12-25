@@ -23,13 +23,6 @@ export default async function sendChatMessage(
       filesContent,
     );
   } else {
-    console.log(connection);
-    console.log(author);
-    console.log(messageText);
-    console.log(destination);
-    console.log(role);
-    console.log(fileNames);
-    console.log(filesContent);
     await connection.invoke(
       sendMulticastChatMessageMethodName,
       author,

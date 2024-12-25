@@ -7,6 +7,7 @@ export default function onMessageReceive(
   destination,
   setMessages,
   email,
+  fileNames,
 ) {
   if (author === email) return;
 
@@ -21,6 +22,7 @@ export default function onMessageReceive(
       text: text,
       date: formattedDate,
       isFromSelf: false,
+      fileNames: fileNames,
     };
 
     // Если последний элемент и новое сообщение не совпадают, добавляем его в массив
