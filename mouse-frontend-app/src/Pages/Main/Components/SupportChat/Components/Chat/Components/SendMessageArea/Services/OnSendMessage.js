@@ -12,6 +12,7 @@ export default function onSendMessage(
   role,
   fileNames,
   filesContent,
+  selectedFilesMetadata,
 ) {
   if (currentMessage === "") {
     return;
@@ -25,6 +26,7 @@ export default function onSendMessage(
     role,
     fileNames,
     filesContent,
+    selectedFilesMetadata,
   );
   setMessages((prev) => [
     ...prev,

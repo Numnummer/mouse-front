@@ -12,6 +12,7 @@ export default async function sendChatMessage(
   role,
   fileNames,
   filesContent,
+  selectedFilesMetadata,
 ) {
   if (isUnicast) {
     await connection.invoke(
@@ -21,6 +22,7 @@ export default async function sendChatMessage(
       destination,
       fileNames,
       filesContent,
+      selectedFilesMetadata,
     );
   } else {
     await connection.invoke(
@@ -31,6 +33,7 @@ export default async function sendChatMessage(
       role,
       fileNames,
       filesContent,
+      selectedFilesMetadata,
     );
   }
 }
