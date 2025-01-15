@@ -16,6 +16,7 @@ export default function SendMessageArea({
 }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [selectedFilesMetadata, setSelectedFilesMetadata] = useState([""]);
   const [fileContents, setFileContents] = useState([]);
   return (
     <div>
@@ -30,7 +31,7 @@ export default function SendMessageArea({
         <button
           className="SendMessageArea_Button"
           onClick={() => {
-            console.log(fileContents);
+            console.log(selectedFilesMetadata);
             onSendMessage(
               email,
               connection,
@@ -44,6 +45,7 @@ export default function SendMessageArea({
               fileContents.map((file) =>
                 uint8ArrayToBase64(new Uint8Array(file.content)),
               ),
+              selectedFilesMetadata,
             );
           }}
         >
@@ -54,7 +56,12 @@ export default function SendMessageArea({
         className="SendMessageArea_FileInput"
         type="file"
         onChange={(e) => {
-          onFileChange(e, setSelectedFiles, setFileContents);
+          onFileChange(
+            e,
+            setSelectedFiles,
+            setFileContents,
+            setSelectedFilesMetadata,
+          );
           console.log(selectedFiles);
         }}
         multiple // Allows selecting multiple files
