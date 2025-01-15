@@ -28,6 +28,8 @@ export default function onSendMessage(
     filesContent,
     selectedFilesMetadata,
   );
+  console.log(selectedFilesMetadata);
+
   setMessages((prev) => [
     ...prev,
     {

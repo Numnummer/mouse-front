@@ -31,7 +31,7 @@ export default function SendMessageArea({
         <button
           className="SendMessageArea_Button"
           onClick={() => {
-            console.log(fileContents);
+            console.log(selectedFilesMetadata);
             onSendMessage(
               email,
               connection,
