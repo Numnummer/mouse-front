@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'exercises_screen.dart';
+import '../entities/Exercise.dart';
+import '../entities/Workout.dart';
 
-class Workout {
-  final String name;
-  final String description;
-  final List<Exercise> exercises;
-  final IconData icon;
 
-  Workout({
-    required this.name,
-    required this.description,
-    required this.exercises,
-    this.icon = Icons.fitness_center,
-  });
-}
 
 class WorkoutsScreen extends StatefulWidget {
   const WorkoutsScreen({super.key});

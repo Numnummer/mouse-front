@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../entities/Exercise.dart';
+
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
 
@@ -135,9 +137,3 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
   }
 }
 
-class Exercise {
-  final String name;
-  final IconData icon;
-
-  Exercise({required this.name, required this.icon});
-}
