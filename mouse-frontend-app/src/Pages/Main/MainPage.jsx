@@ -23,6 +23,7 @@ import React from "react";
 import { Modal } from "antd";
 import SupportChat from "./Components/SupportChat/SupportChat";
 import { modalStyles } from "./CustomStyles/ModalStyles";
+import Products from "./Tabs/Products/Products.jsx";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -115,6 +116,10 @@ export default function MainPage() {
       currentTabComponent = <Messages currentTab={currentTab}></Messages>;
       localStorage.setItem(currentProfileItem, "Messages");
       break;
+    case "Products":
+      currentTabComponent = <Products></Products>;
+      localStorage.setItem(currentProfileItem, "Messages");
+      break;
     default:
       break;
   }
@@ -159,6 +164,14 @@ export default function MainPage() {
           >
             <MyExcercisesIcon />
             <label>Мои упражнения</label>
+          </div>
+          <div
+            className="tab"
+            onClick={() => {
+              setCurrentTab("Products");
+            }}
+          >
+            <label>Продукты</label>
           </div>
           <div
             className="tab_logout"

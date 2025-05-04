@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//export const backendOrigin = "http://localhost:8080";
+//export const backendOrigin = "http://localhost:30080";
 export const backendOrigin = "http://localhost:5049";
 
 export const userClient = axios.create({
@@ -25,4 +25,8 @@ export const messagesClient = axios.create({
 
 export const chatMessagesClient = axios.create({
   baseURL: `${backendOrigin}/api/SupportChat/`,
+});
+
+export const paymentsClient = axios.create({
+  baseURL: `${backendOrigin}/api/Payment/`,
 });
