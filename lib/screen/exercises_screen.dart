@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/v4.dart';
 
 import '../entities/Exercise.dart';
+import 'package:uuid/uuid.dart';
 
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
@@ -10,14 +12,14 @@ class ExercisesScreen extends StatefulWidget {
 }
 
 class _ExercisesScreenState extends State<ExercisesScreen> {
-  final List<Exercise> _exercises = [
-    Exercise(name: 'Приседания', icon: Icons.fitness_center),
-    Exercise(name: 'Отжимания', icon: Icons.directions_run),
-    Exercise(name: 'Подтягивания', icon: Icons.accessibility),
-    Exercise(name: 'Планка', icon: Icons.timer),
-    Exercise(name: 'Бег', icon: Icons.directions_run),
-    Exercise(name: 'Велосипед', icon: Icons.directions_bike),
-  ];
+  UuidV4 uuid = UuidV4();
+  late List<Exercise> _exercises;
+
+  @override
+  void initState() {
+    super.initState();
+    _exercises=_initExcercises();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                     if (textController.text.isNotEmpty) {
                       setState(() {
                         _exercises.add(
-                          Exercise(name: textController.text, icon: selectedIcon),
+                          Exercise(id:uuid.generate(), name: textController.text, icon: selectedIcon),
                         );
                       });
                       Navigator.pop(context);
@@ -134,6 +136,17 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
     setState(() {
       _exercises.removeAt(index);
     });
+  }
+
+  List<Exercise> _initExcercises(){
+    return [
+      Exercise(id:uuid.generate(), name: 'Приседания', icon: Icons.fitness_center),
+      Exercise(id:uuid.generate(), name: 'Отжимания', icon: Icons.directions_run),
+      Exercise(id:uuid.generate(), name: 'Подтягивания', icon: Icons.accessibility),
+      Exercise(id:uuid.generate(), name: 'Планка', icon: Icons.timer),
+      Exercise(id:uuid.generate(), name: 'Бег', icon: Icons.directions_run),
+      Exercise(id:uuid.generate(), name: 'Велосипед', icon: Icons.directions_bike),
+    ];
   }
 }
 

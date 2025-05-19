@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/v4.dart';
 
 import '../entities/Exercise.dart';
 import '../entities/Workout.dart';
@@ -13,14 +14,13 @@ class WorkoutsScreen extends StatefulWidget {
 }
 
 class _WorkoutsScreenState extends State<WorkoutsScreen> {
+  UuidV4 uuid = UuidV4();
   final List<Workout> _workouts = [
     Workout(
       name: 'Силовая тренировка',
       description: 'Базовая тренировка на все группы мышц',
       exercises: [
-        Exercise(name: 'Приседания', icon: Icons.fitness_center),
-        Exercise(name: 'Жим лежа', icon: Icons.fitness_center),
-        Exercise(name: 'Тяга штанги', icon: Icons.fitness_center),
+
       ],
       icon: Icons.fitness_center,
     ),
@@ -28,8 +28,7 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
       name: 'Кардио',
       description: 'Интервальная тренировка',
       exercises: [
-        Exercise(name: 'Бег', icon: Icons.directions_run),
-        Exercise(name: 'Велосипед', icon: Icons.directions_bike),
+
       ],
       icon: Icons.directions_run,
     ),
@@ -182,12 +181,12 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
     // В реальном приложении здесь нужно получить список упражнений
     // Например, из базы данных или другого экрана
     final availableExercises = [
-      Exercise(name: 'Приседания', icon: Icons.fitness_center),
-      Exercise(name: 'Отжимания', icon: Icons.directions_run),
-      Exercise(name: 'Подтягивания', icon: Icons.accessibility),
-      Exercise(name: 'Планка', icon: Icons.timer),
-      Exercise(name: 'Бег', icon: Icons.directions_run),
-      Exercise(name: 'Велосипед', icon: Icons.directions_bike),
+      Exercise(id:uuid.generate(), name: 'Приседания', icon: Icons.fitness_center),
+      Exercise(id:uuid.generate(), name: 'Отжимания', icon: Icons.directions_run),
+      Exercise(id:uuid.generate(), name: 'Подтягивания', icon: Icons.accessibility),
+      Exercise(id:uuid.generate(), name: 'Планка', icon: Icons.timer),
+      Exercise(id:uuid.generate(), name: 'Бег', icon: Icons.directions_run),
+      Exercise(id:uuid.generate(), name: 'Велосипед', icon: Icons.directions_bike),
     ];
 
     final List<Exercise>? result = await showDialog(
@@ -392,4 +391,5 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
       },
     );
   }
+
 }
