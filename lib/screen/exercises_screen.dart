@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_front/core/api/grapgql_client.dart';
+import 'package:mobile_front/core/blocs/excercise/excercise_event.dart';
 import 'package:uuid/v4.dart';
 
+import '../core/blocs/excercise/excercise_bloc.dart';
+import '../core/blocs/excercise/excercise_state.dart';
 import '../entities/Exercise.dart';
-import 'package:uuid/uuid.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
@@ -23,38 +27,52 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocProvider(create: (context)=>
+    ExerciseBloc(GraphQLClientService('http://your-api.com/graphql'))..add(LoadExercises()),child: Scaffold(
       body: _buildExercisesList(),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddExerciseDialog,
         child: const Icon(Icons.add),
       ),
+    )
     );
   }
 
   Widget _buildExercisesList() {
-    return ListView.builder(
-      itemCount: _exercises.length,
-      itemBuilder: (context, index) {
-        final exercise = _exercises[index];
-        return Card(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: ListTile(
-            leading: Icon(exercise.icon, color: Colors.blue),
-            title: Text(exercise.name),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete, color: Colors.red),
-              onPressed: () => _deleteExercise(index),
-            ),
-            onTap: () {
-              // Действие при тапе на упражнение
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Выбрано: ${exercise.name}')),
-              );
-            },
-          ),
+    return BlocBuilder<ExerciseBloc, ExerciseState>(
+        builder: (context, state) {
+      if (state is ExerciseLoading) {
+        return Center(child: CircularProgressIndicator());
+      } else if (state is ExerciseError) {
+        return Center(child: Text('Ошибка: ${state.message}'));
+      } else if (state is ExerciseLoaded) {
+        // Теперь используем state.exercises вместо _exercises
+        return ListView.builder(
+          itemCount: state.exercises.length,
+          itemBuilder: (context, index) {
+            final exercise = state.exercises[index];
+            return Card(
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: ListTile(
+                leading: Icon(exercise.icon, color: Colors.blue),
+                title: Text(exercise.name),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () => context.read<ExerciseBloc>().add(DeleteExercise(index)), // Удаляем упражнение при нажатии кнопки
+                ),
+                onTap: () {
+                  // Действие при тапе на упражнение
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Выбрано: ${exercise.name}')),
+                  );
+                },
+              ),
+            );
+          },
         );
-      },
+      }
+      return Container(); // Изначальное состояние или состояние, которое нельзя обработать
+        },
     );
   }
 
