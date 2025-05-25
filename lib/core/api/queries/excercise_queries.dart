@@ -1,14 +1,14 @@
 class ExerciseQueries {
-  static const String getAllExercises = '''
-    query {
-      exercises {
-        id
-        name
-        description
-        icon
-        category
-      }
-    }
+  static const String getAllExercises = r'''
+    query GetAllExercises($jwtToken: String!) {
+          GetAllExercises(
+            jwtToken: $jwtToken,
+          ) {
+              id
+              name
+              description              
+            }
+          }             
   ''';
 
   static const String addExercise = '''

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../../entities/Exercise.dart';
 import '../../api/grapgql_client.dart';
@@ -15,16 +16,29 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     on<DeleteExercise>(_onDeleteExercise);
   }
 
+  final storage = FlutterSecureStorage();
+
   Future<void> _onLoadExercises(
       LoadExercises event,
       Emitter<ExerciseState> emit,
       ) async {
     emit(ExerciseLoading());
     try {
-      final result = await _client.query(ExerciseQueries.getAllExercises);
+      final result = await _client.query(ExerciseQueries.getAllExercises,
+      variables: {
+        "jwtToken": await storage.read(key: 'jwt_token')
+      });
       if (result.hasException) throw result.exception!;
 
-      final exercises = (result.data?['exercises'] as List)
+      final exercisesData = result.data?['GetAllExercises'];
+
+      // Proper null and type checking
+      if (exercisesData == null || exercisesData.isEmpty) {
+        emit(ExerciseLoaded([]));
+        return;
+      }
+
+      final exercises = exercisesData
           .map((e) => Exercise.fromJson(e))
           .toList();
       emit(ExerciseLoaded(exercises));

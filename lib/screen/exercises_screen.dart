@@ -28,7 +28,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(create: (context)=>
-    ExerciseBloc(GraphQLClientService('http://your-api.com/graphql'))..add(LoadExercises()),child: Scaffold(
+    ExerciseBloc(GraphQLClientService('http://10.0.2.2:5014/api/graphql'))..add(LoadExercises()),child: Scaffold(
       body: _buildExercisesList(),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddExerciseDialog,
