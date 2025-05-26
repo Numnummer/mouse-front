@@ -11,12 +11,9 @@ class ExerciseQueries {
           }             
   ''';
 
-  static const String addExercise = '''
-    mutation AddExercise(\$name: String!, \$description: String, \$icon: String!, \$category: String!) {
-      addExercise(name: \$name, description: \$description, icon: \$icon, category: \$category) {
-        id
-        name
-      }
+  static const String addExercise = r'''
+    mutation AddExercise($jwtToken: String!, $name: String!, $description: String) {
+      AddExercise(jwtToken: $jwtToken, name: $name, description: $description) 
     }
   ''';
 }

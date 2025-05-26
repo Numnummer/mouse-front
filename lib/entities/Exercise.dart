@@ -13,7 +13,6 @@ class Exercise {
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
-      icon: json['icon'] as IconData,
     );
   }
 

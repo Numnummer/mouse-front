@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mobile_front/core/api/grapgql_client.dart';
 import 'package:mobile_front/core/blocs/excercise/excercise_event.dart';
 import 'package:uuid/v4.dart';
@@ -27,16 +28,24 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=>
-    ExerciseBloc(GraphQLClientService('http://10.0.2.2:5014/api/graphql'))..add(LoadExercises()),child: Scaffold(
-      body: _buildExercisesList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _showAddExerciseDialog,
-        child: const Icon(Icons.add),
+    return BlocProvider(
+      create: (_) => ExerciseBloc(GraphQLClient(link: HttpLink('http://10.0.2.2:5014/api/graphql'), cache: GraphQLCache()))
+        ..add(LoadExercises()),
+      child: Builder(
+        builder: (blocContext) {
+          // Здесь blocContext - контекст внутри провайдера
+          return Scaffold(
+            body: _buildExercisesList(),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => _showAddExerciseDialog(blocContext),
+              child: const Icon(Icons.add),
+            ),
+          );
+        },
       ),
-    )
     );
   }
+
 
   Widget _buildExercisesList() {
     return BlocBuilder<ExerciseBloc, ExerciseState>(
@@ -76,12 +85,12 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
     );
   }
 
-  void _showAddExerciseDialog() {
+  void _showAddExerciseDialog(BuildContext outerContext) {
     final textController = TextEditingController();
     IconData selectedIcon = Icons.fitness_center;
 
     showDialog(
-      context: context,
+      context: outerContext,
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {
@@ -120,11 +129,11 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (textController.text.isNotEmpty) {
-                      setState(() {
-                        _exercises.add(
-                          Exercise(id:uuid.generate(), name: textController.text, icon: selectedIcon),
-                        );
-                      });
+                      outerContext.read<ExerciseBloc>().add(
+                        AddExercise(
+                          name: textController.text,
+                        ),
+                      );
                       Navigator.pop(context);
                     }
                   },

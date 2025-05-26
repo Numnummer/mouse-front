@@ -9,14 +9,14 @@ class LoadExercises extends ExerciseEvent {
 class AddExercise extends ExerciseEvent {
   final String name;
   final String? description;
-  final String icon;
-  final String category;
+  final String? icon;
+  final String? category;
 
   const AddExercise({
     required this.name,
     this.description,
-    required this.icon,
-    required this.category,
+    this.icon,
+    this.category,
   });
 
   @override
