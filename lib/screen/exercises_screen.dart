@@ -67,7 +67,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 title: Text(exercise.name),
                 trailing: IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
-                  onPressed: () => context.read<ExerciseBloc>().add(DeleteExercise(index)), // Удаляем упражнение при нажатии кнопки
+                  onPressed: () => context.read<ExerciseBloc>().add(DeleteExercise(exercise.id)), // Удаляем упражнение при нажатии кнопки
                 ),
                 onTap: () {
                   // Действие при тапе на упражнение
@@ -157,12 +157,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
         });
       },
     );
-  }
-
-  void _deleteExercise(int index) {
-    setState(() {
-      _exercises.removeAt(index);
-    });
   }
 
   List<Exercise> _initExcercises(){

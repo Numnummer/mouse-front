@@ -38,10 +38,8 @@ class AddExercise extends ExerciseEvent {
 }
 
 class DeleteExercise extends ExerciseEvent{
-  final int index;
+  final String id;
 
-  DeleteExercise(this.index);
+  DeleteExercise(this.id);
 
-  @override
-  List<Object?> get props => [index];
 }

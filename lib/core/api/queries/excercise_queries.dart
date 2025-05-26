@@ -16,4 +16,10 @@ class ExerciseQueries {
       AddExercise(jwtToken: $jwtToken, name: $name, description: $description) 
     }
   ''';
+
+  static const String deleteExercise = r'''
+    mutation DeleteExercise($jwtToken: String!, $id: String!) {
+      DeleteExercise(jwtToken: $jwtToken, id: $id) 
+    }
+  ''';
 }

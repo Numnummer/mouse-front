@@ -85,11 +85,19 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   }
 
   Future<void> _onDeleteExercise(DeleteExercise event, Emitter<ExerciseState> emit) async {
-     if(state is ExerciseLoaded){
-       final currentState = state as ExerciseLoaded;
-       final updated = List<Exercise>.from(currentState.exercises);
-       updated.removeAt(event.index);
-       emit(ExerciseLoaded(updated));
-     }
+    try {
+      final result = await _client.mutate(
+          MutationOptions(document: gql(ExerciseQueries.deleteExercise),
+              variables: {
+                'jwtToken': await storage.read(key: 'jwt_token'),
+                'id': event.id,
+              })
+      );
+      if (result.hasException) throw result.exception!;
+      add(LoadExercises());
+    }
+    catch (e) {
+      emit(ExerciseError(e.toString()));
+    }
   }
 }
