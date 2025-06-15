@@ -1,7 +1,7 @@
 class AuthQueries{
   static const String register=r'''
     mutation Register($username: String!, $email: String!, $password: String!) {
-        register(
+        Register(
           username: $username,
           email: $email,
           password: $password

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_front/core/blocs/excercise/excercise_event.dart';
 import 'package:uuid/v4.dart';
 
+import '../core/blocs/excercise/excercise_bloc.dart';
+import '../core/blocs/excercise/excercise_state.dart';
 import '../entities/Exercise.dart';
 import '../entities/Workout.dart';
 
@@ -178,65 +182,78 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
   }
 
   void _selectExercises(Function setState, List<Exercise> selectedExercises) async {
-    // В реальном приложении здесь нужно получить список упражнений
-    // Например, из базы данных или другого экрана
-    final availableExercises = [
-      Exercise(id:uuid.generate(), name: 'Приседания', icon: Icons.fitness_center),
-      Exercise(id:uuid.generate(), name: 'Отжимания', icon: Icons.directions_run),
-      Exercise(id:uuid.generate(), name: 'Подтягивания', icon: Icons.accessibility),
-      Exercise(id:uuid.generate(), name: 'Планка', icon: Icons.timer),
-      Exercise(id:uuid.generate(), name: 'Бег', icon: Icons.directions_run),
-      Exercise(id:uuid.generate(), name: 'Велосипед', icon: Icons.directions_bike),
-    ];
+    BlocBuilder<ExerciseBloc, ExerciseState>(
+      builder: (context, state) {
+        if (state is ExerciseLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is ExerciseError) {
+          return Center(child: Text('Ошибка: ${state.message}'));
+        } else if (state is ExerciseLoaded) {
+          // Используем данные из состояния:
+          final availableExercises = state.exercises;
+          final selectedExercises = [];
 
-    final List<Exercise>? result = await showDialog(
-      context: context,
-      builder: (context) {
-        final tempSelected = List<Exercise>.from(selectedExercises);
-        return AlertDialog(
-          title: const Text('Выберите упражнения'),
-          content: SizedBox(
-            width: double.maxFinite,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: availableExercises.length,
-              itemBuilder: (context, index) {
-                final exercise = availableExercises[index];
-                return CheckboxListTile(
-                  title: Text(exercise.name),
-                  secondary: Icon(exercise.icon),
-                  value: tempSelected.contains(exercise),
-                  onChanged: (bool? value) {
-                    if (value == true) {
-                      tempSelected.add(exercise);
-                    } else {
-                      tempSelected.remove(exercise);
-                    }
-                  },
-                );
-              },
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Отмена'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, tempSelected),
-              child: const Text('Готово'),
-            ),
-          ],
-        );
+          return ElevatedButton(
+            onPressed: () async {
+              final List<Exercise>? result = await showDialog<List<Exercise>>(
+                context: context,
+                builder: (context) {
+                  // Локальная копия выбранных упражнений для модификации
+                  final tempSelected = List<Exercise>.from(selectedExercises);
+
+                  return StatefulBuilder(
+                    builder: (context, setState) {
+                      return AlertDialog(
+                        title: const Text('Выберите упражнения'),
+                        content: SizedBox(
+                          width: double.maxFinite,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: availableExercises.length,
+                            itemBuilder: (context, index) {
+                              final exercise = availableExercises[index];
+                              return CheckboxListTile(
+                                title: Text(exercise.name),
+                                secondary: Icon(exercise.icon),
+                                value: tempSelected.contains(exercise),
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    if (value == true) {
+                                      if (!tempSelected.contains(exercise)) {
+                                        tempSelected.add(exercise);
+                                      }
+                                    } else {
+                                      tempSelected.remove(exercise);
+                                    }
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Отмена'),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, tempSelected),
+                            child: const Text('Готово'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              );
+            },
+            child: const Text('Выбрать упражнения'),
+          );
+        } else {
+          return const SizedBox.shrink();
+        }
       },
     );
-
-    if (result != null) {
-      setState(() {
-        selectedExercises.clear();
-        selectedExercises.addAll(result);
-      });
-    }
   }
 
   void _deleteWorkout(int index) {

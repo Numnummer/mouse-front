@@ -62,7 +62,7 @@ class AuthProvider with ChangeNotifier {
     }
 
     // Получение токена или другой информации из ответа
-    final token = result.data?['register']['token'];
+    final token = result.data?['Register']['token'];
     if (token != null) {
       _isAuthenticated = true;
       await storage.write(key: 'jwt_token', value: token);

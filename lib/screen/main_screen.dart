@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_front/screen/chat_screen.dart';
+import 'package:mobile_front/screen/stats_screen.dart';
 import 'package:provider/provider.dart';
 import '../provider/auth_provider.dart';
 import 'calendar_screen.dart';
@@ -26,6 +28,8 @@ class _MainScreenState extends State<MainScreen> {
     const ProfileScreen(),
     const ProductsScreen(),
     const WorkoutsScreen(),
+    ChatScreen(),
+    StatsScreen()
   ];
 
   final List<String> _names=[
@@ -33,7 +37,9 @@ class _MainScreenState extends State<MainScreen> {
     "Упражнения",
     "Профиль",
     "Продукты",
-    "Тренировки"
+    "Тренировки",
+    "Чат",
+    "Статистика"
   ];
 
   @override
@@ -112,6 +118,26 @@ class _MainScreenState extends State<MainScreen> {
               onTap: () {
                 setState(() {
                   _currentIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.directions_run),
+              title: const Text('Чат'),
+              onTap: () {
+                setState(() {
+                  _currentIndex = 5;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.directions_run),
+              title: const Text('Статистика'),
+              onTap: () {
+                setState(() {
+                  _currentIndex = 6;
                 });
                 Navigator.pop(context);
               },
